@@ -20,10 +20,10 @@ function Header() {
             <div className="df fr">
                 <div className={styles.size1}>
                     <img src={logo} alt="logo sur fond blanc avec deux grands L pour Lille et latina et en dessous dance " />
-                    <div className="df fc jcc">
-                        <h2 className="fweight4 tac">LILLE</h2>
-                        <h2 className="fweight4 tac">LATINA</h2>
-                        <h2 className="ffamily2 tac">Dance</h2>
+                    <div className="df fc jcc aic">
+                        <h2 className="fweight4">LILLE</h2>
+                        <h2 className="fweight4">LATINA</h2>
+                        <h2 className="ffamily2">Dance</h2>
                     </div>
                 </div>
                 <Navbar/>

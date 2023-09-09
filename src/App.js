@@ -1,10 +1,10 @@
-import Header from "./assets/components/Header";
+import Home from "./Pages/Home";
 
 
 function App() {
   return (
     <>
-    <Header/>
+    <Home/>
     </>
   );
 }

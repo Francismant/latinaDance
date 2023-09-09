@@ -2,12 +2,12 @@ import styles from "./Header.module.scss"
 
 function Navbar() {
   return (
-    <ul className={`df fr aic jcsb fsize2 ${styles.size2}`}>
-        <li><a href="">Cours</a></li>
-        <li><a href="">Ecole</a></li>
-        <li><a href="">Horaires-Taris</a></li>
-        <li><a href="">Evenements</a></li>
-        <li><a href="">Espace Adherent</a></li>
+    <ul className={`df fr aic jcsa fsize2 mr30 ${styles.size2}`}>
+        <li><button className={styles.button2}><span><a href="">Cours</a></span></button></li>
+        <li><button className={styles.button2}><span><a href="">Ecole</a></span></button></li>
+        <li><button className={styles.button2}><span><a href="">Horaires-Tarifs</a></span></button></li>
+        <li><button className={styles.button2}><span><a href="">Evenements</a></span></button></li>
+        <li><button className={styles.button2}><span><a href="">Espace Adherent</a></span></button></li>
     </ul>
   )
 }
