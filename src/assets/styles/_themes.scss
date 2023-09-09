@@ -1,0 +1,27 @@
+.textFamilyHeader {
+    font-family: var(--font-family);
+    font-size: 2.5rem;
+}
+
+.colorHeaderFooter {
+    background-color: var(--colorBlock);
+}
+
+.textFamilyContent {
+    font-family: var(--font-family2);
+}
+
+.fontSizeNavButton {
+    font-size: 1.3rem;
+}
+
+.backgroundHome {
+    background-image: url(../images/BackgroundHome.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.FontsizetitreSection {
+    font-size: 2.5rem;
+    font-weight: 400;
+}

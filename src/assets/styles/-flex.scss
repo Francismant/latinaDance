@@ -1,0 +1,51 @@
+.df {
+    display: flex;
+  }
+  
+  .fr {
+    flex-direction: row;
+  }
+  
+  .fc {
+    flex-direction: column;
+  }
+  
+  .flex-fill {
+    flex: 1 1 auto;
+  }
+  
+  .jcc {
+    justify-content: center;
+  }
+  
+  .jce {
+    justify-content: end;
+  }
+  
+  .jca {
+    justify-content: space-around;
+  }
+  
+  .jcb {
+    justify-content: space-between;
+  }
+  
+  .jce {
+    justify-content: space-evenly;
+  }
+  
+  .aic {
+    align-items: center;
+  }
+  
+  .aie {
+    align-items: end;
+  }
+  
+  .aia {
+    align-content: space-around;
+  }
+  
+  .aib {
+    align-content: space-between;
+  }
