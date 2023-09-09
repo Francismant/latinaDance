@@ -1,6 +1,7 @@
 *{
     margin: 0;
     text-decoration: none;
+    list-style-type: none;
   }
   
   body {
@@ -15,10 +16,8 @@
       color: inherit;
     }
     
-  
-    ul {
-      list-style: none;
-      padding-left: 0px;
+    h2 {
+      font-size: 2.2rem;
     }
     
     img {
@@ -26,6 +25,6 @@
     }
   
     .center {
-      width: 75%;
+      width: 80%;
       margin: 0 auto;
     }

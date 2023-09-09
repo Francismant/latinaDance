@@ -3,8 +3,12 @@
     font-size: 2.5rem;
 }
 
-.colorHeaderFooter {
-    background-color: var(--colorBlock);
+.colorHeader {
+    background-color: var(--colorDom);
+}
+
+.colorFooter {
+    background-color: var(--colorFooter);
 }
 
 .textFamilyContent {
@@ -15,11 +19,11 @@
     font-size: 1.3rem;
 }
 
-.backgroundHome {
-    background-image: url(../images/BackgroundHome.png);
-    background-position: center;
-    background-size: cover;
-}
+// .backgroundHome {
+//     background-image: url(../images/BackgroundHome.png);
+//     background-position: center;
+//     background-size: cover;
+// }
 
 .FontsizetitreSection {
     font-size: 2.5rem;

@@ -2,11 +2,45 @@
     font-size: 1rem;
 }
 .fsize2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 .fsize3 {
     font-size: 2rem;
 }
 .fsize4 {
     font-size: 2.5rem;
+}
+
+
+.fweight1 {
+    font-weight: 100;
+}
+.fweight2 {
+    font-weight: 200;
+}
+.fweight3 {
+    font-weight: 300;
+}
+.fweight4 {
+    font-weight: 400;
+}
+.fweight5 {
+    font-weight: 500;
+}
+.fweight6 {
+    font-weight: 600;
+}
+.fweight7 {
+    font-weight: 700;
+}
+.fweight8 {
+    font-weight: 800;
+}
+.fweight9 {
+    font-weight: 900;
+}
+
+.ffamily2 {
+    font-family: var(--font-family2);
+    color: var(--colorDom);
 }
