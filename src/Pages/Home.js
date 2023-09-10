@@ -6,6 +6,7 @@ import tableauImage from "../data/Data";
 import salsa from "../assets/images/la salsa.png"
 import bachata from "../assets/images/la bachata.png"
 import kizomba from "../assets/images/la kizomba.png"
+import CarouselParticulier from "../assets/components/CarouselParticulier";
 
 
 function Home() {
@@ -49,8 +50,8 @@ function Home() {
       <section>
         <h2 className="fspecialh2 tac pt50 mb50">Les cours collectifs</h2>
         <div className="fsize2 tac space mb50 center">
-        <p>-30 minutes de cours de salsa</p>
-        <p>-30 minutes de cours de bachata en alternance avec la Kizomba toutes les 5 semaines environ de manière à travailler un enchaînement complet à chaque fois.</p>
+          <p>-30 minutes de cours de salsa</p>
+          <p>-30 minutes de cours de bachata en alternance avec la Kizomba toutes les 5 semaines environ de manière à travailler un enchaînement complet à chaque fois.</p>
         </div>
       </section>
       <section>
@@ -102,6 +103,9 @@ function Home() {
           <p>Coordination</p>
           <p>Musicalité</p>
           <p>Ouverture de bal (mariage)</p>
+        </div>
+        <div className="center">
+        <CarouselParticulier/>
         </div>
       </section>
       <Footer />
