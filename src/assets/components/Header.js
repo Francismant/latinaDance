@@ -1,6 +1,6 @@
 import fb from "../images/facebook.png"
 import insta from "../images/instagram.png"
-import logo from "../images/LilleLatinaDance 1.png"
+import logo from "../images/LilleLatinaDance.png"
 import Navbar from "./Navbar"
 import styles from "./Header.module.scss"
 

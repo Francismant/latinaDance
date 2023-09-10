@@ -1,51 +1,55 @@
 .df {
-    display: flex;
-  }
-  
-  .fr {
-    flex-direction: row;
-  }
-  
-  .fc {
-    flex-direction: column;
-  }
-  
-  .flex-fill {
-    flex: 1 1 auto;
-  }
-  
-  .jcc {
-    justify-content: center;
-  }
-  
-  .jce {
-    justify-content: end;
-  }
-  
-  .jcsa {
-    justify-content: space-around;
-  }
-  
-  .jcsb {
-    justify-content: space-between;
-  }
-  
-  .jcse {
-    justify-content: space-evenly;
-  }
-  
-  .aic {
-    align-items: center;
-  }
-  
-  .aie {
-    align-items: end;
-  }
-  
-  .aia {
-    align-content: space-around;
-  }
-  
-  .aib {
-    align-content: space-between;
-  }
+  display: flex;
+}
+
+.fr {
+  flex-direction: row;
+}
+
+.fc {
+  flex-direction: column;
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}
+
+.fw {
+  flex-wrap: wrap;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.jce {
+  justify-content: end;
+}
+
+.jcsa {
+  justify-content: space-around;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.jcse {
+  justify-content: space-evenly;
+}
+
+.aic {
+  align-items: center;
+}
+
+.aie {
+  align-items: end;
+}
+
+.acsa {
+  align-content: space-around;
+}
+
+.acsb {
+  align-content: space-between;
+}

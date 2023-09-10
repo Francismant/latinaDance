@@ -18,6 +18,14 @@
     padding: 50px;
   }
 
+  .p60 {
+    padding:2% 0 2% 7%;
+  }
+
+  .p60invert {
+    padding:2% 7% 2% 0;
+  }
+
   .pb10 {
     padding-bottom: 10px;
   }
@@ -46,6 +54,22 @@
 
   .pt50 {
     padding-top: 50px;
+  }
+
+  .pl10 {
+    padding-left: 10px;
+  }
+
+  .pl20 {
+    padding-left: 20px;
+  }
+
+  .pl30 {
+    padding-left: 30px;
+  }
+
+  .pl50 {
+    padding-left: 50px;
   }
   
   .m5 {
@@ -176,3 +200,7 @@
   .tac {
     text-align: center;
   }
+
+  .size3 {
+    width: 50%;
+}
