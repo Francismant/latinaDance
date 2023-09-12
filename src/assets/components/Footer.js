@@ -6,8 +6,9 @@ function Footer() {
         <p>LATINA</p>
         <p className="ffamily2">Dance</p>
     </div>
-    <div>
-        <p className="fsize08 tac">Copyright©2023 |Tous droits réservés  -  Mentions légales </p>
+    <div className="df jcc fsize08">
+        <p>Copyright©2023 |Tous droits réservés  -</p>
+        <a href="">Mentions légale</a>
     </div>
     </footer>
   )

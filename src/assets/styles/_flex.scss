@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.df-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .fr {
   flex-direction: row;
 }

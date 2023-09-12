@@ -13,12 +13,12 @@ function Header() {
                     <p className="ml20">Email : lillelatinadance@org.com</p>
                 </div>
                 <div className="df jcc aic gap1">
-                    <a href=""><img className="mr10 mt5" src={fb} alt="logo de facebook" /></a>
-                    <a href=""><img className="mr70 mt5" src={insta} alt="logo de instagram" /></a>
+                    <a href=""><img className="mr10 mt5 pb5" src={fb} alt="logo de facebook" /></a>
+                    <a href=""><img className="mr70 mt5 pb5" src={insta} alt="logo de instagram" /></a>
                 </div>
             </div>
             <div className="df fr">
-                <div className={styles.size1}>
+                <div className={styles.sizeHeaderLeft}>
                     <img src={logo} alt="logo sur fond blanc avec deux grands L pour Lille et latina et en dessous dance " />
                     <div className="df fc jcc aic">
                         <h2 className="fweight4">LILLE</h2>
