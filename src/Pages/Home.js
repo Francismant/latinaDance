@@ -50,7 +50,7 @@ function Home() {
           </div>
         </section>
         <section>
-          <h2 className="fspecialh2 tac pt50 mb50">Les cours collectifs</h2>
+          <h2 id="cours-collectifs" className="fspecialh2 tac pt50 mb50">Les cours collectifs</h2>
           <div className="fsize2 tac space mb50">
             <p>-30 minutes de cours de salsa</p>
             <p>-30 minutes de cours de bachata en alternance avec la Kizomba toutes les 5 semaines environ de manière à travailler un enchaînement complet à chaque fois.</p>
@@ -88,7 +88,7 @@ function Home() {
         </div>
       </section> */}
         <section>
-          <h2 className="fspecialh2 tac mb50">Les cours particuliers</h2>
+          <h2 id="cours-particuliers" className="fspecialh2 tac mb50">Les cours particuliers</h2>
           <div className="fsize2 center tac space mb50">
             <p>Votre emploi du temps ne vous permet pas la régularité d’un cours collectif hebdomadaire ?</p>
             <p>Vous préférez apprendre les bases avant de vous lancer en cours collectif ?</p>
