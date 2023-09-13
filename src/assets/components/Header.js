@@ -21,12 +21,13 @@ function Header() {
                 <div className={styles.sizeHeaderLeft}>
                     <img src={logo} alt="logo sur fond blanc avec deux grands L pour Lille et latina et en dessous dance " />
                     <div className="df fc jcc aic">
-                        <h2 className="fweight4">LILLE</h2>
-                        <h2 className="fweight4">LATINA</h2>
-                        <h2 className="ffamily2">Dance</h2>
+                        <p className={`fweight4 ${styles.styleLogo}`}>LILLE</p>
+                        <p className={`fweight4 ${styles.styleLogo}`}>LATINA</p>
+                        <p className={`ffamily2 ${styles.styleLogo}`}>Dance</p>
                     </div>
                 </div>
                 <Navbar/>
+                    <a className="df aic ml100 fsize3" href=""><i class="fa-regular fa-circle-user"></i></a>
             </div>
 
         </header>

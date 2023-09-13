@@ -2,7 +2,7 @@ import Carousel from "../assets/components/Carousel";
 import Footer from "../assets/components/Footer"
 import Header from "../assets/components/Header"
 import styles from "./Home.module.scss"
-import { tableauImageCarousel, tableauImageCarouselParticulier, buttonLabels } from "../data/Data";
+import { tableauImageCarousel, tableauImageCarouselParticulier, buttonLabelsHome } from "../data/Data";
 // import salsa from "../assets/images/la salsa.png"
 // import bachata from "../assets/images/la bachata.png"
 // import kizomba from "../assets/images/la kizomba.png"
@@ -18,7 +18,7 @@ function Home() {
       <section>
         <div className={`df fc jcsb ${styles.backgroundTop}`}>
           <h1 className="pt50 ml30">COURS DE SALSA BACHATA KIZOMBA</h1>
-          <ButtonList buttonLabels={buttonLabels} />
+          <ButtonList buttonLabels={buttonLabelsHome} />
           {/* <button className={styles.btn}>
               <div className="df gap1 aic">
                 <p>Cours collectifs</p>
@@ -41,7 +41,7 @@ function Home() {
       </section>
       <main className="center df fc gap5">
         <section>
-          <h2 className="fspecialh2 tac pt50 mb50">Les soirées SBK</h2>
+          <h2 className="pt50">Les Soirées SBK</h2>
           <div className="df jcsa aic gap10 fw">
             <div className="size3">
               <Carousel data={tableauImageCarousel} />
@@ -50,7 +50,7 @@ function Home() {
           </div>
         </section>
         <section>
-          <h2 id="cours-collectifs" className="fspecialh2 tac pt50 mb50">Les cours collectifs</h2>
+          <h2 id="cours-collectifs" className="pt50">Les cours collectifs</h2>
           <div className="fsize2 tac space mb50">
             <p>-30 minutes de cours de salsa</p>
             <p>-30 minutes de cours de bachata en alternance avec la Kizomba toutes les 5 semaines environ de manière à travailler un enchaînement complet à chaque fois.</p>
@@ -88,7 +88,7 @@ function Home() {
         </div>
       </section> */}
         <section>
-          <h2 id="cours-particuliers" className="fspecialh2 tac mb50">Les cours particuliers</h2>
+          <h2 id="cours-particuliers">Les cours particuliers</h2>
           <div className="fsize2 center tac space mb50">
             <p>Votre emploi du temps ne vous permet pas la régularité d’un cours collectif hebdomadaire ?</p>
             <p>Vous préférez apprendre les bases avant de vous lancer en cours collectif ?</p>
