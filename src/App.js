@@ -1,12 +1,12 @@
-import Ecole from "./Pages/Ecole";
-import Home from "./Pages/Home";
+// import Home from "./Pages/Home";
+import Infos from "./Pages/Infos";
 
 
 function App() {
   return (
     <>
-    <Home/>
-    <Ecole/>
+    {/* <Home/> */}
+    <Infos/>
     </>
   );
 }

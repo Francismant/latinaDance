@@ -1,6 +1,9 @@
 import salsa from "../assets/images/la salsa.png"
 import bachata from "../assets/images/la bachata.png"
 import kizomba from "../assets/images/la kizomba.png"
+import imageProfSalsa from "../assets/images/profSalsa.png"
+import imageProfBachata from "../assets/images/profBachata.png"
+import imageProfKizomba from "../assets/images/profKizomba.png"
 
 export const salsaData = {
     title: "La Salsa",
@@ -73,3 +76,28 @@ export const tableauImageCarouselParticulier = [
     }
 ]
 
+
+// ---------------------------------------------
+
+export const profSalsa = {
+    title: "Salsa",
+    imageUrl: imageProfSalsa,
+    textName : "Andrea & Sylvia",
+    text: "Cliquez sur la flèche pour en savoir plus sur Andréa et Sylvia",
+};
+
+export const profBachata = {
+    title: "Bachata",
+    imageUrl: imageProfBachata,
+    textName : "Lamine & Jasmine",
+    text: "Cliquez sur la flèche pour en savoir plus sur Lamine et Jasmine",
+};
+
+export const profKizomba = {
+    title: "Kizomba",
+    imageUrl: imageProfKizomba,
+    textName : "Korke & Judith",
+    text: "Cliquez sur la flèche pour en savoir plus sur Korke et Judith",
+};
+
+// -----------------------------------------------------
