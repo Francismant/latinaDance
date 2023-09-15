@@ -51,7 +51,7 @@ function Home() {
         </section>
         <section>
           <h2 id="cours-collectifs" className="pt50">Les cours collectifs</h2>
-          <div className="fsize2 tac space mb50">
+          <div className="fsize1_25 tac space mb50">
             <p>-30 minutes de cours de salsa</p>
             <p>-30 minutes de cours de bachata en alternance avec la Kizomba toutes les 5 semaines environ de manière à travailler un enchaînement complet à chaque fois.</p>
           </div>
@@ -89,17 +89,17 @@ function Home() {
       </section> */}
         <section>
           <h2 id="cours-particuliers">Les cours particuliers</h2>
-          <div className="fsize2 center tac space mb50">
+          <div className="fsize1_25 center tac space mb50">
             <p>Votre emploi du temps ne vous permet pas la régularité d’un cours collectif hebdomadaire ?</p>
             <p>Vous préférez apprendre les bases avant de vous lancer en cours collectif ?</p>
             <p>Vous savez déjà danser mais votre conjoint est débutant ?</p>
           </div>
-          <div className="fsize2 center tac space mb50">
+          <div className="fsize1_25 center tac space mb50">
             <p>Quel que soit votre niveau nos professeurs, vous donneront, avec leur pédagogie des cours adaptés à votre niveau et qui vous permettront de progresser très rapidement.</p>
             <p>Les cours individuels peuvent se faire au domicile dans une une limite 20km autour de Lille.</p>
           </div>
-          <p className="fsize2 center tac space mb50">Voici ce que nous vous proposons au travers de nos cours :</p>
-          <div className="fsize2 center tac space mb50">
+          <p className="fsize1_25 center tac space mb50">Voici ce que nous vous proposons au travers de nos cours :</p>
+          <div className="fsize1_25 center tac space mb50">
             <p>Travail des pas de base</p>
             <p>Enchainements</p>
             <p>Guidage</p>

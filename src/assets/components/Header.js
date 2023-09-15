@@ -27,7 +27,7 @@ function Header() {
                     </div>
                 </div>
                 <Navbar/>
-                    <a className="df aic ml100 fsize3" href=""><i class="fa-regular fa-circle-user"></i></a>
+                    <a className="df aic ml100 fsize2" href=""><i class="fa-regular fa-circle-user"></i></a>
             </div>
 
         </header>

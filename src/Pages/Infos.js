@@ -3,8 +3,10 @@ import Header from "../assets/components/Header"
 import styles from "./Infos.module.scss"
 import ButtonList from "../assets/components/ButtonList";
 import { buttonLabelsInfos } from "../data/Data";
-import Cards from "../assets/components/Cards";
-import { profSalsa, profBachata, profKizomba } from "../data/Data"
+import CarteSalsa from "../assets/components/Cards/CarteSalsa";
+import CarteBachata from "../assets/components/Cards/CarteBachata";
+import CarteKizomba from "../assets/components/Cards/CarteKizomba";
+
 
 function Infos() {
   return (
@@ -17,11 +19,11 @@ function Infos() {
         </div>
       </section>
       <h2 className="pt50">Les professeurs</h2>
-      <div className="df center">
-        <Cards {...profSalsa}/>
-        <Cards {...profBachata}/>
-        <Cards {...profKizomba}/>
-      </div>
+      <section className="df center gap1 fw">
+        <CarteSalsa/>
+        <CarteBachata/>
+        <CarteKizomba/>
+      </section>
       <Footer />
     </>
   )
