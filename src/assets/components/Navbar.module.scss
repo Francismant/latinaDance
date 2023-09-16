@@ -14,6 +14,17 @@
     transition: all 0.7s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
+.coursList {
+    display: none;
+    position: absolute;
+    top: 100%; /* Positionne la liste sous le bouton "Cours" */
+    left: 0;
+    background-color: white; /* Ajoutez un arrière-plan pour la liste déroulante */
+    padding: 10px; /* Ajoutez un espacement pour le contenu de la liste */
+    width: 100%;
+    background: linear-gradient(-45deg, #d64343 0%, #e66c6c 100%);
+  }
+
 .button2 span {
     background: linear-gradient(-45deg, #030303 0%, #020202 100%);
     background-clip: text;
@@ -48,6 +59,10 @@
     opacity: 1;
 }
 
+.button2:hover .coursList {
+    display: block; /* Affiche la liste lorsque le bouton "Cours" est survolé */
+  }
+
 .button2::after {
     position: absolute;
     content: "";
@@ -68,4 +83,8 @@
 
 .button2:active {
     scale: 0.90;
+}
+
+.borderli {
+    border: solid red 2px;
 }

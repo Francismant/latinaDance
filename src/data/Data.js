@@ -1,9 +1,6 @@
 import salsa from "../assets/images/la salsa.png"
 import bachata from "../assets/images/la bachata.png"
 import kizomba from "../assets/images/la kizomba.png"
-import imageProfSalsa from "../assets/images/profSalsa.png"
-import imageProfBachata from "../assets/images/profBachata.png"
-import imageProfKizomba from "../assets/images/profKizomba.png"
 
 export const salsaData = {
     title: "La Salsa",
