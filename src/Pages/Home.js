@@ -1,4 +1,4 @@
-import Carousel from "../assets/components/Carousel";
+import Carousel from "../assets/components/Carousels/Carousel";
 import Footer from "../assets/components/Footer"
 import Header from "../assets/components/Header"
 import styles from "./Home.module.scss"
@@ -46,15 +46,11 @@ function Home() {
             <div className="size3">
               <Carousel data={tableauImageCarousel} />
             </div>
-            <p className="fsize2 size3 p60 space">Les soirées Salsa sont généralement accompagnées de Bachata et de Kizomba, créant ainsi ce que l'on appelle les soirées SBK. Nous avons pris la décision naturelle de réunir ces trois danses dans un même cours. En 2020, le cours SBK a été introduit pour offrir aux élèves, même ceux qui sont débutants, la possibilité de maîtriser rapidement ces trois styles de danse, afin qu'ils puissent profiter pleinement des soirées SBK.</p>
+            <p className="fsize1_25 size3 space">Les soirées Salsa sont généralement accompagnées de Bachata et de Kizomba, créant ainsi ce que l'on appelle les soirées SBK. C'est pourquoi nous avons pris la décision naturelle de vous proposer ces trois danses. En 2020, les cours Kizomba et Bachata ont été introduits pour offrir aux élèves, même ceux qui sont débutants, la possibilité de maîtriser rapidement ces trois styles de danse, afin qu'ils puissent profiter pleinement des soirées SBK.</p>
           </div>
         </section>
         <section>
-          <h2 id="cours-collectifs" className="pt50">Les cours collectifs</h2>
-          <div className="fsize1_25 tac space mb50">
-            <p>-30 minutes de cours de salsa</p>
-            <p>-30 minutes de cours de bachata en alternance avec la Kizomba toutes les 5 semaines environ de manière à travailler un enchaînement complet à chaque fois.</p>
-          </div>
+          <h2 id="cours-collectifs" className="mb0">Les cours collectifs</h2>
         </section>
         <StylesDance {...salsaData} />
         <StylesDance {...bachataData} reverse />
