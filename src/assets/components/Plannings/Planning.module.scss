@@ -1,0 +1,24 @@
+.planningSize {
+    width: 35%;
+}
+.day {
+    background-color: var(--colorDom);
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    border: solid black 0.2px;
+}
+
+.salle {
+    background-color: var(--colorFooter);
+    color: var(--colorBox);
+    font-size: 2rem;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+    border: solid black 0.2px;
+}
+.border {
+    border: solid black 0.2px;
+    width: 100%;
+}

@@ -1,12 +1,12 @@
 import Home from "./Pages/Home";
-// import Infos from "./Pages/Infos";
+import Infos from "./Pages/Infos";
 
 
 function App() {
   return (
     <>
     <Home/>
-    {/* <Infos/> */}
+    <Infos/>
     </>
   );
 }
