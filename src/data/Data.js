@@ -75,3 +75,46 @@ export const tableauImageCarouselParticulier = [
 
 
 // ---------------------------------------------
+
+
+export const tarifsCouple = [
+    {
+        "title": "Couple/ 1 Danse",
+        "tarif": "450€/an",
+        "info" : "6h/semaine",
+        "adh" : "+30€ d'adhésion"
+    },
+    {
+        "title": "Couple/ 2 Danses",
+        "tarif": "650€/an",
+        "info" : "9h/semaine",
+        "adh" : "+30€ d'adhésion"
+    },
+    {
+        "title": "Couple/ 3 Danses",
+        "tarif": "850€/an",
+        "info" : "12h/semaine",
+        "adh" : "+30€ d'adhésion"
+    }
+]
+
+export const tarifsSolo = [
+    {
+        "title": "Solo/ 1 Danse",
+        "tarif": "250€/an",
+        "info" : "6h/semaine",
+        "adh" : "+30€ d'adhésion"
+    },
+    {
+        "title": "Solo/ 2 Danses",
+        "tarif": "350€/an",
+        "info" : "9h/semaine",
+        "adh" : "+30€ d'adhésion"
+    },
+    {
+        "title": "Solo/ 3 Danses",
+        "tarif": "450€/an",
+        "info" : "12h/semaine",
+        "adh" : "+30€ d'adhésion"
+    }
+]

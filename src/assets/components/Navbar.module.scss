@@ -22,7 +22,7 @@
     background-color: white; /* Ajoutez un arrière-plan pour la liste déroulante */
     padding: 10px; /* Ajoutez un espacement pour le contenu de la liste */
     width: 100%;
-    background: linear-gradient(-45deg, #d64343 0%, #e66c6c 100%);
+    background:  rgb(252, 70, 100);
   }
 
 .button2 span {
@@ -45,7 +45,7 @@
     height: 50%;
     transform: scaleY(2);
     border: 3px solid;
-    border-image: linear-gradient(-45deg, #ff0000 0%, #c84444 100%);
+    border-image:  rgb(252, 70, 100);
     border-image-slice: 1;
     border-width: 2px 0 2px 0;
     opacity: 0;
@@ -70,7 +70,7 @@
     left: 14%;
     width: 72%;
     height: 70%;
-    background: linear-gradient(-45deg, #d64343 0%, #e66c6c 100%);
+    background:  rgb(252, 70, 100);
     transform: scale(0);
     pointer-events: none;
     transition: all 0.7s cubic-bezier(0.23, 1, 0.320, 1);

@@ -7,26 +7,20 @@ import styles from "./Salles.module.scss"
 function Salles() {
   return (
     <>
-    <div className="df jcc gap3 fw">
-            <div className={styles.containerSalle}>
-              <div className={styles.boxSalle}>
-                <img src={salle1} alt="salle de danse avec parquet et mirroir" />
-              </div>
-            </div>
-            <div className={styles.containerSalle}>
-              <div className={styles.boxSalle}>
-                <img className={styles.imageSalle} src={salle2} alt="salle de danse avec parquet et mirroir" />
-              </div>
-            </div>
-          </div>
-          <div className="df jcc gap3 fw">
-            <div className={styles.containerSalle}>
-              <div className={styles.boxSalle}>
-                <img className={styles.imageSalle} src={salle3} alt="salle de danse avec parquet et mirroir" />
-              </div>
-            </div>
-            <img src={plan} alt="plan du lieu sur Googlemap" />
-          </div>
+      <div className="df jcsa fw">
+        <div className={styles.containerSalle}>
+          <img className={styles.boxSalle} src={salle1} alt="salle de danse avec parquet et mirroir" />
+        </div>
+        <div className={styles.containerSalle}>
+          <img className={styles.boxSalle} src={salle2} alt="salle de danse avec parquet et mirroir" />
+        </div>
+      </div>
+      <div className="df jcsa fw">
+        <div className={styles.containerSalle}>
+          <img className={styles.boxSalle} src={salle3} alt="salle de danse avec parquet et mirroir" />
+        </div>
+        <img src={plan} alt="plan du lieu sur Googlemap" />
+      </div>
     </>
   )
 }
