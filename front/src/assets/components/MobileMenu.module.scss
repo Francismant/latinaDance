@@ -1,0 +1,17 @@
+.menuContainer {
+    position: absolute;
+    top: 113px;
+    left: 5%;
+    width: 150px;
+    z-index: 100;
+    border: solid 2px red;
+    li {
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+        &:hover {
+            background-color: var(--colorFooter);
+        }
+    }
+}
