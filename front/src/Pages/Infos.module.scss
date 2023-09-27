@@ -1,8 +1,19 @@
+@use"../assets/styles/mixin" as mixin;
+
 .backgroundTopInfos {
     background-image: url(../assets/images/backgroudTopInfo.png);
     background-position: center;
     background-size: cover;
     height: 35vh;
+    @include mixin.xs {
+        height: 20vh;
+    }
+}
+
+.topInfos {
+    @include mixin.xs {
+        margin-top: 110px;
+    }
 }
 
 .containerSalle {
@@ -55,3 +66,11 @@
     box-shadow: 0px 0px 20px 1px #f7301e8f;
     border: 1px solid rgba(255, 255, 255, 0.454);
 }
+
+// .profCards {
+//     @include mixin.xs {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 0;
+//     }
+// }

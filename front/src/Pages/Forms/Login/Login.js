@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../Register/Register.module.scss";
 
-function Login({seeHome}) {
+function Login({seeProfile}) {
     const [feedback, setFeedBack] = useState("");
     const [feedbackGood, setFeedBackGood] = useState("");
 
@@ -54,7 +54,7 @@ function Login({seeHome}) {
                 console.log("User récupéré", newUser);
                 reset(defaultValues);
                 setTimeout(() => {
-                    seeHome();
+                    seeProfile();
                 }, 3000);
             }
         }

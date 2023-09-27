@@ -1,7 +1,7 @@
-import fb from "../images/facebook.png"
-import insta from "../images/instagram.png"
-import logo from "../images/LilleLatinaDance.png"
-import Navbar from "./Navbar"
+import fb from "../../images/facebook.png"
+import insta from "../../images/instagram.png"
+import logo from "../../images/LilleLatinaDance.png"
+import Navbar from "../Navbar/Navbar"
 import styles from "./Header.module.scss"
 
 function Header({

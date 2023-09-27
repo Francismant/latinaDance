@@ -1,7 +1,7 @@
-import salle1 from "../images/Salle1.png"
-import salle2 from "../images/Salle2.png"
-import salle3 from "../images/Salle3.png"
-import plan from "../images/plan.png"
+import salle1 from "../../images/Salle1.png"
+import salle2 from "../../images/Salle2.png"
+import salle3 from "../../images/Salle3.png"
+import plan from "../../images/plan.png"
 import styles from "./Salles.module.scss"
 
 function Salles() {

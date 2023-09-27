@@ -1,3 +1,5 @@
+@use"../../styles/mixin" as mixin;
+
 .border {
     border: solid var(--colorFooter) 3px;
     border-radius: 10px;
@@ -8,7 +10,7 @@
     font-size: 1.25rem;
 }
 
-.sizeP {
+.sizeTextProf {
     height: 403px;
     width: 300px;
 }

@@ -23,13 +23,10 @@ function Carte1() {
                 </div>
                 <div className="face face-arriere">
                     <section className={styles.border}>
-                        <p className={`fsize1_25 tac ${styles.sizeP}`}>Lamine et Jasmine, débutants en bachata en France en 2012, ont perfectionné leur art en République dominicaine en 2016. Ils sont désormais instructeurs de renom, partageant leur amour pour cette danse à travers l'Europe, créant une connexion magnétique sur la piste de danse.</p>
+                        <p className={`fsize1_25 tac ${styles.sizeTextProf}`}>Lamine et Jasmine, débutants en bachata en France en 2012, ont perfectionné leur art en République dominicaine en 2016. Ils sont désormais instructeurs de renom, partageant leur amour pour cette danse à travers l'Europe, créant une connexion magnétique sur la piste de danse.</p>
                     </section>
                 </div>
             </div>
-            {/* <button className="bouton-retourner" onClick={retournerCarte}>
-        Retourner
-      </button> */}
         </div>
     );
 }

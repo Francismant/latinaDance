@@ -1,4 +1,4 @@
-@use"../../assets/styles/mixin" as mixin;
+@use"../../../assets/styles/mixin" as mixin;
 
 header {
     @include mixin.xs {
@@ -62,6 +62,8 @@ header {
 // }
 
 .logo {
+    width: 120px;
+    height: 120px;
     @include mixin.xs {
         display: none;
     }

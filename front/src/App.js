@@ -1,10 +1,10 @@
 import Login from "./Pages/Forms/Login/Login";
 import Register from "./Pages/Forms/Register/Register";
-import Home from "./Pages/Home";
+// import Home from "./Pages/Home";
 import Profile from "./Pages/Profile/Profile";
-// import Infos from "./Pages/Infos";
-import Footer from "./assets/components/Footer";
-import Header from "./assets/components/Header";
+import Infos from "./Pages/Infos";
+import Footer from "./assets/components/HeaderFooter/Footer";
+import Header from "./assets/components/HeaderFooter/Header";
 import { useState } from "react";
 
 
@@ -41,11 +41,11 @@ function App() {
         seeHome={seeHome}
       />
       {seeComponent === 1 ? (
-        <Home />
+        <Infos />
       ) : seeComponent === 2 ? (
         <Register seeLoginForm={seeLoginForm}/>
       ) : seeComponent === 3 ? (
-        <Login seeHome={seeHome} />
+        <Login seeProfile={seeProfile} />
       ) : (
         <Profile />
       )}

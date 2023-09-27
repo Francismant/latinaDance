@@ -23,13 +23,10 @@ function Carte2() {
                 </div>
                 <div className="face face-arriere">
                     <section className={styles.border}>
-                        <p className={`fsize1_25 tac ${styles.sizeP}`}>Judith est une danseuse passionnée qui a débuté en 2011 en France, explorant divers styles de danse. Après avoir perfectionné ses compétences à Lisbonne, elle est retournée en France en 2017 pour enseigner la kizomba et le semba, puis en 2022, elle a formé un partenariat avec Korke, partageant une passion commune pour la danse.</p>
+                        <p className={`fsize1_25 tac ${styles.sizeTextProf}`}>Judith est une danseuse passionnée qui a débuté en 2011 en France, explorant divers styles de danse. Après avoir perfectionné ses compétences à Lisbonne, elle est retournée en France en 2017 pour enseigner la kizomba et le semba, puis en 2022, elle a formé un partenariat avec Korke, partageant une passion commune pour la danse.</p>
                     </section>
                 </div>
             </div>
-            {/* <button className="bouton-retourner" onClick={retournerCarte}>
-        Retourner
-      </button> */}
         </div>
     );
 }

@@ -1,5 +1,10 @@
+@use"../../../assets/styles/mixin" as mixin;
+
 .planningSize {
     width: 40%;
+    @include mixin.xs {
+        width: 45%;
+    }
 }
 .day {
     background-color: var(--colorDom);
@@ -7,6 +12,9 @@
     width: 100%;
     text-align: center;
     border: solid black 0.2px;
+    @include mixin.xs {
+        font-size: 1rem;
+    }
 }
 
 .salle {
@@ -17,8 +25,12 @@
     width: 100%;
     text-align: center;
     border: solid black 0.2px;
+    @include mixin.xs {
+        font-size: 1rem;
+    }
 }
 .border {
     border: solid black 0.2px;
     width: 100%;
 }
+

@@ -75,6 +75,10 @@
     padding-left: 50px;
   }
 
+  .pl3pc {
+    padding-left: 3%;
+  }
+
   .pr10 {
     padding-right: 10px;
   }
@@ -89,6 +93,10 @@
 
   .pr50 {
     padding-right: 50px;
+  }
+
+  .pr3pc {
+    padding-right: 3%;
   }
   
   .m5 {
@@ -141,6 +149,9 @@
 
   .ml100 {
     margin-left: 70px;
+    @include mixin.xs {
+      margin-left: 10px;
+    }
   }
 
   .mb0 {
@@ -206,6 +217,9 @@
 
   .gap3 {
     gap: 3rem;
+    @include mixin.xs {
+      gap: 1rem;
+    }
   }
 
   .gap4 {

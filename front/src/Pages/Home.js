@@ -4,7 +4,7 @@ import { tableauImageCarousel, tableauImageCarouselParticulier, buttonLabelsHome
 // import salsa from "../assets/images/la salsa.png"
 // import bachata from "../assets/images/la bachata.png"
 // import kizomba from "../assets/images/la kizomba.png"
-import CarouselParticulier from "../assets/components/CarouselParticulier";
+import CarouselParticulier from "../assets/components/Carousels/CarouselParticulier";
 // import ButtonList from "../assets/components/ButtonList";
 import { salsaData, bachataData, kizombaData } from "../data/Data"
 import StylesDance from "../assets/components/StylesDance";
@@ -92,7 +92,7 @@ function Home() {
             <p>Les cours individuels peuvent se faire au domicile dans une une limite 20km autour de Lille.</p>
           </div>
           <p className="fsize1_25 center tac space mb3pc">Voici ce que nous vous proposons au travers de nos cours :</p>
-          <div className="fsize1_25 center tac space mb50">
+          <div className="fsize1_25 center tac space mb3pc">
             <p>Travail des pas de base</p>
             <p>Enchainements</p>
             <p>Guidage</p>

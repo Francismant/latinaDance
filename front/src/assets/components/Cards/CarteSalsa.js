@@ -23,7 +23,7 @@ function Carte() {
                 </div>
                 <div className="face face-arriere">
                     <section className={styles.border}>
-                        <p className={`fsize1_25 tac ${styles.sizeP}`}>Andréa a débuté sa passion pour la salsa en France en 2010, se perfectionnant ensuite à La Havane en 2015, devenant une enseignante de renom. En 2021, elle a créé un duo passionné avec Sylvia, formant une connexion inoubliable sur la piste de danse et partageant leur amour pour la salsa à travers l'Europe.</p>
+                        <p className={`fsize1_25 tac ${styles.sizeTextProf}`}>Andréa a débuté sa passion pour la salsa en France en 2010, se perfectionnant ensuite à La Havane en 2015, devenant une enseignante de renom. En 2021, elle a créé un duo passionné avec Sylvia, formant une connexion inoubliable sur la piste de danse et partageant leur amour pour la salsa à travers l'Europe.</p>
                     </section>
                 </div>
             </div>
