@@ -1,6 +1,7 @@
 import styles from "./Navbar.module.scss"
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -9,22 +10,22 @@ function Navbar() {
       <ul className={`df fr aic jcsa gap5 ${styles.desktopNavbar}`}>
         <li className={styles.button2}>
           <span>
-            <a href="">Cours</a>
+            <Link to="/">Cours</Link>
           </span>
         </li>
         <li className={styles.button2}>
           <span>
-            <a href="">Infos</a>
+            <Link to="/Infos">Infos</Link>
           </span>
         </li>
         <li className={styles.button2}>
           <span>
-            <a href="">Evenements</a>
+            <Link>Evenements</Link>
           </span>
         </li>
         <li className={styles.button2}>
           <span>
-            <a href="">Contact</a>
+            <Link>Contact</Link>
           </span>
         </li>
       </ul>
