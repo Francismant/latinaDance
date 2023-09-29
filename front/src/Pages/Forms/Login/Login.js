@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../Register/Register.module.scss";
+import { useNavigate } from "react-router-dom";
 
-function Login({ seeProfile }) {
+function Login({ getUser }) {
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const yupSchema = yup.object({
     email: yup
@@ -54,9 +56,11 @@ function Login({ seeProfile }) {
           setFeedBackGood("Connexion réussie, vous allez être redirigé");
           console.log("User récupéré", newUser);
           reset(defaultValues);
+          let user = {};
           setIsSubmitted(true);
           setTimeout(() => {
-            seeProfile();
+            navigate("/");
+            getUser(user);
           }, 3000);
         }
       }
@@ -68,9 +72,10 @@ function Login({ seeProfile }) {
   }
 
   return (
-    <>
+    <section className={styles.top}>
       <div className={styles.backgroundTop}></div>
-      <div className="flex-fill df fc jcc aic mt50 mb50">
+      <div className="flex-fill df fc jcc aic mb3pc">
+        <h2 className="mt3pc">Connexion</h2>
         <form onSubmit={handleSubmit(submit)}>
           <div className="df fc mb10">
             <label htmlFor="email" className="mb10">
@@ -94,12 +99,12 @@ function Login({ seeProfile }) {
           {feedbackGood && (
             <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
           )}
-          <button className="btn btn-primary" disabled={isSubmitted}>
+          <button className="btn btn-primary mt3pc mb3pc" disabled={isSubmitted}>
             Submit
           </button>
         </form>
       </div>
-    </>
+    </section>
   );
 }
 

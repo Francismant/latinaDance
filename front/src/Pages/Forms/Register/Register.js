@@ -4,11 +4,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./Register.module.scss";
+import { useNavigate } from "react-router-dom";
 
-function Register({ seeLoginForm }) {
+function Register() {
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const yupSchema = yup.object({
     username: yup
@@ -74,7 +76,7 @@ function Register({ seeLoginForm }) {
           setFeedBackGood(newUser.messageGood);
           reset(defaultValues);
           setTimeout(() => {
-            seeLoginForm();
+            navigate("/Login");
           }, 3000);
         }
       }
@@ -86,62 +88,63 @@ function Register({ seeLoginForm }) {
   }
 
   return (
-    <>
-      <div className={styles.backgroundTop}></div>
-      <div className="flex-fill df fc jcc aic mt50 mb50">
-        <form onSubmit={handleSubmit(submit)}>
-          <div className="df fc mb10">
-            <label htmlFor="username" className="mb10">
-              Username
-            </label>
-            <input type="text" id="username" {...register("username")} />
-            {errors?.username && (
-              <p className={`${styles.feedback}`}>{errors.username.message}</p>
+      <section className={styles.top}>
+        <div className={styles.backgroundTop}></div>
+        <div className="flex-fill df fc jcc aic mb3pc">
+          <h2 className="mt3pc ">Inscription</h2>
+          <form onSubmit={handleSubmit(submit)}>
+            <div className="df fc mb10">
+              <label htmlFor="username" className="mb10">
+                Username
+              </label>
+              <input type="text" id="username" {...register("username")} />
+              {errors?.username && (
+                <p className={`${styles.feedback}`}>{errors.username.message}</p>
+              )}
+            </div>
+            <div className="df fc mb10">
+              <label htmlFor="email" className="mb10">
+                Email
+              </label>
+              <input type="email" id="email" {...register("email")} />
+              {errors?.email && (
+                <p className={`${styles.feedback}`}>{errors.email.message}</p>
+              )}
+            </div>
+            <div className="df fc mb10">
+              <label htmlFor="password" className="mb10">
+                Password
+              </label>
+              <input type="password" id="password" {...register("password")} />
+              {errors?.password && (
+                <p className={`${styles.feedback}`}>{errors.password.message}</p>
+              )}
+            </div>
+            <div className="df fc mb10">
+              <label htmlFor="confirmPassword" className="mb10">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                {...register("confirmPassword")}
+              />
+              {errors?.confirmPassword && (
+                <p className={`${styles.feedback}`}>
+                  {errors.confirmPassword.message}
+                </p>
+              )}
+            </div>
+            {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
+            {feedbackGood && (
+              <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
-          </div>
-          <div className="df fc mb10">
-            <label htmlFor="email" className="mb10">
-              Email
-            </label>
-            <input type="email" id="email" {...register("email")} />
-            {errors?.email && (
-              <p className={`${styles.feedback}`}>{errors.email.message}</p>
-            )}
-          </div>
-          <div className="df fc mb10">
-            <label htmlFor="password" className="mb10">
-              Password
-            </label>
-            <input type="password" id="password" {...register("password")} />
-            {errors?.password && (
-              <p className={`${styles.feedback}`}>{errors.password.message}</p>
-            )}
-          </div>
-          <div className="df fc mb10">
-            <label htmlFor="confirmPassword" className="mb10">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              {...register("confirmPassword")}
-            />
-            {errors?.confirmPassword && (
-              <p className={`${styles.feedback}`}>
-                {errors.confirmPassword.message}
-              </p>
-            )}
-          </div>
-          {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
-          {feedbackGood && (
-            <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
-          )}
-          <button className="btn btn-primary" disabled={isSubmitted}>
-            Submit
-          </button>
-        </form>
-      </div>
-    </>
+            <button className="btn btn-primary mt3pc mb3pc" disabled={isSubmitted}>
+              Submit
+            </button>
+          </form>
+        </div>
+      </section>
   );
 }
 

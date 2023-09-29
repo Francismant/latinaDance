@@ -78,6 +78,9 @@
 }
 
 .desktopNavbar{
+    span {
+        font-size: 1.2rem;
+    }
     @include mixin.xs {
         display: none;
     }
@@ -87,7 +90,11 @@
     display: none;
     @include mixin.xs {
         display: block;
+        cursor: pointer;
+        font-size: 1.8rem;
     }
-    cursor: pointer;
-    font-size: 1.8rem;
 }
+
+// .navSpan {
+//     font-size: 1.3rem;
+// }

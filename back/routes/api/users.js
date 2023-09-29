@@ -53,7 +53,7 @@ router.post("/login", (req, res) => {
         const passwordMatch = await bcrypt.compare(password, dbPassword); //retourne un booléen
         if (!passwordMatch) {
           console.log("USER INCORRECT");
-          let doesExist = { message: "User incorrect" };
+          let doesExist = { message: "Email et/ou mot de passe incorrect" };
           res.send(doesExist);
         } else {
           let idUser = result[0].idUser;

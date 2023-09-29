@@ -1,3 +1,10 @@
+@use"../../../assets/styles/mixin" as mixin;
+
+.top {
+  @include mixin.xs {
+      margin-top: 70px;
+  }
+}
 .feedback {
     color: red;
     font-size: 18px;
@@ -12,6 +19,11 @@
   
   input {
     width: 500px;
+    height: 1.8rem;
+    border-radius: 10px;
+    @include mixin.xs {
+      width: 200px;
+    }
   }
 
   .backgroundTop {
@@ -19,4 +31,7 @@
     background-position: center;
     background-size: cover;
     height: 35vh;
+    @include mixin.xs {
+      height: 20vh;
+  }
 }

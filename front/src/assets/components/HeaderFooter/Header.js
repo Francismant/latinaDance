@@ -4,22 +4,23 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.scss";
 import logoDance from "../../images/logoDance.svg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-function Header({ seeRegisterForm, seeLoginForm, seeHome, user }) {
+function Header({user, logout}) {
+
   return (
     <header>
-      <div className={`colorHeader df jcsb ${styles.topHeader}`}>
-        <div className="df jcc aic fweight6">
-          <p className="ml20">Tel : 06.03.21.21.21</p>
-          <p className="ml20">Email : lillelatinadance@org.com</p>
+      <div className={`colorHeader ${styles.topHeader}`}>
+        <div className="df jcc gap2 fweight6">
+          <p>Tel : 06.03.21.21.21</p>
+          <p>Email : lillelatinadance@org.com</p>
         </div>
-        <div className={`df jcc aic gap1 ${styles.divIcon}`}>
+        <div className={styles.icons}>
           <a href="">
-            <img className="mr10 mt5 pb5" src={fb} alt="logo de facebook" />
+            <img src={fb} alt="logo de facebook" />
           </a>
           <a href="">
             <img
-              className={`mr70 mt5 pb5 ${styles.iconHeader}`}
               src={insta}
               alt="logo de instagram"
             />
@@ -33,24 +34,48 @@ function Header({ seeRegisterForm, seeLoginForm, seeHome, user }) {
             src={logoDance}
             alt="logo sur fond blanc avec deux grands L pour Lille et latina et en dessous dance "
           />
-          <div onClick={seeHome} className={`df fc jcc aic ${styles.latina}`}>
-            <p className="fweight4">LILLE</p>
-            <p className="fweight4">LATINA</p>
-            <p className="ffamily2">Dance</p>
+          <div className={`df fc jcc aic ${styles.latina}`}>
+            <Link to="/">
+              <p className="fweight4">LILLE</p>
+              <p className="fweight4">LATINA</p>
+              <p className="ffamily2">Dance</p>
+            </Link>
           </div>
         </div>
         <Navbar />
         <div className={styles.register}>
-          <button className={`mr10 btn btn-primary`} onClick={seeRegisterForm}>
-            <span>Register</span>
-          </button>
-          <button
-            className={`mr10 btn btn-primary-reverse`}
-            onClick={seeLoginForm}
-          >
-            <i className="fas fa-right-to-bracket mr5"></i>
-            <span>Login</span>
-          </button>
+          <ul>
+            {user ? (
+              <>
+                <button onClick={logout} className={`mr20 btn btn-primary`}>
+                  <Link to="/">
+                    Logout
+                  </Link>
+                </button>
+                <button
+                  className={`btn btn-primary-reverse`}>
+                  <Link to="/Profile">
+                    Profile
+                  </Link>
+                </button>
+              </>
+            ) : (
+              <>
+                <button className={`mr20 btn btn-primary`}>
+                  <Link to="/Register">
+                    Inscription
+                  </Link>
+                </button>
+                <button
+                  className={`btn btn-primary-reverse`}>
+                  <i className="fas fa-right-to-bracket mr5"></i>
+                  <Link to="/Login">
+                    Connexion
+                  </Link>
+                </button>
+              </>
+            )}
+          </ul>
         </div>
       </div>
     </header>

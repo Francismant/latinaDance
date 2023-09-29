@@ -1,4 +1,4 @@
-import Layout from "./Layout/layout";
+import Layout from "./Layout/Layout";
 import Login from "./Pages/Forms/Login/Login";
 import Register from "./Pages/Forms/Register/Register";
 import Home from "./Pages/Home";
@@ -9,29 +9,12 @@ import Header from "./assets/components/HeaderFooter/Header";
 import { useState } from "react";
 
 function App() {
-  const [seeComponent, setSeeComponent] = useState(1);
   const [user, setUser] = useState(null);
 
   console.log("user");
 
-  function seeRegisterForm() {
-    setSeeComponent(2);
-  }
-
-  function seeLoginForm() {
-    setSeeComponent(3);
-  }
-
-  function seeHome() {
-    setSeeComponent(1);
-  }
-
-  function seeProfile() {
-    setSeeComponent(4);
-  }
 
   function logout() {
-    setSeeComponent(3);
     setUser(null);
   }
 

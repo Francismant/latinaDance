@@ -29,7 +29,7 @@ function Navbar() {
           </span>
         </li>
       </ul>
-      <i onClick={() => setShowMenu(true)} className={`fas fa-bars ${styles.mobileNavbar}`}></i>
+      <i onClick={() => setShowMenu(true)} className={`fas fa-bars mr10 ${styles.mobileNavbar}`}></i>
       {
         showMenu && (
           <>
