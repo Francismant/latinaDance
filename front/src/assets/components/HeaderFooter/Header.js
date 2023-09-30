@@ -5,8 +5,11 @@ import styles from "./Header.module.scss";
 import logoDance from "../../images/logoDance.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import MobileConnexion from "../Navbar/MobileConnexion"
 
 function Header({user, logout}) {
+
+  const [showButton, setShowButton] = useState(false);
 
   return (
     <header>
@@ -77,6 +80,17 @@ function Header({user, logout}) {
             )}
           </ul>
         </div>
+        <i onClick={() => setShowButton(true)} className={`fa-solid fa-circle-user ${styles.mobileNavbar}`}></i>
+      {
+        showButton && (
+          <>
+            <div onClick={() => setShowButton(false)} className="calc"></div>
+            <div>
+              <MobileConnexion />
+            </div>
+          </>
+        )
+      }
       </div>
     </header>
   );

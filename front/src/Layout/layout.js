@@ -8,6 +8,7 @@ import Login from "../Pages/Forms/Login/Login";
 import Profile from "../Pages/Profile/Profile";
 import { useState } from "react";
 import MobileMenu from "../assets/components/Navbar/MobileMenu";
+import MobileConnexion from "../assets/components/Navbar/MobileConnexion";
 // import Evenements from "../Pages/Evenements";
 // import Contact from "../Pages/Contact";
 
@@ -38,7 +39,8 @@ function Layout() {
         <Route path="/Register" element={<Register />}></Route>
         <Route path="/Login" element={<Login getUser={getUser} />}></Route>
         <Route path="/Profile" element={<Profile user={user} />}></Route>
-        <Route path="/MobileMenu" element={<MobileMenu user={user} logout={logout} />}></Route>
+        <Route path="/MobileMenu" element={<MobileMenu />}></Route>
+        <Route path="/MobileConnexion" element={<MobileConnexion user={user} logout={logout}/>}></Route>
         {/* <Route path="/Evenements" element={<Evenements/>}></Route>
         <Route path="/Contact" element={<Contact/>}></Route> */}
       </Routes>

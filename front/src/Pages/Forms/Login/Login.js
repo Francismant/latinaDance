@@ -54,9 +54,11 @@ function Login({ getUser }) {
           setFeedBack(newUser.message);
         } else {
           setFeedBackGood("Connexion réussie, vous allez être redirigé");
-          console.log("User récupéré", newUser);
           reset(defaultValues);
+          console.log("User récupéré", newUser);
           let user = {};
+          user.username = newUser[0].username;
+          user.email = newUser[0].email;
           setIsSubmitted(true);
           setTimeout(() => {
             navigate("/");
@@ -66,8 +68,8 @@ function Login({ getUser }) {
       }
     } catch (error) {
       console.error(error);
-      setIsSubmitted(false);
     } finally {
+      setIsSubmitted(false);
     }
   }
 
