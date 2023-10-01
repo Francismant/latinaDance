@@ -2,6 +2,7 @@ import salle1 from "../../images/Salle1.png"
 import salle2 from "../../images/Salle2.png"
 import salle3 from "../../images/Salle3.png"
 import plan from "../../images/plan.png"
+import MapComponent from "../MapComponent";
 import styles from "./Salles.module.scss"
 
 function Salles() {
@@ -19,7 +20,7 @@ function Salles() {
         <div className={styles.containerSalle}>
           <img className={styles.boxSalle} src={salle3} alt="salle de danse avec parquet et mirroir" />
         </div>
-        <img src={plan} alt="plan du lieu sur Googlemap" />
+        <MapComponent/>
       </div>
     </>
   )

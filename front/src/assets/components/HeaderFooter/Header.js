@@ -5,9 +5,9 @@ import styles from "./Header.module.scss";
 import logoDance from "../../images/logoDance.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import MobileConnexion from "../Navbar/MobileConnexion"
+// import MobileConnexion from "../Navbar/MobileConnexion";
 
-function Header({user, logout}) {
+function Header({ user, logout }) {
 
   const [showButton, setShowButton] = useState(false);
 
@@ -81,16 +81,47 @@ function Header({user, logout}) {
           </ul>
         </div>
         <i onClick={() => setShowButton(true)} className={`fa-solid fa-circle-user ${styles.mobileNavbar}`}></i>
-      {
-        showButton && (
-          <>
-            <div onClick={() => setShowButton(false)} className="calc"></div>
-            <div>
-              <MobileConnexion />
-            </div>
-          </>
-        )
-      }
+        {
+          showButton && (
+            <>
+              <div onClick={() => setShowButton(false)} className="calc"></div>
+              <div>
+                <ul className={`card p20 ${styles.menuContainer}`}>
+                  {user ? (
+                    <>
+                      <button onClick={logout} className={`mr20 btn btn-primary`}>
+                        <Link to="/">
+                          Logout
+                        </Link>
+                      </button>
+                      <button
+                        className={`btn btn-primary-reverse`}>
+                        <Link to="/Profile">
+                          Profile
+                        </Link>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className={`mr20 btn btn-primary`}>
+                        <Link to="/Register">
+                          Inscription
+                        </Link>
+                      </button>
+                      <button
+                        className={`btn btn-primary-reverse`}>
+                        <i className="fas fa-right-to-bracket mr5"></i>
+                        <Link to="/Login">
+                          Connexion
+                        </Link>
+                      </button>
+                    </>
+                  )}
+                </ul>
+              </div>
+            </>
+          )
+        }
       </div>
     </header>
   );

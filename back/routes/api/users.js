@@ -39,10 +39,11 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", (req, res) => {
   try {
-    console.log(req.body);
+    console.log( "login", req.body);
     const { email, password } = req.body;
     const sql = `SELECT idUser, username, password FROM users WHERE email=?`;
     connection.query(sql, [email], async (err, result) => {
+      console.log("result", result);
       if (err) throw err;
       if (!result.length) {
         // console.log("USER INCORRECT");
@@ -57,12 +58,12 @@ router.post("/login", (req, res) => {
           res.send(doesExist);
         } else {
           let idUser = result[0].idUser;
-          const sqlData = `SELECT username, email
+          const sqlData = `SELECT username, email, idUser
           FROM users
           WHERE idUser =?`;
           connection.query(sqlData, [idUser],(err, result) => {
             if (err) throw err;
-            console.log(result);
+            console.log("result2", result);
             res.send(JSON.stringify(result));
           });
         }

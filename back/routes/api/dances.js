@@ -15,7 +15,7 @@ router.get("/getDances", (req, res) => {
 });
 
 router.post("/vote", (req, res) => {
-    console.log(req.body);
+    console.log("vote",req.body);
     const { dances } = req.body
     let idUser = "2";
     dances.map((dance, index) => {

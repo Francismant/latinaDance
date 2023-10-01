@@ -52,7 +52,7 @@ function Profile({ user }) {
   async function submit(values) {
     try {
       setFeedBack("");
-      console.log(values);
+      console.log("values_vote",values);
       const response = await fetch("http://localhost:8000/api/dances/vote", {
         method: "POST",
         headers: {

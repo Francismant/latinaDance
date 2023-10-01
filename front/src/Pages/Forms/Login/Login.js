@@ -59,6 +59,7 @@ function Login({ getUser }) {
           let user = {};
           user.username = newUser[0].username;
           user.email = newUser[0].email;
+          user.idUser = newUser[0].idUser;
           setIsSubmitted(true);
           setTimeout(() => {
             navigate("/");
