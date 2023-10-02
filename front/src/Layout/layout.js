@@ -1,16 +1,16 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
 import Header from "../assets/components/HeaderFooter/Header";
 import Footer from "../assets/components/HeaderFooter/Footer";
-import Home from "../Pages/Home";
-import Infos from "../Pages/Infos";
+import Home from "../Pages/Cours/Home";
+import Infos from "../Pages/Infos/Infos";
 import Register from "../Pages/Forms/Register/Register";
 import Login from "../Pages/Forms/Login/Login";
 import Profile from "../Pages/Profile/Profile";
 import { useState } from "react";
 import MobileMenu from "../assets/components/Navbar/MobileMenu";
 import MobileConnexion from "../assets/components/Navbar/MobileConnexion";
-// import Evenements from "../Pages/Evenements";
-// import Contact from "../Pages/Contact";
+import Event from "../Pages/Event/Event";
+import Contact from "../Pages/Contact/Contact";
 
 
 
@@ -40,13 +40,13 @@ function Layout() {
         <Route path="/Login" element={<Login getUser={getUser} />}></Route>
         <Route path="/Profile" element={<Profile user={user} />}></Route>
         <Route path="/MobileMenu" element={<MobileMenu />}></Route>
-        <Route path="/MobileConnexion" element={<MobileConnexion user={user} logout={logout}/>}></Route>
-        {/* <Route path="/Evenements" element={<Evenements/>}></Route>
-        <Route path="/Contact" element={<Contact/>}></Route> */}
+        <Route path="/MobileConnexion" element={<MobileConnexion user={user} logout={logout} />}></Route>
+        <Route path="/Event" element={<Event/>}></Route>
+        <Route path="/Contact" element={<Contact/>}></Route>
       </Routes>
       <Footer />
     </>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

@@ -1,7 +1,7 @@
-@use"../assets/styles/mixin" as mixin;
+@use"../../assets/styles/mixin" as mixin;
 
 .backgroundTopInfos {
-    background-image: url(../assets/images/backgroudTopInfo.png);
+    background-image: url(../../assets/images/backgroundTopInfo.png);
     background-position: center;
     background-size: cover;
     height: 35vh;

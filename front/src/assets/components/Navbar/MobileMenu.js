@@ -16,12 +16,12 @@ export default function MobileMenu() {
             </li>
             <li>
                 <span>
-                    <Link>Evenements</Link>
+                    <Link to="/Event">Evenements</Link>
                 </span>
             </li>
             <li>
                 <span>
-                    <Link>Contact</Link>
+                    <Link to="/Contact">Contact</Link>
                 </span>
             </li>
         </ul>

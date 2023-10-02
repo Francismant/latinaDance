@@ -1,13 +1,13 @@
-import Carousel from "../assets/components/Carousels/Carousel";
+import Carousel from "../../assets/components/Carousels/Carousel";
 import styles from "./Home.module.scss";
-import { tableauImageCarousel, tableauImageCarouselParticulier, buttonLabelsHome } from "../data/Data";
+import { tableauImageCarousel, tableauImageCarouselParticulier, buttonLabelsHome } from "../../data/Data";
 // import salsa from "../assets/images/la salsa.png"
 // import bachata from "../assets/images/la bachata.png"
 // import kizomba from "../assets/images/la kizomba.png"
-import CarouselParticulier from "../assets/components/Carousels/CarouselParticulier";
+import CarouselParticulier from "../../assets/components/Carousels/CarouselParticulier";
 // import ButtonList from "../assets/components/ButtonList";
-import { salsaData, bachataData, kizombaData } from "../data/Data";
-import StylesDance from "../assets/components/StylesDance";
+import { salsaData, bachataData, kizombaData } from "../../data/Data";
+import StylesDance from "../../assets/components/StylesDance";
 import CookieConsent from "react-cookie-consent";
 
 function Home() {
@@ -16,7 +16,7 @@ function Home() {
       <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
       <section className={styles.topHome}>
         <div className={`df fc jcsb ${styles.backgroundTop}`}>
-          <h1 className={`pt3pc ml30 ${styles.headerTitle}`}>COURS DE SALSA BACHATA KIZOMBA</h1>
+          <h1 className={`pt3pc ml20 ${styles.headerTitle}`}>COURS DE SALSA BACHATA KIZOMBA</h1>
           {/* <ButtonList buttonLabels={buttonLabelsHome} /> */}
           {/* <button className={styles.btn}>
               <div className="df gap1 aic">

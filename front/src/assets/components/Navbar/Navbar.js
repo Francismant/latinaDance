@@ -20,12 +20,12 @@ function Navbar() {
         </li>
         <li className={styles.button2}>
           <span>
-            <Link>Evenements</Link>
+            <Link to="/Event">Evenements</Link>
           </span>
         </li>
         <li className={styles.button2}>
           <span>
-            <Link>Contact</Link>
+            <Link to="/Contact">Contact</Link>
           </span>
         </li>
       </ul>

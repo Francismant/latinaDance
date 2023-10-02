@@ -1,16 +1,16 @@
-import styles from "./Infos.module.scss"
+import styles from "./Infos.module.scss";
 // import ButtonList from "../assets/components/ButtonList";
-import { buttonLabelsInfos, tarifsCouple, tarifsSolo } from "../data/Data";
-import CarteSalsa from "../assets/components/Cards/CarteSalsa";
-import CarteBachata from "../assets/components/Cards/CarteBachata";
-import CarteKizomba from "../assets/components/Cards/CarteKizomba";
-import Salles from "../assets/components/Salles/Salles";
-import Planning from "../assets/components/Plannings/Planning";
-import Planning2 from "../assets/components/Plannings/Planning2";
-import Planning3 from "../assets/components/Plannings/Planning3";
-import Planning4 from "../assets/components/Plannings/Planning4";
-import CarteTarifCouple from "../assets/components/Cards/CarteTarifCouple";
-import CarteTarifSolo from "../assets/components/Cards/CarteTarifSolo";
+import { buttonLabelsInfos, tarifsCouple, tarifsSolo } from "../../data/Data";
+import CarteSalsa from "../../assets/components/Cards/CarteSalsa";
+import CarteBachata from "../../assets/components/Cards/CarteBachata";
+import CarteKizomba from "../../assets/components/Cards/CarteKizomba";
+import Salles from "../../assets/components/Salles/Salles";
+import Planning from "../../assets/components/Plannings/Planning";
+import Planning2 from "../../assets/components/Plannings/Planning2";
+import Planning3 from "../../assets/components/Plannings/Planning3";
+import Planning4 from "../../assets/components/Plannings/Planning4";
+import CarteTarifCouple from "../../assets/components/Cards/CarteTarifCouple";
+import CarteTarifSolo from "../../assets/components/Cards/CarteTarifSolo";
 
 
 function Infos() {
@@ -18,7 +18,7 @@ function Infos() {
     <>
       <section className={styles.topInfos}>
         <div className={`df fc jcsb ${styles.backgroundTopInfos}`}>
-          <h1 className="pt3pc ml30">INFOS SUR L'ECOLE DE DANSE</h1>
+          <h1 className="pt3pc ml20">INFOS SUR L'ECOLE DE DANSE</h1>
           {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
         </div>
       </section>
@@ -58,13 +58,13 @@ function Infos() {
         <section className="mb3pc">
           <h2 id="tarifs">Les tarifs**</h2>
           <div className="df fc gap4">
-          <CarteTarifCouple tarifsCouple={tarifsCouple} />
-          <CarteTarifSolo tarifsSolo={tarifsSolo} />
+            <CarteTarifCouple tarifsCouple={tarifsCouple} />
+            <CarteTarifSolo tarifsSolo={tarifsSolo} />
           </div>
         </section>
       </main>
     </>
-  )
+  );
 }
 
-export default Infos
+export default Infos;

@@ -1,0 +1,20 @@
+@use"../../assets/styles/mixin" as mixin;
+
+.backgroundTopEvent {
+    background-image: url(../../assets/images/backgroundTopEvenement.png);
+    background-position: center;
+    background-size: cover;
+    height: 35vh;
+    @include mixin.xs {
+        height: 20vh;
+        h1{
+            padding-top: 24%;
+        }
+    }
+}
+
+.topEvent {
+    @include mixin.xs {
+        margin-top: 70px;
+    }
+}
