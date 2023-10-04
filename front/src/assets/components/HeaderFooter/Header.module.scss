@@ -15,7 +15,10 @@ header {
 .headerResponsive {
     display: flex;
     justify-content: center;
-    gap: 15rem;
+    gap: 18%;
+    @include mixin.lg {
+        gap: 6%;
+    }
 
     @include mixin.xs {
         display: flex;

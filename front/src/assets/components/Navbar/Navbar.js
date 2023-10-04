@@ -7,7 +7,7 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <>
-      <ul className={`df fr aic jcsa gap5 ${styles.desktopNavbar}`}>
+      <ul className={`df fr aic jcsa ${styles.desktopNavbar}`}>
         <li className={styles.button2}>
           <span>
             <Link to="/">Cours</Link>

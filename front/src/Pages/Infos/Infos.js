@@ -54,6 +54,7 @@ function Infos() {
             <p>niveau2 : intermédiaire</p>
             <p>niveau3 : avancé</p>
           </div>
+          <h3 className="fsize1_5 tac fweight4">Vendredi et Samedi soirée SBK de 22h30 à 02h00*</h3>
         </section>
         <section className="mb3pc">
           <h2 id="tarifs">Les tarifs**</h2>
@@ -61,6 +62,14 @@ function Infos() {
             <CarteTarifCouple tarifsCouple={tarifsCouple} />
             <CarteTarifSolo tarifsSolo={tarifsSolo} />
           </div>
+          <div className={styles.noteCards}>
+            <p>*Soirées SBK au tarif de 10€ en CB ou espèce(initiation gratuite et boissons softs à volonté) et 5€ pour les élèves.</p>
+            <p>** Le paiement s’effectue en un seul règlement par chèque à l’ordre de « Lille Latine Dance. » </p>
+            <p>Vous pouvez cumuler l’adhésion et le montant des cours sur un seul chèque.</p>
+            <p>Aucun remboursement ne pourra être effectué excepté suite à décision gouvernementale en cas de force majeure.</p>
+            <p>Le certificat médical est obligatoire pour l’inscription.</p>
+          </div>
+          <h3 className="fsize1_5 tac fweight5">Concernant le tarif des cours particuliers, merci de nous contacter directement par téléphone ou via notre adresse mail dans l’onglet Contact du site.</h3>
         </section>
       </main>
     </>
