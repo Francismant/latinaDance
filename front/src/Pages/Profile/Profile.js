@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../Forms/Register/Register.module.scss";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 function Profile({ user }) {
@@ -19,7 +19,6 @@ function Profile({ user }) {
         );
         if (response.ok) {
           const dances = await response.json();
-          // console.log(skills);
           setAllTheDances(dances);
         }
       } catch (error) {
@@ -44,25 +43,22 @@ function Profile({ user }) {
     mode: "onChange",
   });
 
-  const { fields, append } = useFieldArray({
-    name: "dances",
-    control,
-  });
-
+ 
   async function submit(values) {
+    console.log("premierevalue", values);
     try {
       setFeedBack("");
-      console.log("values_vote",values);
-      const response = await fetch("http://localhost:8000/api/profile/vote", {
-        method: "POST",
+      let data = { values, id: user.idUser };
+      console.log("values_vote", data);
+      const response = await fetch("http://localhost:8000/api/dances/vote", {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(data),
       });
       if (response.ok) {
         const voteUser = await response.json();
-        // console.log("newUser", newUser);
         setFeedBackGood(voteUser.messageGood);
         reset(defaultValues);
         setTimeout(() => {
@@ -74,47 +70,46 @@ function Profile({ user }) {
     }
   }
 
-  function addDance() {
-    append({
-      value: "",
-    });
-  }
+  // function addDance() {
+  //   append({
+  //     value: "",
+  //   });
+  // }
 
   return (
     <>
       <section className={styles.top}>
         <div className={styles.backgroundTop}></div>
         <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
-        <h4 className="tac">Quelle danse souhaiteriez vous voir mise en avant lors de nos prochain stages ?</h4>
+        <h4 className="tac">
+          Quelle danse souhaiteriez vous voir mise en avant lors de nos prochain
+          stages ?
+        </h4>
       </section>
       <div className="flex-fill df jcc aic mb3pc mt3pc">
         <form onSubmit={handleSubmit(submit)}>
           <div className="df fc mb10">
             <label className="mb10 df jcc aic gap1">
               <span className="flex-fill">Dances</span>
-              <button
+              {/* <button
                 onClick={addDance}
                 type="button"
                 className="btn btn-primary-reverse"
               >
                 +
-              </button>
+              </button> */}
             </label>
             <ul>
-              {fields.map((dance, index) => (
-                <li key={dance.id} className="mb10">
-                  <select
-                    className="mr10"
-                    {...register(`dances[${index}].value`)}
-                  >
-                    {allTheDances.map((dance) => (
-                      <option key={dance.idDance} value={dance.idDance}>
-                        {dance.nameDance}
-                      </option>
-                    ))}
-                  </select>
-                </li>
-              ))}
+              <li className="mb10">
+                <select className="mr10" {...register(`dances`)}>
+                  <option value="" disabled>Faites votre choix</option>
+                  {allTheDances.map((dance) => (
+                    <option key={dance.idDance} value={dance.idDance}>
+                      {dance.nameDance}
+                    </option>
+                  ))}
+                </select>
+              </li>
             </ul>
           </div>
           {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}

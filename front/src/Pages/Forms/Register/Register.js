@@ -139,7 +139,7 @@ function Register() {
             {feedbackGood && (
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
-            <button className="btn btn-primary mt3pc mb3pc" disabled={isSubmitted}>
+            <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`} disabled={isSubmitted}>
               Submit
             </button>
           </form>

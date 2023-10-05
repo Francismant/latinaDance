@@ -1,46 +1,55 @@
-@use"../../../assets/styles/mixin" as mixin;
+@use "../../../assets/styles/mixin" as mixin;
 
 .top {
   @include mixin.xs {
-      margin-top: 70px;
+    margin-top: 70px;
   }
 }
 .feedback {
-    color: red;
-    font-size: 18px;
-    font-weight: 600;
-    @include mixin.xs {
-      font-size: 10px;
-    }
+  color: red;
+  font-size: 18px;
+  font-weight: 600;
+  @include mixin.xs {
+    font-size: 10px;
   }
-  
-  .feedbackGood {
-    color: green;
-    font-size: 18px;
-    font-weight: 600;
-    @include mixin.xs {
-      font-size: 10px;
-    }
-  }
-  
-  input {
-    font-size: 1.3rem;
-    width: 500px;
-    height: 1.8rem;
-    border-radius: 10px;
-    padding: 2%;
-    @include mixin.xs {
-      width: 200px;
-      font-size: 1rem;
-    }
-  }
+}
 
-  .backgroundTop {
-    background-image: url(../../../assets/images/RegisterTop.png);
-    background-position: center;
-    background-size: cover;
-    height: 35vh;
-    @include mixin.xs {
-      height: 20vh;
+.feedbackGood {
+  color: green;
+  font-size: 18px;
+  font-weight: 600;
+  @include mixin.xs {
+    font-size: 10px;
+  }
+}
+
+input {
+  font-size: 1.3rem;
+  width: 500px;
+  height: 1.8rem;
+  border-radius: 10px;
+  padding: 1%;
+  border: solid var(--colorFooter) 2px;
+  @include mixin.xs {
+    width: 200px;
+    font-size: 1rem;
+  }
+}
+
+.backgroundTop {
+  background-image: url(../../../assets/images/RegisterTop.png);
+  background-position: center;
+  background-size: cover;
+  height: 35vh;
+  @include mixin.xs {
+    height: 20vh;
+  }
+}
+
+.button {
+  padding: 2% 5%;
+  &:hover {
+    color:var(--colorFooter);
+    background-color: white;
   }
 }

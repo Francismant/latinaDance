@@ -15,7 +15,7 @@ header {
 .headerResponsive {
     display: flex;
     justify-content: center;
-    gap: 18%;
+    gap: 19%;
     @include mixin.lg {
         gap: 6%;
     }
@@ -39,6 +39,7 @@ header {
     cursor: pointer;
     border-radius: 10px;
     font-size: 2rem;
+    line-height: 92%;
 
     // color: var(--colorDom);
     @include mixin.xs {
