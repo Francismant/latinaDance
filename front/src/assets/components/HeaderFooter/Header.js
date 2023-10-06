@@ -32,11 +32,11 @@ function Header({ user, logout }) {
       </div>
       <div className={`df ${styles.headerResponsive}`}>
         <div className={styles.sizeHeaderLeft}>
-          <img
+          {/* <img
             className={styles.logo}
             src={logoDance}
             alt="logo sur fond blanc avec deux grands L pour Lille et latina et en dessous dance "
-          />
+          /> */}
           <div className={`df fc jcc aic ${styles.latina}`}>
             <Link to="/">
               <p className="fweight4">LILLE</p>
@@ -86,7 +86,7 @@ function Header({ user, logout }) {
             <>
               <div onClick={() => setShowButton(false)} className="calc"></div>
               <div>
-                <ul className={`card p20 ${styles.menuContainer}`}>
+                <ul className={`card p10 ${styles.menuContainer}`}>
                   {user ? (
                     <>
                       <button onClick={logout} className={`mr20 btn btn-primary`}>

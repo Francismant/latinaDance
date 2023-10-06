@@ -1,27 +1,45 @@
-@use"../../assets/styles/mixin" as mixin;
+@use "../../assets/styles/mixin" as mixin;
 
 .backgroundTop {
-    background-image: url(../../assets/images/backgroundTopHome.png);
-    background-position: center;
-    background-size: cover;
-    height: 35vh;
-    @include mixin.xs {
-        height: 20vh;
-    }
+  background-image: url(../../assets/images/backgroundTopHome.png);
+  background-position: center;
+  background-size: cover;
+  height: 35vh;
+  @include mixin.xs {
+    height: 20vh;
+  }
 }
 
 .carouselTop {
-    @include mixin.xs {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.8rem;
-    }
+  @include mixin.lg {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15rem;
+  }
+}
+.carouselTop {
+  @include mixin.xs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+  }
 }
 
 .topHome {
-    @include mixin.xs {
-        margin-top: 70px;
+  @include mixin.xs {
+    margin-top: 50px;
+  }
+}
+
+.headerTitle {
+    margin-left: 20px;
+    padding-top: 3%;
+    @include mixin.lg {
+        padding-top: 10%;
+        margin-left: 20%;
     }
 }

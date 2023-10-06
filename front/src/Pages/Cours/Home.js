@@ -16,7 +16,7 @@ function Home() {
       <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
       <section className={styles.topHome}>
         <div className={`df fc jcsb ${styles.backgroundTop}`}>
-          <h1 className={`pt3pc ml20 ${styles.headerTitle}`}>COURS DE SALSA BACHATA KIZOMBA</h1>
+          <h1 className={styles.headerTitle}>COURS DE SALSA BACHATA KIZOMBA</h1>
           {/* <ButtonList buttonLabels={buttonLabelsHome} /> */}
           {/* <button className={styles.btn}>
               <div className="df gap1 aic">
