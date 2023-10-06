@@ -50,7 +50,7 @@ function Profile({ user }) {
       setFeedBack("");
       let data = { values, id: user.idUser };
       console.log("values_vote", data);
-      const response = await fetch("http://localhost:8000/api/dances/vote", {
+      const response = await fetch("http://localhost:8000/api/profile/vote", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
