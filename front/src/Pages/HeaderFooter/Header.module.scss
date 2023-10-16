@@ -1,6 +1,7 @@
-@use"../../../assets/styles/mixin" as mixin;
+@use"../../assets/styles/mixin" as mixin;
 
 header {
+    background-color: rgba(219, 75, 75, 0.315);
     @include mixin.xs {
         position: fixed;
         top: 0;
