@@ -85,6 +85,7 @@ function Profile({ user }) {
           Quelle danse souhaiteriez vous voir mise en avant lors de nos prochain
           stages ?
         </h4>
+        <p className="tac fsize08">(Les votes ne sont plus comptabilisés après le 20 du mois en cours)</p>
       </section>
       <div className="flex-fill df jcc aic mb3pc mt3pc">
         <form onSubmit={handleSubmit(submit)}>

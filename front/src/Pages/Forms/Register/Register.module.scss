@@ -2,7 +2,7 @@
 
 .top {
   @include mixin.xs {
-    margin-top: 70px;
+    margin-top: 50px;
   }
 }
 .feedback {
@@ -51,5 +51,28 @@ input {
   &:hover {
     color:var(--colorFooter);
     background-color: white;
+  }
+}
+
+.checkbox {
+  @include mixin.xs {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.labelCheckbox{
+  width: 70%;
+  text-align: center;
+  @include mixin.xs {
+    width: 100%;
+  }
+}
+
+.inputCheckbox{
+  width: 30%;
+  @include mixin.xs {
+    width: 100%;
+    margin-bottom: 0.5rem;
   }
 }

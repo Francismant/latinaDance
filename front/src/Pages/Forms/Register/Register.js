@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./Register.module.scss";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Register() {
   const [feedback, setFeedBack] = useState("");
@@ -13,7 +14,7 @@ function Register() {
   const navigate = useNavigate();
 
   const yupSchema = yup.object({
-    username: yup
+    name: yup
       .string()
       .required("Le champ est obligatoire")
       .min(2, "Le champ doit contenir au minimum 2 caractères")
@@ -34,13 +35,18 @@ function Register() {
         [yup.ref("password", "")],
         "Les mots de passe ne correspondent pas"
       ),
+    acceptedTerms: yup
+      .boolean()
+      .oneOf([true],
+        "Vous devez accepter les conditions générales"),
   });
 
   const defaultValues = {
-    username: "",
+    name: "",
     password: "",
     confirmPassword: "",
     email: "",
+    acceptedTerms: false,
   };
 
   const {
@@ -88,63 +94,74 @@ function Register() {
   }
 
   return (
-      <section className={styles.top}>
-        <div className={styles.backgroundTop}></div>
-        <div className="flex-fill df fc jcc aic mb3pc">
-          <h2 className="mt3pc ">Inscription</h2>
-          <form onSubmit={handleSubmit(submit)}>
-            <div className="df fc mb10">
-              <label htmlFor="username" className="mb10">
-                Username
-              </label>
-              <input type="text" id="username" {...register("username")} />
-              {errors?.username && (
-                <p className={`${styles.feedback}`}>{errors.username.message}</p>
-              )}
-            </div>
-            <div className="df fc mb10">
-              <label htmlFor="email" className="mb10">
-                Email
-              </label>
-              <input type="email" id="email" {...register("email")} />
-              {errors?.email && (
-                <p className={`${styles.feedback}`}>{errors.email.message}</p>
-              )}
-            </div>
-            <div className="df fc mb10">
-              <label htmlFor="password" className="mb10">
-                Password
-              </label>
-              <input type="password" id="password" {...register("password")} />
-              {errors?.password && (
-                <p className={`${styles.feedback}`}>{errors.password.message}</p>
-              )}
-            </div>
-            <div className="df fc mb10">
-              <label htmlFor="confirmPassword" className="mb10">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                {...register("confirmPassword")}
-              />
-              {errors?.confirmPassword && (
-                <p className={`${styles.feedback}`}>
-                  {errors.confirmPassword.message}
-                </p>
-              )}
-            </div>
-            {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
-            {feedbackGood && (
-              <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+    <section className={styles.top}>
+      <div className={styles.backgroundTop}></div>
+      <div className="flex-fill df fc jcc aic mb3pc">
+        <h2 className="mt3pc ">Inscription</h2>
+        <form className="df fc jcc aic" onSubmit={handleSubmit(submit)}>
+          <div className="df fc mb10">
+            <label htmlFor="name" className="mb10">
+              nom
+            </label>
+            <input type="text" id="name" {...register("name")} />
+            {errors?.name && (
+              <p className={`${styles.feedback}`}>{errors.name.message}</p>
             )}
-            <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`} disabled={isSubmitted}>
-              Submit
-            </button>
-          </form>
-        </div>
-      </section>
+          </div>
+          <div className="df fc mb10">
+            <label htmlFor="email" className="mb10">
+              Email
+            </label>
+            <input type="email" id="email" {...register("email")} />
+            {errors?.email && (
+              <p className={`${styles.feedback}`}>{errors.email.message}</p>
+            )}
+          </div>
+          <div className="df fc mb10">
+            <label htmlFor="password" className="mb10">
+              Password
+            </label>
+            <input type="password" id="password" {...register("password")} />
+            {errors?.password && (
+              <p className={`${styles.feedback}`}>{errors.password.message}</p>
+            )}
+          </div>
+          <div className="df fc mb10">
+            <label htmlFor="confirmPassword" className="mb10">
+              Confirmation Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              {...register("confirmPassword")}
+            />
+            {errors?.confirmPassword && (
+              <p className={`${styles.feedback}`}>
+                {errors.confirmPassword.message}
+              </p>
+            )}
+          </div>
+          <div>
+            <div className={`df aic mt20 ${styles.checkbox}`}>
+              <label className={styles.labelCheckbox} htmlFor="acceptedTerms">
+                Accepter les <Link to="/conditions"><span className="fweight6" >conditions générales</span></Link>
+              </label>
+              <input className={styles.inputCheckbox} type="checkbox" id="acceptedTerms" {...register("acceptedTerms")} />
+            </div>
+            {errors?.acceptedTerms && (
+              <p className={`${styles.feedback}`}>Vous devez accepter les conditions générales</p>
+            )}
+          </div>
+          {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
+          {feedbackGood && (
+            <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+          )}
+          <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`} disabled={isSubmitted}>
+            S'inscrire
+          </button>
+        </form>
+      </div>
+    </section>
   );
 }
 

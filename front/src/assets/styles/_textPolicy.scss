@@ -75,6 +75,10 @@
     color: var(--colorDom);
 }
 
+.ffamily3 {
+    font-family: var(--font-family2);
+}
+
 .space {
     letter-spacing: 0.07rem;
     @include mixin.xs {

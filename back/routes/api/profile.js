@@ -10,7 +10,7 @@ router.patch("/vote", (req, res) => {
     //   console.log(req.body.values.dances);
     let idUser = req.body.id;
     let dance_choice = req.body.values.dances;
-    let sqlDance = `UPDATE users SET dance_choice = ? WHERE idUser = ?`;
+    let sqlDance = `UPDATE users SET idDance = ? WHERE idUser = ?`;
     const valueDance = [dance_choice, idUser];
     connection.query(sqlDance, valueDance, (err, result) => {
       if (err) throw err;

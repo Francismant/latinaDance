@@ -57,7 +57,7 @@ function Login({ getUser }) {
           reset(defaultValues);
           console.log("User récupéré", newUser);
           let user = {};
-          user.username = newUser[0].username;
+          user.name = newUser[0].name;
           user.email = newUser[0].email;
           user.idUser = newUser[0].idUser;
           setIsSubmitted(true);
@@ -79,7 +79,7 @@ function Login({ getUser }) {
       <div className={styles.backgroundTop}></div>
       <div className="flex-fill df fc jcc aic mb3pc">
         <h2 className="mt3pc">Connexion</h2>
-        <form onSubmit={handleSubmit(submit)}>
+        <form className="df fc jcc aic" onSubmit={handleSubmit(submit)}>
           <div className="df fc mb10">
             <label htmlFor="email" className="mb10">
               Email
@@ -103,7 +103,7 @@ function Login({ getUser }) {
             <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
           )}
           <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`} disabled={isSubmitted}>
-            Submit
+            Se connecter
           </button>
         </form>
       </div>

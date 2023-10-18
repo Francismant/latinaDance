@@ -47,10 +47,10 @@ function Header({ user, logout }) {
             {user ? (
               <>
                 <button onClick={logout} className={`mr20 btn btn-primary`}>
-                  <Link to="/">Logout</Link>
+                  <Link to="/">Déconnexion</Link>
                 </button>
                 <button className={`btn btn-primary-reverse`}>
-                  <Link to="/Profile">Profile</Link>
+                  <Link to="/Profile">Profil</Link>
                 </button>
               </>
             ) : (
@@ -78,10 +78,10 @@ function Header({ user, logout }) {
                 {user ? (
                   <>
                     <button onClick={logout} className={`mr20 btn btn-primary`}>
-                      <Link to="/">Logout</Link>
+                      <Link to="/">Déconnexion</Link>
                     </button>
                     <button className={`btn btn-primary-reverse`}>
-                      <Link to="/Profile">Profile</Link>
+                      <Link to="/Profile">Profil</Link>
                     </button>
                   </>
                 ) : (

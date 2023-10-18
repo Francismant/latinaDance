@@ -1,3 +1,5 @@
+@use"../../assets/styles/mixin" as mixin;
+
 .footer {
     font-size: 1rem;
 }
@@ -10,4 +12,7 @@
 
 .footerend {
     align-items: center;
+    @include mixin.xs {
+        padding-bottom: 0.5rem;
+    }
 }

@@ -8,7 +8,7 @@ module.exports = router;
 router.post("/register", async (req, res) => {
   try {
     // console.log(req.body);
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const sqlVerify = `SELECT * FROM users WHERE email=?`;
     connection.query(sqlVerify, [email], (err, result) => {
@@ -19,8 +19,8 @@ router.post("/register", async (req, res) => {
         res.send(isEmail);
       } else {
         const sqlInsert =
-          "INSERT INTO users (username, email, password) VALUES (?,?,?)";
-        const values = [username, email, hashedPassword];
+          "INSERT INTO users (name, email, password) VALUES (?,?,?)";
+        const values = [name, email, hashedPassword];
         connection.query(sqlInsert, values, (err, result) => {
           if (err) throw err;
           let idUser = result.insertId;
@@ -41,7 +41,7 @@ router.post("/login", (req, res) => {
   try {
     console.log( "login", req.body);
     const { email, password } = req.body;
-    const sql = `SELECT idUser, username, password FROM users WHERE email=?`;
+    const sql = `SELECT idUser, name, password FROM users WHERE email=?`;
     connection.query(sql, [email], async (err, result) => {
       console.log("result", result);
       if (err) throw err;
@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
           res.send(doesExist);
         } else {
           let idUser = result[0].idUser;
-          const sqlData = `SELECT username, email, idUser
+          const sqlData = `SELECT name, email, idUser
           FROM users
           WHERE idUser =?`;
           connection.query(sqlData, [idUser],(err, result) => {

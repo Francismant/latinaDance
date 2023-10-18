@@ -11,6 +11,7 @@ import MobileMenu from "../assets/components/Navbar/MobileMenu";
 import MobileConnexion from "../assets/components/Navbar/MobileConnexion";
 import Event from "../Pages/Event/Event";
 import Contact from "../Pages/Contact/Contact";
+import ConditionsGénérales from "../Pages/ConditionsGénérales/ConditionsGénérales";
 
 function Layout() {
   const [user, setUser] = useState(null);
@@ -41,6 +42,7 @@ function Layout() {
         ></Route>
         <Route path="/Event" element={<Event />}></Route>
         <Route path="/Contact" element={<Contact />}></Route>
+        <Route path="/conditions" element={<ConditionsGénérales />}></Route>
       </Routes>
       <Footer />
     </>
