@@ -16,7 +16,7 @@ export default function MobileMenu() {
             </li>
             <li>
                 <span>
-                    <Link to="/Event">Evenements</Link>
+                    <Link to="/Events">Evenements</Link>
                 </span>
             </li>
             <li>

@@ -20,7 +20,7 @@ function Navbar() {
         </li>
         <li className={styles.button2}>
           <span>
-            <Link to="/Event">Evenements</Link>
+            <Link to="/Events">Evenements</Link>
           </span>
         </li>
         <li className={styles.button2}>

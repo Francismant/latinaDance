@@ -9,9 +9,9 @@ import Profile from "../Pages/Profile/Profile";
 import { useState } from "react";
 import MobileMenu from "../assets/components/Navbar/MobileMenu";
 import MobileConnexion from "../assets/components/Navbar/MobileConnexion";
-import Event from "../Pages/Event/Event";
+import Events from "../Pages/Events/Events";
 import Contact from "../Pages/Contact/Contact";
-import ConditionsGénérales from "../Pages/ConditionsGénérales/ConditionsGénérales";
+import ConditionsGénérales from "../assets/components/ConditionsGénérales/ConditionsGénérales";
 
 function Layout() {
   const [user, setUser] = useState(null);
@@ -40,7 +40,7 @@ function Layout() {
           path="/MobileConnexion"
           element={<MobileConnexion user={user} logout={logout} />}
         ></Route>
-        <Route path="/Event" element={<Event />}></Route>
+        <Route path="/Events" element={<Events />}></Route>
         <Route path="/Contact" element={<Contact />}></Route>
         <Route path="/conditions" element={<ConditionsGénérales />}></Route>
       </Routes>
