@@ -39,7 +39,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", (req, res) => {
   try {
-    console.log( "login", req.body);
+    console.log("login", req.body);
     const { email, password } = req.body;
     const sql = `SELECT idUser, name, password FROM users WHERE email=?`;
     connection.query(sql, [email], async (err, result) => {
@@ -58,10 +58,10 @@ router.post("/login", (req, res) => {
           res.send(doesExist);
         } else {
           let idUser = result[0].idUser;
-          const sqlData = `SELECT name, email, idUser
+          const sqlData = `SELECT *
           FROM users
           WHERE idUser =?`;
-          connection.query(sqlData, [idUser],(err, result) => {
+          connection.query(sqlData, [idUser], (err, result) => {
             if (err) throw err;
             console.log("result2", result);
             res.send(JSON.stringify(result));
@@ -73,3 +73,19 @@ router.post("/login", (req, res) => {
     console.error(error);
   }
 });
+
+router.delete("/deleteUser/:idUser", (req, res) => {
+  const id = req.params.idUser;
+  const deleteSql = "DELETE FROM users WHERE idUser= ?";
+  connection.query(deleteSql, [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Erreur lors de la suppression de l'utilisateur" });
+    }
+    
+    // Détruisez la session de l'utilisateur ici, en fonction de votre gestion de session.
+
+    return res.json({ message: "Compte supprimé avec succès" });
+  });
+});
+

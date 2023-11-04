@@ -144,7 +144,7 @@ function Register() {
           <div>
             <div className={`df aic mt20 ${styles.checkbox}`}>
               <label className={styles.labelCheckbox} htmlFor="acceptedTerms">
-                Accepter les <Link to="/conditions"><span className="fweight6" >conditions générales</span></Link>
+                Accepter les <Link to="/Conditions"><span className="fweight6" >conditions générales</span></Link>
               </label>
               <input className={styles.inputCheckbox} type="checkbox" id="acceptedTerms" {...register("acceptedTerms")} />
             </div>

@@ -5,7 +5,7 @@
     border-radius: 20px;
     height: 750px;
     width: 1000px;
-    border: solid red;
+    border: solid red 2px;
     >i {
         position: absolute;
         top: 10px;
@@ -20,8 +20,8 @@
         
     }
     @include mixin.xs {
-        height: 400px;
-        width: 300px;
+        height: 300px;
+        width: 350px;
     }
     
     .imgContainer {

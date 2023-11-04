@@ -1,38 +1,17 @@
-// import fb from "../../assets/images/facebook.png";
-// import insta from "../../assets/images/instagram.png";
 import Navbar from "../../assets/components/Navbar/Navbar";
 import styles from "./Header.module.scss";
-
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// import MobileConnexion from "../Navbar/MobileConnexion";
+
 
 function Header({ user, logout }) {
+  console.log("userHeader", user);
   const [showButton, setShowButton] = useState(false);
 
   return (
     <header>
-      {/* <div className={`colorHeader ${styles.topHeader}`}>
-        <div className="df jcc gap2 fweight6">
-          <p>Tel : 06.03.21.21.21</p>
-          <p>Email : lillelatinadance@org.com</p>
-        </div>
-        <div className={styles.icons}>
-          <a href="">
-            <img src={fb} alt="logo de facebook" />
-          </a>
-          <a href="">
-            <img src={insta} alt="logo de instagram" />
-          </a>
-        </div>
-      </div> */}
       <div className={`df ${styles.headerResponsive}`}>
         <div className={styles.sizeHeaderLeft}>
-          {/* <img
-            className={styles.logo}
-            src={logoDance}
-            alt="logo sur fond blanc avec deux grands L pour Lille et latina et en dessous dance "
-          /> */}
           <div className={`df fc jcc aic ${styles.latina}`}>
             <Link to="/">
               <p className="fweight4">LILLE</p>
@@ -49,8 +28,11 @@ function Header({ user, logout }) {
                 <button onClick={logout} className={`mr20 btn btn-primary`}>
                   <Link to="/">Déconnexion</Link>
                 </button>
-                <button className={`btn btn-primary-reverse`}>
+                <button className={`btn btn-primary-reverse mr20`}>
                   <Link to="/Profile">Profil</Link>
+                </button>
+                <button className={`btn btn-primary-reverse`}>
+                  <Link to="/Delete">Suppression du compte</Link>
                 </button>
               </>
             ) : (
@@ -77,11 +59,14 @@ function Header({ user, logout }) {
               <ul className={`card p10 ${styles.menuContainer}`}>
                 {user ? (
                   <>
-                    <button onClick={logout} className={`mr20 btn btn-primary`}>
+                    <button onClick={logout} className={`btn btn-primary`}>
                       <Link to="/">Déconnexion</Link>
                     </button>
                     <button className={`btn btn-primary-reverse`}>
                       <Link to="/Profile">Profil</Link>
+                    </button>
+                    <button className={`btn btn-primary`}>
+                      <Link to="/Delete">Suppression</Link>
                     </button>
                   </>
                 ) : (

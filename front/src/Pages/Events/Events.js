@@ -5,7 +5,7 @@ import Event from './components/Event';
 
 
 
-function Events() {
+function Events({user}) {
 
 
     const [[events, setEvents], isLoading] = useFetchData(
@@ -37,6 +37,7 @@ function Events() {
                                         key={event.idEvent}
                                         event={event}
                                         deleteEvent={deleteEvent}
+                                        user={user}
                                     />
                                 ))}
                         </div>

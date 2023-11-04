@@ -39,7 +39,7 @@ function Login({ getUser }) {
   async function submit(values) {
     try {
       setFeedBack("");
-      console.log(values);
+      console.log("values", values);
       const response = await fetch("http://localhost:8000/api/users/login", {
         method: "POST",
         headers: {
@@ -106,6 +106,9 @@ function Login({ getUser }) {
             Se connecter
           </button>
         </form>
+        <button className={`btn btn-primary  ${styles.buttonAdmin}`} disabled={isSubmitted}>
+          administrateur
+        </button>
       </div>
     </section>
   );

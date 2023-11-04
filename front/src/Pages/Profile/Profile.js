@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom";
 function Profile({ user }) {
   console.log("userProfile", user);
   const [allTheDances, setAllTheDances] = useState([]);
+  const [voteDance, setVoteDance] = useState([]);
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,12 +22,31 @@ function Profile({ user }) {
         if (response.ok) {
           const dances = await response.json();
           setAllTheDances(dances);
+          console.log("dances", dances);
         }
       } catch (error) {
         console.error(error);
       }
     }
     getDances();
+  }, []);
+
+  useEffect(() => {
+    async function CountOfDances() {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/dances/voteDance"
+        );
+        if (response.ok) {
+          const dancingVote = await response.json();
+          setVoteDance(dancingVote);
+          console.log("vote", dancingVote);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    CountOfDances();
   }, []);
 
   const defaultValues = {
@@ -43,7 +64,7 @@ function Profile({ user }) {
     mode: "onChange",
   });
 
- 
+
   async function submit(values) {
     console.log("premierevalue", values);
     try {
@@ -70,17 +91,58 @@ function Profile({ user }) {
     }
   }
 
-  // function addDance() {
-  //   append({
-  //     value: "",
-  //   });
-  // }
+  function getDanceName(idDance) {
+    switch (idDance) {
+      case 1:
+        return "Salsa";
+      case 2:
+        return "Bachata";
+      case 3:
+        return "Kizomba";
+      default:
+        return "Inconnu";
+    }
+  }
+
+  async function resetVotes() {
+    try {
+      const response = await fetch("http://localhost:8000/api/profile/resetVotes", {
+        method: "PATCH",
+      });
+      if (response.ok) {
+        const resetResponse = await response.json();
+        setFeedBackGood(resetResponse.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+
+
 
   return (
     <>
       <section className={styles.top}>
         <div className={styles.backgroundTop}></div>
         <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
+
+        <div className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
+          <p>Résultats des votes pour le mois en cours</p>
+          <ul>
+            {voteDance.map((dancingVote) => (
+              <li key={dancingVote.idDance}>
+                Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes: {dancingVote.CountOfDances}
+              </li>
+            ))}
+          </ul>
+          <button onClick={resetVotes} className="btn btn-danger">
+            Réinitialiser les votes
+          </button>
+        </div>
+
+
         <h4 className="tac">
           Quelle danse souhaiteriez vous voir mise en avant lors de nos prochain
           stages ?
@@ -92,13 +154,6 @@ function Profile({ user }) {
           <div className="df fc mb10">
             <label className="mb10 df jcc aic gap1">
               <span className="flex-fill">Dances</span>
-              {/* <button
-                onClick={addDance}
-                type="button"
-                className="btn btn-primary-reverse"
-              >
-                +
-              </button> */}
             </label>
             <ul>
               <li className="mb10">

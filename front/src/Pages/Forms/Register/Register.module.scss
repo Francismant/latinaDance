@@ -53,6 +53,13 @@ input {
     background-color: white;
   }
 }
+.buttonAdmin {
+  padding: 0.5% 1%;
+  &:hover {
+    color:var(--colorFooter);
+    background-color: white;
+  }
+}
 
 .checkbox {
   @include mixin.xs {
@@ -75,4 +82,9 @@ input {
     width: 100%;
     margin-bottom: 0.5rem;
   }
+}
+
+.buttonDelete {
+  display: block;
+  margin: 0 auto 3%;
 }
