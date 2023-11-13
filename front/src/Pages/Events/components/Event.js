@@ -25,7 +25,7 @@ function Event({ event, deleteEvent }) {
   return (
     <>
       <div className={`${styles.serie} df fc jcc gap1`}>
-        {user && user.admin && <i className="fas fa-xmark" onClick={handleDelete}></i>}
+        {user && user.admin ===1 && <i className="fas fa-xmark" onClick={handleDelete}></i>}
         <div
           className={`${styles.title} df fc jcsa aic tac px5`}
         >

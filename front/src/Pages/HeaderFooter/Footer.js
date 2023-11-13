@@ -5,7 +5,7 @@ import insta from "../../assets/images/instagram.png";
 function Footer() {
   return (
     <footer className="colorFooter">
-      <div className={`df fc jcc aic fsize2 ${styles.footer}`}>
+      <div className={`df fc jcc aic fsize2 ${styles.footerLogo}`}>
         <p>LILLE</p>
         <p>LATINA</p>
         <p className="ffamily3">Dance</p>

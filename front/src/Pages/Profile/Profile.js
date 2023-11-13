@@ -142,7 +142,7 @@ function Profile() {
                     {feedbackGood && (
                         <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
                     )}
-                    <button onClick={resetVotes} className="btn btn-danger">
+                    <button onClick={resetVotes} className="btn btn-primary">
                         Réinitialiser les votes
                     </button>
                 </section>}

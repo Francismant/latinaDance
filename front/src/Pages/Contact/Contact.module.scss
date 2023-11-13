@@ -18,3 +18,34 @@
         margin-top: 50px;
     }
 }
+
+.contactContainer {
+    margin: 4% 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    @include mixin.xs {
+        margin: 6% 0;
+    }
+    h3 {
+        font-size: 2.2rem;
+        font-weight: 400;
+        @include mixin.xs {
+            font-size: 1.5rem;
+        }
+    }
+    .contactData {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        @include mixin.xs {
+            gap: 1rem;
+        }
+    }
+}
+
+.faq {
+    summary, p {
+        align-items: center;
+    }
+}
