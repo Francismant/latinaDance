@@ -1,9 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookie = require("cookie-parser");
 
 const app = express();
+app.use(express.json());
 
-app.use(bodyParser.json());
+app.use(cookie());
+
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 const port = 8000;
 
@@ -20,6 +25,11 @@ app.use((req, res, next) => {
 });
 
 app.use(routes);
+
+// gestion des routes non reconnues
+app.use("*", (req, res) => {
+  res.status(404).end();
+});
 
 app.listen(port, () => {
   console.log(`serveur Node écoutant sur le port ${port}`);

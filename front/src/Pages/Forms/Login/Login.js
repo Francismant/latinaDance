@@ -5,14 +5,17 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../Register/Register.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../context";
 
-function Login({ getUser }) {
+function Login() {
+  const { login } = useContext(AuthContext);
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
 
-  const yupSchema = yup.object({
+  const validationSchema = yup.object({
     email: yup
       .string()
       .required("Le champ est obligatoire")
@@ -20,57 +23,86 @@ function Login({ getUser }) {
     password: yup.string().required("Le champ est obligatoire"),
   });
 
-  const defaultValues = {
-    password: "",
+  const initialValues = {
     email: "",
+    password: "",
   };
 
+  // const defaultValues = {
+  //   password: "",
+  //   email: "",
+  // };
+
   const {
-    register,
     handleSubmit,
-    reset,
-    formState: { errors },
+    register,
+    formState: { errors, isSubmitting },
+    setError,
+    clearErrors,
   } = useForm({
-    defaultValues,
-    mode: "onChange",
-    resolver: yupResolver(yupSchema),
+    initialValues,
+    resolver: yupResolver(validationSchema),
   });
+
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   reset,
+  //   formState: { errors },
+  // } = useForm({
+  //   defaultValues,
+  //   mode: "onChange",
+  //   resolver: yupResolver(yupSchema),
+  // });
+
+  // async function submit(values) {
+  //   try {
+  //     setFeedBack("");
+  //     console.log("values", values);
+  //     const response = await fetch("http://localhost:8000/api/users/login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(values),
+  //     });
+  //     if (response.ok) {
+  //       const newUser = await response.json();
+  //       if (newUser.message) {
+  //         setIsSubmitted(false);
+  //         setFeedBack(newUser.message);
+  //       } else {
+  //         setFeedBackGood("Connexion réussie, vous allez être redirigé");
+  //         reset(defaultValues);
+  //         console.log("User récupéré", newUser);
+  //         let user = {};
+  //         user.name = newUser[0].name;
+  //         user.email = newUser[0].email;
+  //         user.idUser = newUser[0].idUser;
+  //         setIsSubmitted(true);
+  //         setTimeout(() => {
+  //           navigate("/");
+  //           getUser(user);
+  //         }, 3000);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setIsSubmitted(false);
+  //   }
+  // }
 
   async function submit(values) {
     try {
-      setFeedBack("");
-      console.log("values", values);
-      const response = await fetch("http://localhost:8000/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-      if (response.ok) {
-        const newUser = await response.json();
-        if (newUser.message) {
-          setIsSubmitted(false);
-          setFeedBack(newUser.message);
-        } else {
-          setFeedBackGood("Connexion réussie, vous allez être redirigé");
-          reset(defaultValues);
-          console.log("User récupéré", newUser);
-          let user = {};
-          user.name = newUser[0].name;
-          user.email = newUser[0].email;
-          user.idUser = newUser[0].idUser;
-          setIsSubmitted(true);
-          setTimeout(() => {
-            navigate("/");
-            getUser(user);
-          }, 3000);
-        }
-      }
+      clearErrors();
+      await login(values);
+      setFeedBackGood("Connexion réussie, vous allez être redirigé")
+      setTimeout(() => {
+        navigate("/profile")
+      }, 3000)
     } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitted(false);
+      setError("generic", { type: "generic", message: error });
     }
   }
 
@@ -106,9 +138,6 @@ function Login({ getUser }) {
             Se connecter
           </button>
         </form>
-        <button className={`btn btn-primary  ${styles.buttonAdmin}`} disabled={isSubmitted}>
-          administrateur
-        </button>
       </div>
     </section>
   );

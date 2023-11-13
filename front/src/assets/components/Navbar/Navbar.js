@@ -3,10 +3,16 @@ import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { Link } from "react-router-dom";
 
-function Navbar() {
-  const [showMenu, setShowMenu] = useState(false);
+function Navbar({showButton, setShowButton, setShowMenu, showMenu}) {
+
+  const viewMenu = () => {
+    if (showButton) {
+      setShowButton(false)
+    }
+    setShowMenu(!showMenu)
+  }
   return (
-    <>
+    <nav className="df jcsb">
       <ul className={`df fr aic jcsa ${styles.desktopNavbar}`}>
         <li className={styles.button2}>
           <span>
@@ -29,18 +35,17 @@ function Navbar() {
           </span>
         </li>
       </ul>
-      <i onClick={() => setShowMenu(true)} className={`fas fa-bars mr10 ${styles.mobileNavbar}`}></i>
+      <i onClick={viewMenu} className={`fas fa-bars mr10 ${styles.mobileNavbar}`}></i>
       {
         showMenu && (
           <>
-            <div onClick={() => setShowMenu(false)} className="calc"></div>
             <div>
               <MobileMenu />
             </div>
           </>
         )
       }
-    </>
+    </nav>
   )
 }
 

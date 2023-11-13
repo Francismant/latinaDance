@@ -10,24 +10,24 @@
   }
 }
 
-.carouselTop {
-  @include mixin.lg {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 15rem;
-  }
-}
-.carouselTop {
-  @include mixin.xs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8rem;
-  }
-}
+// .carouselTop {
+//   @include mixin.lg {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+//     flex-wrap: wrap;
+//     gap: 1rem;
+//   }
+// }
+// .carouselTop {
+//   @include mixin.xs {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//   }
+// }
 
 .topHome {
   @include mixin.xs {

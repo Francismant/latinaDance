@@ -45,3 +45,15 @@
       @content;
     }
   }
+
+  @mixin caroussel {
+    @media (max-width: 1575px) {
+      @content;
+    }
+  }
+
+  @mixin menuBurger {
+    @media (max-width: 1010px) {
+      @content;
+    }
+  }

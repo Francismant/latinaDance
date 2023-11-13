@@ -98,6 +98,10 @@
   .pr3pc {
     padding-right: 3%;
   }
+
+  .px5 {
+    padding: 0 5px;
+  }
   
   .m5 {
     margin: 5px;
@@ -257,8 +261,8 @@
   }
 
   .size3 {
-    width: 40%;
-    @include mixin.xs {
+    width: 50%;
+    @include mixin.caroussel {
       width: 100%;
     }
 }
@@ -267,7 +271,6 @@
   overflow: hidden;
 }
 
-.calc {
-  position: fixed;
-  inset: 0;
+.cp {
+  cursor: pointer;
 }

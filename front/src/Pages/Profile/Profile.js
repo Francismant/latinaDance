@@ -2,183 +2,190 @@ import { useEffect, useState } from "react";
 import styles from "../Forms/Register/Register.module.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context";
 
-function Profile({ user }) {
-  console.log("userProfile", user);
-  const [allTheDances, setAllTheDances] = useState([]);
-  const [voteDance, setVoteDance] = useState([]);
-  const [feedback, setFeedBack] = useState("");
-  const [feedbackGood, setFeedBackGood] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+function Profile() {
+    const { user } = useContext(AuthContext);
+    const [allTheDances, setAllTheDances] = useState([]);
+    const [voteDance, setVoteDance] = useState([]);
+    const [feedback, setFeedBack] = useState("");
+    const [feedbackGood, setFeedBackGood] = useState("");
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getDances() {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/api/dances/getDances"
-        );
-        if (response.ok) {
-          const dances = await response.json();
-          setAllTheDances(dances);
-          console.log("dances", dances);
+    useEffect(() => {
+        async function getDances() {
+            try {
+                const response = await fetch(
+                    "http://localhost:8000/api/dances/getDances"
+                );
+                if (response.ok) {
+                    const dances = await response.json();
+                    setAllTheDances(dances);
+                    console.log("dances", dances);
+                }
+            } catch (error) {
+                console.error(error);
+            }
         }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getDances();
-  }, []);
+        getDances();
+    }, []);
 
-  useEffect(() => {
-    async function CountOfDances() {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/api/dances/voteDance"
-        );
-        if (response.ok) {
-          const dancingVote = await response.json();
-          setVoteDance(dancingVote);
-          console.log("vote", dancingVote);
+    useEffect(() => {
+        async function CountOfDances() {
+            try {
+                const response = await fetch(
+                    "http://localhost:8000/api/dances/voteDance"
+                );
+                if (response.ok) {
+                    const dancingVote = await response.json();
+                    setVoteDance(dancingVote);
+                    console.log("vote", dancingVote);
+                }
+            } catch (error) {
+                console.error(error);
+            }
         }
-      } catch (error) {
-        console.error(error);
-      }
+        CountOfDances();
+    }, []);
+
+    const defaultValues = {
+        dances: [],
+    };
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        control,
+        formState: { errors },
+    } = useForm({
+        defaultValues,
+        mode: "onChange",
+    });
+
+
+    async function submit(values) {
+        console.log("premierevalue", values);
+        try {
+            setFeedBack("");
+            let data = { values, id: user.idUser };
+            console.log("values_vote", data);
+            const response = await fetch("http://localhost:8000/api/profile/vote", {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            if (response.ok) {
+                const voteUser = await response.json();
+                setFeedBackGood(voteUser.messageGood);
+                reset(defaultValues);
+                setTimeout(() => {
+                    navigate("/");
+                }, 3000);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
-    CountOfDances();
-  }, []);
 
-  const defaultValues = {
-    dances: [],
-  };
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues,
-    mode: "onChange",
-  });
-
-
-  async function submit(values) {
-    console.log("premierevalue", values);
-    try {
-      setFeedBack("");
-      let data = { values, id: user.idUser };
-      console.log("values_vote", data);
-      const response = await fetch("http://localhost:8000/api/profile/vote", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        const voteUser = await response.json();
-        setFeedBackGood(voteUser.messageGood);
-        reset(defaultValues);
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
-      }
-    } catch (error) {
-      console.error(error);
+    function getDanceName(idDance) {
+        switch (idDance) {
+            case 1:
+                return "Salsa";
+            case 2:
+                return "Bachata";
+            case 3:
+                return "Kizomba";
+            default:
+                return "Inconnu";
+        }
     }
-  }
 
-  function getDanceName(idDance) {
-    switch (idDance) {
-      case 1:
-        return "Salsa";
-      case 2:
-        return "Bachata";
-      case 3:
-        return "Kizomba";
-      default:
-        return "Inconnu";
+    async function resetVotes() {
+        try {
+            const response = await fetch("http://localhost:8000/api/profile/resetVotes", {
+                method: "PATCH",
+            });
+            if (response.ok) {
+                const resetResponse = await response.json();
+                setVoteDance(null);
+                setFeedBackGood(resetResponse.message);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
-  }
-
-  async function resetVotes() {
-    try {
-      const response = await fetch("http://localhost:8000/api/profile/resetVotes", {
-        method: "PATCH",
-      });
-      if (response.ok) {
-        const resetResponse = await response.json();
-        setFeedBackGood(resetResponse.message);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
 
 
 
 
-  return (
-    <>
-      <section className={styles.top}>
-        <div className={styles.backgroundTop}></div>
-        <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
+    return (
+        <main className={styles.top}>
+            <div className={styles.backgroundTop}></div>
+            <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
+            {user && user.admin === 1 &&
+                <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
+                    <p>Résultats des votes pour le mois en cours</p>
+                    <ul>
+                        {voteDance && voteDance.map((dancingVote) => (
+                            <li key={dancingVote.idDance}>
+                                Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes: {dancingVote.CountOfDances}
+                            </li>
+                        ))}
+                    </ul>
+                    {feedbackGood && (
+                        <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+                    )}
+                    <button onClick={resetVotes} className="btn btn-danger">
+                        Réinitialiser les votes
+                    </button>
+                </section>}
+            {user && user.admin === 0 &&
+                <section>
+                    <h4 className="tac">
+                        Quelle danse souhaiteriez vous voir mise en avant lors de nos prochains
+                        stages ?
+                    </h4>
+                    <p className="tac fsize08">(Les votes ne sont plus comptabilisés après le 20 du mois en cours)</p>
+                    <div className="flex-fill df jcc aic mb3pc mt3pc">
+                        <form onSubmit={handleSubmit(submit)}>
+                            <div className="df fc mb10">
+                                <label className="mb10 df jcc aic gap1">
+                                    <span className="flex-fill">Dances</span>
+                                </label>
+                                <ul>
+                                    <li className="mb10">
+                                        <select className="mr10" {...register(`dances`)}>
+                                            <option value="" disabled>Faites votre choix</option>
+                                            {allTheDances.map((dance) => (
+                                                <option key={dance.idDance} value={dance.idDance}>
+                                                    {dance.nameDance}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                            {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
+                            {feedbackGood && (
+                                <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+                            )}
+                            <button className="btn btn-primary" disabled={isSubmitted}>
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </section>
+            }
 
-        <div className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
-          <p>Résultats des votes pour le mois en cours</p>
-          <ul>
-            {voteDance.map((dancingVote) => (
-              <li key={dancingVote.idDance}>
-                Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes: {dancingVote.CountOfDances}
-              </li>
-            ))}
-          </ul>
-          <button onClick={resetVotes} className="btn btn-danger">
-            Réinitialiser les votes
-          </button>
-        </div>
-
-
-        <h4 className="tac">
-          Quelle danse souhaiteriez vous voir mise en avant lors de nos prochain
-          stages ?
-        </h4>
-        <p className="tac fsize08">(Les votes ne sont plus comptabilisés après le 20 du mois en cours)</p>
-      </section>
-      <div className="flex-fill df jcc aic mb3pc mt3pc">
-        <form onSubmit={handleSubmit(submit)}>
-          <div className="df fc mb10">
-            <label className="mb10 df jcc aic gap1">
-              <span className="flex-fill">Dances</span>
-            </label>
-            <ul>
-              <li className="mb10">
-                <select className="mr10" {...register(`dances`)}>
-                  <option value="" disabled>Faites votre choix</option>
-                  {allTheDances.map((dance) => (
-                    <option key={dance.idDance} value={dance.idDance}>
-                      {dance.nameDance}
-                    </option>
-                  ))}
-                </select>
-              </li>
-            </ul>
-          </div>
-          {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
-          {feedbackGood && (
-            <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
-          )}
-          <button className="btn btn-primary" disabled={isSubmitted}>
-            Submit
-          </button>
-        </form>
-      </div>
-    </>
-  );
+        </main>
+    );
 }
 
 export default Profile;

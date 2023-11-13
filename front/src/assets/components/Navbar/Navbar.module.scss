@@ -85,14 +85,14 @@
     span {
         font-size: 1.2rem;
     }
-    @include mixin.xs {
+    @include mixin.menuBurger {
         display: none;
     }
 }
 
 .mobileNavbar {
     display: none;
-    @include mixin.xs {
+    @include mixin.menuBurger {
         display: block;
         cursor: pointer;
         font-size: 1.8rem;

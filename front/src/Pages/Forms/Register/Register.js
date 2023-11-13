@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import styles from "./Register.module.scss";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { createUser } from "../../../apis/users";
 
 function Register() {
   const [feedback, setFeedBack] = useState("");
@@ -52,46 +53,58 @@ function Register() {
   const {
     register,
     handleSubmit,
+    clearErrors,
+    setError,
     reset,
     control,
-    formState: { errors },
+    formState: { errors, isSubmiting },
   } = useForm({
     defaultValues,
-    mode: "onChange",
     resolver: yupResolver(yupSchema),
   });
 
   async function submit(values) {
+    // console.log(values);
     try {
-      setIsSubmitted(true);
-      setFeedBack("");
-      console.log(values);
-      const response = await fetch("http://localhost:8000/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-      if (response.ok) {
-        const newUser = await response.json();
-        // console.log("newUser", newUser);
-        if (newUser.message) {
-          setFeedBack("Email déjà existant");
-        } else {
-          setFeedBackGood(newUser.messageGood);
-          reset(defaultValues);
-          setTimeout(() => {
-            navigate("/Login");
-          }, 3000);
-        }
-      }
+      clearErrors();
+      await createUser(values);
+      navigate("/login");
     } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitted(false);
+      setError("generic", { type: "generic", message: error });
     }
   }
+
+  // async function submit(values) {
+  //   try {
+  //     setIsSubmitted(true);
+  //     setFeedBack("");
+  //     console.log(values);
+  //     const response = await fetch("http://localhost:8000/api/users/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(values),
+  //     });
+  //     if (response.ok) {
+  //       const newUser = await response.json();
+  //       // console.log("newUser", newUser);
+  //       if (newUser.message) {
+  //         setFeedBack("Email déjà existant");
+  //       } else {
+  //         setFeedBackGood(newUser.messageGood);
+  //         reset(defaultValues);
+  //         setTimeout(() => {
+  //           navigate("/Login");
+  //         }, 3000);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setIsSubmitted(false);
+  //   }
+  // }
 
   return (
     <section className={styles.top}>

@@ -1,87 +1,94 @@
 import Navbar from "../../assets/components/Navbar/Navbar";
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../context";
 
 
-function Header({ user, logout }) {
-  console.log("userHeader", user);
+function Header() {
   const [showButton, setShowButton] = useState(false);
+  const { user, logout } = useContext(AuthContext);
+  const [showMenu, setShowMenu] = useState(false);
+
+const viewMenu = () => {
+  if (showMenu) {
+    setShowMenu(false)
+  }
+  setShowButton(!showButton)
+}
 
   return (
     <header>
-      <div className={`df ${styles.headerResponsive}`}>
+      <div className={`df aic ${styles.headerResponsive}`}>
         <div className={styles.sizeHeaderLeft}>
           <div className={`df fc jcc aic ${styles.latina}`}>
-            <Link to="/">
+            <NavLink end to="/">
               <p className="fweight4">LILLE</p>
               <p className="fweight4">LATINA</p>
               <p className="ffamily2">Dance</p>
-            </Link>
+            </NavLink>
           </div>
         </div>
-        <Navbar />
+        <Navbar showButton= {showButton} setShowButton={setShowButton} setShowMenu={setShowMenu} showMenu={showMenu}/>
         <div className={styles.register}>
           <ul>
             {user ? (
               <>
                 <button onClick={logout} className={`mr20 btn btn-primary`}>
-                  <Link to="/">Déconnexion</Link>
+                  <NavLink to="/">Déconnexion</NavLink>
                 </button>
                 <button className={`btn btn-primary-reverse mr20`}>
-                  <Link to="/Profile">Profil</Link>
+                  <NavLink to="/Profile">Profil</NavLink>
                 </button>
                 <button className={`btn btn-primary-reverse`}>
-                  <Link to="/Delete">Suppression du compte</Link>
+                  <NavLink to="/Delete">Suppression du compte</NavLink>
                 </button>
               </>
             ) : (
               <>
                 <button className={`mr20 btn btn-primary`}>
-                  <Link to="/Register">Inscription</Link>
+                  <NavLink to="/Register">Inscription</NavLink>
                 </button>
                 <button className={`btn btn-primary-reverse`}>
                   <i className="fas fa-right-to-bracket mr5"></i>
-                  <Link to="/Login">Connexion</Link>
+                  <NavLink to="/Login">Connexion</NavLink>
                 </button>
               </>
             )}
           </ul>
         </div>
         <i
-          onClick={() => setShowButton(true)}
+          onClick={viewMenu}
           className={`fa-solid fa-circle-user ${styles.mobileNavbar}`}
         ></i>
         {showButton && (
           <>
-            <div onClick={() => setShowButton(false)} className="calc"></div>
-            <div>
-              <ul className={`card p10 ${styles.menuContainer}`}>
-                {user ? (
-                  <>
-                    <button onClick={logout} className={`btn btn-primary`}>
-                      <Link to="/">Déconnexion</Link>
-                    </button>
-                    <button className={`btn btn-primary-reverse`}>
-                      <Link to="/Profile">Profil</Link>
-                    </button>
-                    <button className={`btn btn-primary`}>
-                      <Link to="/Delete">Suppression</Link>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button className={`mr20 btn btn-primary`}>
-                      <Link to="/Register">Inscription</Link>
-                    </button>
-                    <button className={`btn btn-primary-reverse`}>
-                      <i className="fas fa-right-to-bracket mr5"></i>
-                      <Link to="/Login">Connexion</Link>
-                    </button>
-                  </>
-                )}
-              </ul>
-            </div>
+            <ul className={`card p10 ${styles.menuContainer}`}>
+              {user ? (
+                <>
+                  <button onClick={logout} className={`btn btn-primary`}>
+                    <NavLink to="/">Déconnexion</NavLink>
+                  </button>
+                  <button className={`btn btn-primary-reverse`}>
+                    <NavLink to="/Profile">Profil</NavLink>
+                  </button>
+                  <button className={`btn btn-primary`}>
+                    <NavLink to="/Delete">Suppression</NavLink>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button className={`mr20 btn btn-primary`}>
+                    <NavLink to="/Register">Inscription</NavLink>
+                  </button>
+                  <button className={`btn btn-primary-reverse`}>
+                    <i className="fas fa-right-to-bracket mr5"></i>
+                    <NavLink to="/Login">Connexion</NavLink>
+                  </button>
+                </>
+              )}
+            </ul>
           </>
         )}
       </div>

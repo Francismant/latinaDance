@@ -2,11 +2,13 @@ import styles from "./Events.module.scss";
 import Loading from "../../assets/components/Loading/Loading";
 import { useFetchData } from '../../hooks/useFetchData';
 import Event from './components/Event';
+import { useContext } from "react";
+import { AuthContext } from "../../context";
 
 
 
-function Events({user}) {
-
+function Events() {
+    const { user } = useContext(AuthContext);
 
     const [[events, setEvents], isLoading] = useFetchData(
         "http://localhost:8000", "api/events/getEvents"
@@ -20,13 +22,20 @@ function Events({user}) {
         <section className={styles.topEvents}>
             <div className={`df fc jcsb ${styles.backgroundTopEvents}`}>
                 <h1 className={styles.headerTitle}>EVENEMENTS</h1>
-                {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
             </div>
+            {user && user.admin &&
+            <details className={`df fc aic ${styles.details}`}>
+                <summary className="cp my30">Ajouter un nouvel évènement</summary>
+                <div className={`df fc aic gap1 mt3pc ${styles.inputContainer}`}>
+                <input type="text" placeholder="date et heure de l'évènement" />
+                <input type="text" placeholder="titre de l'évènement"/>
+                <input type="text" placeholder="durée de l'évènement"/>
+                <input type="text" placeholder="prix de l'évènement"/>
+                <input type="file" className={styles.inputImg} />
+                </div>
+            </details> }
             <div className="flex-fill df fc container p20">
                 <h2 className="my30">Retrouvez ici les évènements ponctuels proposés par notre école </h2>
-                {/* <div
-                    className={`card p20  fc mb20 flex-fill ${styles.contentCard}`}
-                > */}
                     {isLoading ? (
                         <Loading />
                     ) : (
@@ -42,7 +51,6 @@ function Events({user}) {
                                 ))}
                         </div>
                     )}
-                {/* </div> */}
             </div>
         </section>
     );

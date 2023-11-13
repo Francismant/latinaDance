@@ -1,6 +1,7 @@
 @use "../../../assets/styles/mixin" as mixin;
 
 .top {
+  min-height: 78vh;
   @include mixin.xs {
     margin-top: 50px;
   }

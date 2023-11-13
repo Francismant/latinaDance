@@ -1,14 +1,16 @@
 import { useState } from "react";
 import styles from "../Forms/Register/Register.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context";
 
 
-function Delete({ user, logout }) {
+function Delete() {
+    const { user, logout } = useContext(AuthContext);
 
     const [feedback, setFeedBack] = useState("");
     const navigate = useNavigate();
 
-    console.log("deleteUser", user);
     async function handleDelete() {
         try {
             let data = { id: user.idUser };
