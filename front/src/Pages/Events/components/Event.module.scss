@@ -1,6 +1,6 @@
 @use "../../../assets/styles/mixin" as mixin;
 
-.serie {
+.eventContainer {
     position: relative;
     border-radius: 20px;
     height: 750px;
@@ -25,21 +25,14 @@
     }
     
     .imgContainer {
-        // height: 500px;
         overflow: hidden;
         padding: 1rem;
-        
-        @include mixin.xs {
-            // height: 200px;
-        }
         img {
-            // height: 100%;
             margin: 0 auto;
         }
     }
 
     .title {
-        // height: 200px;
         font-size: 18px;
         @include mixin.xs {
             font-size: 12px;
@@ -49,11 +42,13 @@
     img {
         border-radius: 20px;
     }
+}
 
-    //   .title :not(i) {
-    //     transition: 0.2s color;
-    //     &:hover {
-    //       color: var(--error);
-    //     }
-    //   }
+.form {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .inputImg {
+    height: 70px;
 }

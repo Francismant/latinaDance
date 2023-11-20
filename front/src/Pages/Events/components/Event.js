@@ -15,6 +15,7 @@ function Event({ event, deleteEvent }) {
         method: "DELETE",
       });
       if (response.ok) {
+        console.log("reponseDelete", response);
         deleteEvent(idEvent);
       }
     } catch (error) {
@@ -24,7 +25,7 @@ function Event({ event, deleteEvent }) {
 
   return (
     <>
-      <div className={`${styles.serie} df fc jcc gap1`}>
+      <div className={`${styles.eventContainer} df fc jcc gap1`}>
         {user && user.admin ===1 && <i className="fas fa-xmark" onClick={handleDelete}></i>}
         <div
           className={`${styles.title} df fc jcsa aic tac px5`}

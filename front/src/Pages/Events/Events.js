@@ -4,6 +4,7 @@ import { useFetchData } from '../../hooks/useFetchData';
 import Event from './components/Event';
 import { useContext } from "react";
 import { AuthContext } from "../../context";
+import AddNewEvent from "./components/AddNewEvent";
 
 
 
@@ -24,24 +25,8 @@ function Events() {
                 <h1 className={styles.headerTitle}>EVENEMENTS</h1>
             </div>
             {user && user.admin &&
-                <div>
-                    <div>
-                        <details className={`df fc aic ${styles.details}`}>
-                            <summary className="cp my30">Ajouter un nouvel évènement</summary>
-                            <div className={`df fc aic gap1 mt3pc ${styles.inputContainer}`}>
-                                <input type="text" placeholder="date et heure de l'évènement" />
-                                <input type="text" placeholder="titre de l'évènement" />
-                                <input type="text" placeholder="durée de l'évènement" />
-                                <input type="text" placeholder="prix de l'évènement" />
-                                <input type="file" className={styles.inputImg} />
-                            </div>
-                        </details>
-                    </div>
-                    <div className="df jcc aic mt3pc">
-
-                    <button className="btn btn-primary">Créer l'évènement</button>
-                    </div>
-                </div>
+                <>
+                </>
             }
             <div className="flex-fill df fc container p20">
                 <h2 className="my30">Retrouvez ici les évènements ponctuels proposés par notre école </h2>
@@ -53,8 +38,8 @@ function Events() {
                             .map((event) => (
                                 <Event
                                     key={event.idEvent}
-                                    event={event}
                                     deleteEvent={deleteEvent}
+                                    event={event}
                                     user={user}
                                 />
                             ))}

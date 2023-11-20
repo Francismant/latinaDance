@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
+import AddNewEvent from "../Events/components/AddNewEvent";
 
 function Profile() {
     const { user } = useContext(AuthContext);
@@ -121,31 +122,34 @@ function Profile() {
         }
     }
 
-
-
-
-
     return (
         <main className={styles.top}>
             <div className={styles.backgroundTop}></div>
             <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
             {user && user.admin === 1 &&
-                <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
-                    <p>Résultats des votes pour le mois en cours</p>
-                    <ul>
-                        {voteDance && voteDance.map((dancingVote) => (
-                            <li key={dancingVote.idDance}>
-                                Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes: {dancingVote.CountOfDances}
-                            </li>
-                        ))}
-                    </ul>
-                    {feedbackGood && (
-                        <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
-                    )}
-                    <button onClick={resetVotes} className="btn btn-primary">
-                        Réinitialiser les votes
-                    </button>
-                </section>}
+                <>
+                    <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
+                        <p>Résultats des votes pour le mois en cours</p>
+                        <ul>
+                            {voteDance && voteDance.map((dancingVote) => (
+                                <li key={dancingVote.idDance}>
+                                    Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes: {dancingVote.CountOfDances}
+                                </li>
+                            ))}
+                        </ul>
+                        {feedbackGood && (
+                            <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+                        )}
+                        <button onClick={resetVotes} className="btn btn-primary">
+                            Réinitialiser les votes
+                        </button>
+                    </section>
+                    <div className="df  fc aic">
+                        <h2 className="mb20 mt3pc">Ajouter un évènement</h2>
+                        <AddNewEvent />
+                    </div>
+                </>
+            }
             {user && user.admin === 0 &&
                 <section>
                     <h4 className="tac">

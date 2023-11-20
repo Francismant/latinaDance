@@ -1,21 +1,18 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cookie = require("cookie-parser");
 
 const app = express();
-app.use(express.json());
 
 app.use(cookie());
 
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 
 const port = 8000;
 
 require("./database");
 
 const routes = require("./routes");
-
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
