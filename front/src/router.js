@@ -11,6 +11,8 @@ const Profile = lazy(() => import("./Pages/Profile/Profile"));
 const Contact = lazy(() => import("./Pages/Contact/Contact"));
 const Events = lazy(() => import("./Pages/Events/Events.js"));
 const Delete = lazy(() => import("./Pages/Delete/Delete.js"));
+const ConditionsGénérales = lazy(() => import("./assets/components/ConditionsGénérales/ConditionsGénérales.js"));
+const Mentions = lazy(() => import("./assets/components/Mentions/Mentions.js"));
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +27,10 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register />,
+            },
+            {
+                path: "conditions",
+                element: <ConditionsGénérales />,
             },
             {
                 path: "login",
@@ -53,6 +59,10 @@ export const router = createBrowserRouter([
             {
                 path: "contact",
                 element: <Contact />,
+            },
+            {
+                path: "mentions",
+                element: <Mentions />,
             }
         ]
     }

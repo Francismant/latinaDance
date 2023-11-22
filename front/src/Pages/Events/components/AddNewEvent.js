@@ -2,8 +2,13 @@ import styles from "./Event.module.scss";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddNewEvent() {
+  const [feedBackGood, setfeedBackGood] = useState(false);
+  const navigate = useNavigate();
+
   const defaultValues = {
     date: "",
     title: "",
@@ -77,7 +82,7 @@ export default function AddNewEvent() {
         const blob = new Blob([buffer], { type: newPoster.type });
         const base64 = await convertBlobTobase64(blob);
         values.poster = base64;
-        console.log("valuesbase",values);
+        console.log("valuesbase", values);
         clearErrors();
         const response = await fetch(`http://localhost:8000/api/events/addEvent`, {
           method: "POST",
@@ -87,9 +92,13 @@ export default function AddNewEvent() {
           body: JSON.stringify(values),
         });
         if (response.ok) {
-        const newEvent = await response.json()
-            console.log(newEvent);
-    }
+          const newEvent = await response.json();
+          console.log(newEvent);
+          setfeedBackGood(true);
+          setTimeout(() => {
+            navigate("/events")
+          }, 3000)
+        }
       };
     } catch (error) {
       console.error(error);
@@ -127,7 +136,8 @@ export default function AddNewEvent() {
         <input {...register("poster")} type="file" id="poster" className={styles.inputImg} />
         {errors.poster && <p className="form-error">{errors.poster.message}</p>}
       </div>
-      <div className="df jcc aic">
+      <div className="df fc jcc aic">
+        {feedBackGood && <p className={`${styles.feedbackGood} mb20`}>L'événement a été créé avec succès!</p>}
         <button disabled={isSubmitting} className="btn btn-primary">
           Sauvegarder
         </button>

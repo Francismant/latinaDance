@@ -25,6 +25,7 @@ router.patch("/vote", (req, res) => {
 router.patch('/resetVotes', (req, res) => {
   const resetVotesSql = "UPDATE users SET idDance = NULL";
   connection.query(resetVotesSql, (err, result) => {
+    console.log("resetvote", result);
     if (err) {
       console.error(err);
       return res.status(500).json({ message: "Erreur lors de la réinitialisation des votes" });

@@ -2,9 +2,9 @@ import styles from "./ConditionsGénérales.module.scss"
 
 function ConditionsGénérales() {
   return (
-    <div>
+    <div className="center">
         <h2 className={styles.top} >Conditions générales du site LilleLatinaDance</h2>
-        <div className="df fc gap1 ml20 mb3pc" >
+        <div className="df fc gap1 mb3pc" >
         <h3>1 Inscription</h3>
         <p>1.1 Pour vous inscrire sur LilleLatinaDance, vous devez fournir des informations précises, véridiques et à jour, notamment :</p>
         <ul>

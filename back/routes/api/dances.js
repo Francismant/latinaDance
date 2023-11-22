@@ -14,7 +14,7 @@ router.get("/getDances", (req, res) => {
   }
 });
 
-router.get("/voteDance", (req, res) => {
+router.get("/totalVote", (req, res) => {
   try {
     const sql = "SELECT idDance, COUNT(*) AS CountOfDances FROM users WHERE idDance IS NOT NULL GROUP BY idDance";
     connection.query(sql, (err, result) => {

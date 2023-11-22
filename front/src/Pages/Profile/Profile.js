@@ -38,7 +38,7 @@ function Profile() {
         async function CountOfDances() {
             try {
                 const response = await fetch(
-                    "http://localhost:8000/api/dances/voteDance"
+                    "http://localhost:8000/api/dances/totalVote"
                 );
                 if (response.ok) {
                     const dancingVote = await response.json();
@@ -176,7 +176,7 @@ function Profile() {
                                     </li>
                                 </ul>
                             </div>
-                            {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
+                            {/* {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>} */}
                             {feedbackGood && (
                                 <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
                             )}

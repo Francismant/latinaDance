@@ -1,6 +1,7 @@
 import styles from "./Footer.module.scss";
 import fb from "../../assets/images/facebook.png";
 import insta from "../../assets/images/instagram.png";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -12,7 +13,9 @@ function Footer() {
       </div>
       <div className={`df jcc fsize08 ${styles.footerend}`}>
         <p>Copyright©2023 |Tous droits réservés -</p>
-        <a href="">Mentions légale</a>
+        <span>
+          <Link to="/mentions">Mentions légales</Link>
+        </span>
         <div className={styles.icons}>
           <a href="">
             <img className="ml20" src={fb} alt="logo de facebook" />

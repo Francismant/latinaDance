@@ -35,6 +35,7 @@ router.delete("/deleteEvent/:idEvent", (req, res) => {
         let lastInsertId = result.insertId;
         let sqlLastOne = "SELECT * FROM events WHERE idEvent = ?";
         connection.query(sqlLastOne, [lastInsertId], (err, result) => {
+          console.log("resultAdd", result);
           res.send(JSON.stringify(result));
         });
       }

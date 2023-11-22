@@ -52,3 +52,12 @@
   .inputImg {
     height: 70px;
 }
+
+.feedbackGood {
+    color: green;
+    font-size: 18px;
+    font-weight: 600;
+    @include mixin.xs {
+      font-size: 10px;
+    }
+  }

@@ -8,7 +8,7 @@ function Contact() {
         <>
             <section className={styles.topContact}>
                 <div className={`df fc jcsb ${styles.backgroundTopContact}`}>
-                    <h1 className="pt3pc ml20">CONTACT</h1>
+                    <h1 className="pt3pc ml20">CONTACT & FAQ</h1>
                     {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
                 </div>
             </section>
@@ -40,15 +40,16 @@ function Contact() {
                     </details>
                     <details>
                         <summary>Question : Comment se chausser et s'habiller ?</summary>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam aspernatur magnam deserunt ducimus voluptas tempora maxime doloremque soluta tempore officia?</p>
+                        <p> Optez pour des vêtements légers et confortables qui vous permettront de bouger facilement.</p>
                     </details>
                     <details>
                         <summary>Question : Comment puis-je m'inscrire à un cours de danse latine ?</summary>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente corporis quasi enim non error eaque deserunt odio, nemo inventore ipsum!</p>
+                        <p>L'inscription se fait uniquement sur place lors des cours ou des soirées</p>
                     </details>
                     <details>
                         <summary>Question : Quels sont les avantages de prendre des cours de danse latine avec votre école ?</summary>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos maxime distinctio iure dignissimos asperiores itaque odit possimus, cupiditate qui hic?</p>
+                        <p>
+                            Notre école inclue des enseignants hautement qualifiés qui vous guideront à perfectionner vos compétences dans un cadre magnifique </p>
                     </details>
                 </section>
             </main>
