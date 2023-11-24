@@ -5,45 +5,34 @@ const { key, keyPub } = require("../../keys");
 
 const connection = require("../../database");
 
-
 router.post("/register", (req, res) => {
   const { email, password, name } = req.body;
-  const verifyMailSql = "SELECT * FROM users WHERE email = ?"; // vérification de l'existence du mail
+  const verifyMailSql = "SELECT * FROM users WHERE email = ?";
   connection.query(verifyMailSql, [email], async (err, result) => {
-    try {
+    if (err) throw err;
+      try {
       if (result.length === 0) {
-        // si il n'existe pas on hashe le mdp et on insère en BDD
         const hashedPassword = await bcrypt.hash(password, 10);
-        const insertSql =
-          "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-        connection.query(
-          insertSql,
-          [name, email, hashedPassword],
-          (err, result) => {
+        const insertSql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        connection.query(insertSql, [name, email, hashedPassword], (err, result) => {
+          if (err) throw err;
+          let idUser = result.insertId;
+          const sqlSelect = "SELECT idUser, name, email FROM users WHERE idUser = ?";
+          connection.query(sqlSelect, [idUser], (err, result) => {
             if (err) throw err;
-            let idUser = result.insertId; // On récupére l'id de la dernière insertion
-            const sqlSelect =
-              "SELECT idUser, name, email FROM users WHERE idUser = ?";
-            connection.query(sqlSelect, [idUser], (err, result) => {
-              // On récupère les données correspondant à cet id -> front
-              if (err) throw err;
-              const responseData = {
-                userData: result, // Les données de l'utilisateur
-                messageGood: "Inscription réussie, vous allez être redirigé"
-              };
-              res.json(responseData);
-            });
-          }
-        );
-      } else {
-        // si le mail existe
-        res.status(400).json("Le mail existe");
-      }
-    } catch (error) {
-      console.log(error);
+            res.json(result);
+          });
+        });
+    } else {
+      res.status(400).json("Cet email est déja enregistré.")
+    }
+  } catch (error) {
+      console.error(error);
     }
   });
 });
+
+
 
 // router.post("/register", async (req, res) => {
 //   try {
@@ -182,7 +171,9 @@ router.delete("/deleteUser/:idUser", (req, res) => {
   connection.query(deleteSql, [id], (err, result) => {
     if (err) {
       console.error(err);
-      return res.status(500).json({ message: "Erreur lors de la suppression de l'utilisateur" });
+      return res
+        .status(500)
+        .json({ message: "Erreur lors de la suppression de l'utilisateur" });
     }
     return res.json({ message: "Compte supprimé avec succès" });
   });
