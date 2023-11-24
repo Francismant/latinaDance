@@ -1,22 +1,25 @@
 const API_USERS = "/api/users";
 
 export async function createUser(newUser) {
-  const response = await fetch(`${API_USERS}/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newUser),
-  });
-  const backResponse = await response.json();
-  if (response.ok) {
+  try {
+    const response = await fetch(`${API_USERS}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    const backResponse = await response.json();
     console.log(backResponse);
-  } else {
-    if (backResponse) {
-      throw backResponse;
+    if (response.ok) {
+      return backResponse;
     } else {
-      throw new Error("Error API create User");
+      if (backResponse) {
+        throw new Error(backResponse);
+      }
     }
+  } catch (error) {
+    throw error;
   }
 }
 
@@ -41,7 +44,7 @@ export async function signin(values) {
 }
 
 export async function signout() {
-  const response = await fetch(`${API_USERS}/logout`)
+  const response = await fetch(`${API_USERS}/logout`);
   console.log(response);
 }
 

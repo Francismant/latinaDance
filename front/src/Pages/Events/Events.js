@@ -24,10 +24,10 @@ function Events() {
             <div className={`df fc jcsb ${styles.backgroundTopEvents}`}>
                 <h1 className={styles.headerTitle}>EVENEMENTS</h1>
             </div>
-            {user && user.admin &&
+            {/* {user && user.admin &&
                 <>
                 </>
-            }
+            } */}
             <div className="flex-fill df fc container p20">
                 <h2 className="my30">Retrouvez ici les évènements ponctuels proposés par notre école </h2>
                 {isLoading ? (
@@ -45,6 +45,8 @@ function Events() {
                             ))}
                     </div>
                 )}
+                <p>N’oubliez pas de vous connecter à votre  compte afin de pouvoir voter pour la danse que vous souhaitez voir mise en avant lors de 
+nos prochains stages (avant ke 15 du mois en cours)</p>
             </div>
         </section>
     );

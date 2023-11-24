@@ -1,18 +1,15 @@
-import React from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./Register.module.scss";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { createUser } from "../../../apis/users";
+import { useState } from "react";
 
 function Register() {
-  const [feedback, setFeedBack] = useState("");
-  const [feedbackGood, setFeedBackGood] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
+  const [feedBackGood, setFeedBackGood] = useState("");
 
   const yupSchema = yup.object({
     name: yup
@@ -38,8 +35,7 @@ function Register() {
       ),
     acceptedTerms: yup
       .boolean()
-      .oneOf([true],
-        "Vous devez accepter les conditions générales"),
+      .oneOf([true], "Vous devez accepter les conditions générales"),
   });
 
   const defaultValues = {
@@ -55,12 +51,12 @@ function Register() {
     handleSubmit,
     clearErrors,
     setError,
-    reset,
-    control,
-    formState: { errors, isSubmiting },
+
+    formState: { errors, isSubmitting },
   } = useForm({
     defaultValues,
     resolver: yupResolver(yupSchema),
+    mode: "onChange",
   });
 
   async function submit(values) {
@@ -68,43 +64,14 @@ function Register() {
     try {
       clearErrors();
       await createUser(values);
+    setFeedBackGood("Inscription réussie, vous allez être redirigé");
+    setTimeout(() => {
       navigate("/login");
+    }, 3000);
     } catch (error) {
-      setError("generic", { type: "generic", message: error });
+      setError("generic", {type:"generic", message : "Email déja existant" })
     }
   }
-
-  // async function submit(values) {
-  //   try {
-  //     setIsSubmitted(true);
-  //     setFeedBack("");
-  //     console.log(values);
-  //     const response = await fetch("http://localhost:8000/api/users/register", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(values),
-  //     });
-  //     if (response.ok) {
-  //       const newUser = await response.json();
-  //       // console.log("newUser", newUser);
-  //       if (newUser.message) {
-  //         setFeedBack("Email déjà existant");
-  //       } else {
-  //         setFeedBackGood(newUser.messageGood);
-  //         reset(defaultValues);
-  //         setTimeout(() => {
-  //           navigate("/Login");
-  //         }, 3000);
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //     setIsSubmitted(false);
-  //   }
-  // }
 
   return (
     <section className={styles.top}>
@@ -157,19 +124,34 @@ function Register() {
           <div>
             <div className={`df aic mt20 ${styles.checkbox}`}>
               <label className={styles.labelCheckbox} htmlFor="acceptedTerms">
-                Accepter les <Link to="/Conditions"><span className="fweight6" >conditions générales</span></Link>
+                Accepter les{" "}
+                <Link to="/Conditions">
+                  <span className="fweight6">conditions générales</span>
+                </Link>
               </label>
-              <input className={styles.inputCheckbox} type="checkbox" id="acceptedTerms" {...register("acceptedTerms")} />
+              <input
+                className={styles.inputCheckbox}
+                type="checkbox"
+                id="acceptedTerms"
+                {...register("acceptedTerms")}
+              />
             </div>
             {errors?.acceptedTerms && (
-              <p className={`${styles.feedback}`}>Vous devez accepter les conditions générales</p>
+              <p className={`${styles.feedback}`}>
+                Vous devez accepter les conditions générales
+              </p>
             )}
           </div>
-          {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
-          {feedbackGood && (
-            <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+          {feedBackGood && (
+            <p className={`${styles.feedbackGood}`}>{feedBackGood}</p>
           )}
-          <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`} disabled={isSubmitted}>
+          {errors?.generic && (
+            <p className={`${styles.feedback}`}>{errors.generic.message}</p>
+          )}
+          <button
+            className={`btn btn-primary mt3pc mb3pc ${styles.button}`}
+            disabled={isSubmitting}
+          >
             S'inscrire
           </button>
         </form>
