@@ -1,22 +1,22 @@
 import Navbar from "../../assets/components/Navbar/Navbar";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
 
 
 function Header() {
-  const [showButton, setShowButton] = useState(false);
+  // const [showButton, setShowButton] = useState(false);
   const { user, logout } = useContext(AuthContext);
-  const [showMenu, setShowMenu] = useState(false);
+ 
 
-const viewMenu = () => {
-  if (showMenu) {
-    setShowMenu(false)
-  }
-  setShowButton(!showButton)
-}
+// const viewMenu = () => {
+//   if (showMenu) {
+//     setShowMenu(false)
+//   }
+//   setShowButton(!showButton)
+// }
 
   return (
     <header>
@@ -30,7 +30,7 @@ const viewMenu = () => {
             </NavLink>
           </div>
         </div>
-        <Navbar showButton= {showButton} setShowButton={setShowButton} setShowMenu={setShowMenu} showMenu={showMenu}/>
+        <Navbar />
         <div className={styles.register}>
           <ul>
             {user ? (
@@ -58,7 +58,7 @@ const viewMenu = () => {
             )}
           </ul>
         </div>
-        <i
+        {/* <i
           onClick={viewMenu}
           className={`fa-solid fa-circle-user ${styles.mobileNavbar}`}
         ></i>
@@ -90,7 +90,7 @@ const viewMenu = () => {
               )}
             </ul>
           </>
-        )}
+        )} */}
       </div>
     </header>
   );

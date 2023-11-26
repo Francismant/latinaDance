@@ -1,14 +1,15 @@
+@use"./mixin" as mixin;
 // .textFamilyHeader {
 //     font-family: var(--font-family);
 //     font-size: 2.5rem;
 // }
 
 .colorHeader {
-    background-color: var(--colorDom);
+  background-color: var(--colorDom);
 }
 
 .colorFooter {
-    background-color: var(--colorFooter);
+  background-color: var(--colorFooter);
 }
 
 // .textFamilyContent {
@@ -31,34 +32,73 @@
 // }
 
 .btn {
-    padding: 5px 15px;
-    border-radius: 20px;
-    cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s opacity;
+
+  &:hover {
     transition: 0.2s opacity;
-    &:hover {
-      transition: 0.2s opacity;
-      opacity: 0.8;
-    }
-    &-primary {
-      background-color: var(--colorFooter);
-      color: white;
-      border: 2px solid var(--colorFooter);
-    }
-    &-primary-reverse {
-      background-color: white;
-      color: var(--colorFooter);
-      border: 2px solid var(--colorFooter);
-    }
+    opacity: 0.8;
   }
 
-  .card {
-    border-radius: 20px;
-    background-color: hsla(0, 0%, 100%, 0.90);
+  &-primary {
+    background-color: var(--colorFooter);
+    color: white;
+    border: 2px solid var(--colorFooter);
   }
 
-  .form-error {
-    margin: 0;
-    color: var(--error);
-    font-weight: 500;
-    font-size: 12px;
+  &-primary-reverse {
+    background-color: white;
+    color: var(--colorFooter);
+    border: 2px solid var(--colorFooter);
+  }
+}
+
+.card {
+  border-radius: 20px;
+  background-color: hsla(0, 0%, 100%, 0.90);
+}
+
+.form-error {
+  margin: 0;
+  color: var(--error);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.burger-menu {
+  display: none;
+  @include mixin.menuBurger {
+      display: block;
+      margin-right: 20px;
+      width: 30px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: 0.4s;
+      
+      .burger-bar {
+        width: 30px;
+        height: 3px;
+        background-color: var(--colorFooter);
+        transition: 0.4s;
+      }
+      
+      &.active {
+        .burger-bar:nth-child(1) {
+          transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .burger-bar:nth-child(2) {
+          opacity: 0;
+        }
+        
+        .burger-bar:nth-child(3) {
+          transform: rotate(45deg) translate(-5px, -6px);
+        }
+      }
+    }
   }
