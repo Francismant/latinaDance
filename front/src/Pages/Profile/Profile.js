@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../Forms/Register/Register.module.scss";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
 import AddNewEvent from "../Events/components/AddNewEvent";
@@ -185,6 +185,12 @@ function Profile() {
                             </button>
                         </form>
                     </div>
+                    <h4 className="tac mb3pc">
+                        Cliquez <span>
+                        <NavLink  className={styles.forgotPassword} to="/forgotPassword">ici</NavLink>
+                        </span> si vous souhaitez modifier votre mot de passe
+                    </h4>
+
                 </section>
             }
 

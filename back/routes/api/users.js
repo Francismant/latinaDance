@@ -2,6 +2,14 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
 const { key, keyPub } = require("../../keys");
+const nodemailer = require("nodemailer");
+const transporter = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: "mantfrancis@gmail.com",
+    pass: "wnha fbja pnpq bnvd",
+  },
+});
 
 const connection = require("../../database");
 
@@ -10,7 +18,7 @@ router.post("/register", (req, res) => {
   const verifyMailSql = "SELECT * FROM users WHERE email = ?";
   connection.query(verifyMailSql, [email], async (err, result) => {
     if (err) throw err;
-      try {
+    try {
       if (result.length === 0) {
         const hashedPassword = await bcrypt.hash(password, 10);
         const insertSql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
@@ -23,48 +31,16 @@ router.post("/register", (req, res) => {
             res.json(result);
           });
         });
-    } else {
-      res.status(400).json("Cet email est déja enregistré.")
-    }
-  } catch (error) {
+      } else {
+        res.status(400).json();
+      }
+    } catch (error) {
       console.error(error);
     }
   });
 });
 
 
-
-// router.post("/register", async (req, res) => {
-//   try {
-//     // console.log(req.body);
-//     const { name, email, password } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const sqlVerify = `SELECT * FROM users WHERE email=?`;
-//     connection.query(sqlVerify, [email], (err, result) => {
-//       if (err) throw err;
-//       if (result.length) {
-//         // console.log("EMAIL EXISTANT");
-//         let isEmail = { message: "Email existant" };
-//         res.send(isEmail);
-//       } else {
-//         const sqlInsert =
-//           "INSERT INTO users (name, email, password) VALUES (?,?,?)";
-//         const values = [name, email, hashedPassword];
-//         connection.query(sqlInsert, values, (err, result) => {
-//           if (err) throw err;
-//           let idUser = result.insertId;
-//           // console.log(idUser);
-//         });
-//         let isEmail = {
-//           messageGood: "Inscription réusie, vous allez être redirigé",
-//         };
-//         res.send(isEmail);
-//       }
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
 
 router.post("/login", (req, res) => {
   console.log(req.body);
@@ -100,42 +76,7 @@ router.get("/logout", (req, res) => {
   res.end();
 });
 
-// router.post("/login", (req, res) => {
-//   try {
-//     console.log("login", req.body);
-//     const { email, password } = req.body;
-//     const sql = `SELECT idUser, name, password FROM users WHERE email=?`;
-//     connection.query(sql, [email], async (err, result) => {
-//       console.log("result", result);
-//       if (err) throw err;
-//       if (!result.length) {
-//         // console.log("USER INCORRECT");
-//         let doesExist = { message: "Email et/ou mot de passe incorrect" };
-//         res.send(doesExist);
-//       } else {
-//         const dbPassword = result[0].password;
-//         const passwordMatch = await bcrypt.compare(password, dbPassword); //retourne un booléen
-//         if (!passwordMatch) {
-//           console.log("USER INCORRECT");
-//           let doesExist = { message: "Email et/ou mot de passe incorrect" };
-//           res.send(doesExist);
-//         } else {
-//           let idUser = result[0].idUser;
-//           const sqlData = `SELECT *
-//           FROM users
-//           WHERE idUser =?`;
-//           connection.query(sqlData, [idUser], (err, result) => {
-//             if (err) throw err;
-//             console.log("result2", result);
-//             res.send(JSON.stringify(result));
-//           });
-//         }
-//       }
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
+
 
 router.get("/userConnected", (req, res) => {
   const { token } = req.cookies;
@@ -178,5 +119,56 @@ router.delete("/deleteUser/:idUser", (req, res) => {
     return res.json({ message: "Compte supprimé avec succès" });
   });
 });
+
+router.get("/resetPassword/:email", (req, res) => {
+  console.log("mail", req.params);
+  const email = req.params.email;
+  const sqlSearchMail = "SELECT * FROM users WHERE email = ?";
+  connection.query(sqlSearchMail, [email], (err, result) => {
+    if (err) throw err;
+    if (result.length !== 0) {
+      const confirmLink = `http://localhost:3000/resetPassword?email=${email}`;
+      const mailOptions = {
+        from: "mantfrancis@gmail.com",
+        to: email,
+        subject: "Mot de passe oublié de lillelatinadance",
+        text: `Cliquez sur ce lien pour modifier votre mot de passe : ${confirmLink}`,
+      };
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          throw err;
+        } else {
+          res.end();
+        }
+      });
+    } else {
+      res.status(400).json();
+    }
+  });
+});
+
+
+router.patch("/changePassword", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const userExistSql = "SELECT * FROM users WHERE email = ?";
+    connection.query(userExistSql, [email], async (err, result) => {
+      if (err) throw err;
+      if (result.length === 0) {
+        return res.status(404).json({ error: "Utilisateur non trouvé." });
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const updatePasswordSql = "UPDATE users SET password = ? WHERE email = ?";
+      connection.query(updatePasswordSql, [hashedPassword, email], (err, result) => {
+        if (err) throw err;
+        res.json({ success: "Mot de passe mis à jour avec succès." });
+      });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Erreur serveur interne." });
+  }
+});
+
 
 module.exports = router;

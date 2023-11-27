@@ -20,7 +20,10 @@ function Register() {
     email: yup
       .string()
       .required("Le champ est obligatoire")
-      .email("Vous devez saisir un email valide"),
+      .matches(
+        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+        "Votre email n'est pas valide"
+      ),
     password: yup
       .string()
       .required("Le champ est obligatoire")
@@ -51,7 +54,6 @@ function Register() {
     handleSubmit,
     clearErrors,
     setError,
-
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues,

@@ -61,6 +61,9 @@ input {
     background-color: white;
   }
 }
+.buttonChangePassword {
+  padding: 0.5% 1.6%;
+}
 
 .checkbox {
   @include mixin.xs {
@@ -88,4 +91,8 @@ input {
 .buttonDelete {
   display: block;
   margin: 0 auto 3%;
+}
+
+.forgotPassword {
+  text-decoration: underline;
 }

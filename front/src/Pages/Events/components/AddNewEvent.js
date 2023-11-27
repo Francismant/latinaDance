@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AddNewEvent() {
-  const [feedBackGood, setfeedBackGood] = useState(false);
+  const [feedBackGood, setfeedBackGood] = useState("");
   const navigate = useNavigate();
 
   const defaultValues = {
@@ -94,7 +94,7 @@ export default function AddNewEvent() {
         if (response.ok) {
           const newEvent = await response.json();
           console.log(newEvent);
-          setfeedBackGood(true);
+          setfeedBackGood("L'événement a été créé avec succès!");
           setTimeout(() => {
             navigate("/events")
           }, 3000)
@@ -137,7 +137,7 @@ export default function AddNewEvent() {
         {errors.poster && <p className="form-error">{errors.poster.message}</p>}
       </div>
       <div className="df fc jcc aic">
-        {feedBackGood && <p className={`${styles.feedbackGood} mb20`}>L'événement a été créé avec succès!</p>}
+        {feedBackGood && <p className={`${styles.feedbackGood} mb20`}>{feedBackGood}</p>}
         <button disabled={isSubmitting} className="btn btn-primary">
           Sauvegarder
         </button>

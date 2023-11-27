@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../Register/Register.module.scss";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../context";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -28,20 +28,16 @@ function Login() {
     password: "",
   };
 
-  // const defaultValues = {
-  //   password: "",
-  //   email: "",
-  // };
-
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     setError,
     clearErrors,
   } = useForm({
     initialValues,
     resolver: yupResolver(validationSchema),
+    mode: "onChange",
   });
 
   // const {
@@ -97,12 +93,15 @@ function Login() {
     try {
       clearErrors();
       await login(values);
-      setFeedBackGood("Connexion réussie, vous allez être redirigé")
+      setFeedBackGood("Connexion réussie, vous allez être redirigé");
       setTimeout(() => {
-        navigate("/profile")
-      }, 3000)
+        navigate("/profile");
+      }, 3000);
     } catch (error) {
-      setError("generic", { type: "generic", message: error });
+      setError("generic", { type: "generic", message: "Email ou mot de passe incorrect" });
+    }
+    finally {
+      setIsSubmitted(false);
     }
   }
 
@@ -134,6 +133,12 @@ function Login() {
           {feedbackGood && (
             <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
           )}
+          {errors?.generic && (
+            <p className={`${styles.feedback}`}>{errors.generic.message}</p>
+          )}
+          <div className={`df fc mb10 ${styles.forgotPassword}`}>
+            <NavLink to="/forgotPassword">Mot de passe oublié ?</NavLink>
+          </div>
           <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`} disabled={isSubmitted}>
             Se connecter
           </button>

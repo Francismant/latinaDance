@@ -13,6 +13,8 @@ const Events = lazy(() => import("./Pages/Events/Events.js"));
 const Delete = lazy(() => import("./Pages/Delete/Delete.js"));
 const ConditionsGénérales = lazy(() => import("./assets/components/ConditionsGénérales/ConditionsGénérales.js"));
 const Mentions = lazy(() => import("./assets/components/Mentions/Mentions.js"));
+const ForgotPassword = lazy(() => import("./Pages/Security/ForgotPassword.js"));
+const ResetPassword = lazy(() => import("./Pages/Security/ResetPassword.js"));
 
 export const router = createBrowserRouter([
     {
@@ -63,7 +65,15 @@ export const router = createBrowserRouter([
             {
                 path: "mentions",
                 element: <Mentions />,
-            }
+            },
+            {
+                path: "forgotPassword",
+                element: <ForgotPassword />,
+            },
+            {
+                path: "resetPassword",
+                element: <ResetPassword />,
+            },
         ]
     }
 ]);

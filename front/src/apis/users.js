@@ -23,6 +23,33 @@ export async function createUser(newUser) {
   }
 }
 
+
+export async function createNewPassword(newPassword) {
+  try {
+    const { email, password } = newPassword;
+    const response = await fetch(`${API_USERS}/changePassword`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const backResponse = await response.json();
+
+    if (response.ok) {
+      return backResponse;
+    } else {
+      if (backResponse) {
+        throw new Error(backResponse.error || "Erreur inconnue");
+      }
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+
 export async function signin(values) {
   const response = await fetch(`${API_USERS}/login`, {
     method: "POST",
