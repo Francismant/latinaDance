@@ -1,7 +1,7 @@
 import styles from "./Navbar.module.scss";
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -32,22 +32,22 @@ function Navbar() {
       <ul className={`df fr aic jcsa ${styles.desktopNavbar}`}>
         <li className={styles.button2}>
           <span>
-            <Link to="/">Cours</Link>
+            <NavLink to="/">Cours</NavLink>
           </span>
         </li>
         <li className={styles.button2}>
           <span>
-            <Link to="/Infos">Infos</Link>
+            <NavLink to="/infos">Infos</NavLink>
           </span>
         </li>
         <li className={styles.button2}>
           <span>
-            <Link to="/Events">Evenements</Link>
+            <NavLink to="/events">Evenements</NavLink>
           </span>
         </li>
         <li className={styles.button2}>
           <span>
-            <Link to="/Contact">Contact</Link>
+            <NavLink to="/contact">Contact</NavLink>
           </span>
         </li>
       </ul>

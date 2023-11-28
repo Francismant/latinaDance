@@ -48,7 +48,7 @@ function Header() {
             ) : (
               <>
                 <button className={`mr20 btn btn-primary`}>
-                  <NavLink to="/Register">Inscription</NavLink>
+                  <NavLink to="/createAccount">Inscription</NavLink>
                 </button>
                 <button className={`btn btn-primary-reverse`}>
                   <i className="fas fa-right-to-bracket mr5"></i>

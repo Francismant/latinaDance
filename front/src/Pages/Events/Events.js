@@ -45,8 +45,8 @@ function Events() {
                             ))}
                     </div>
                 )}
-                <p>N’oubliez pas de vous connecter à votre  compte afin de pouvoir voter pour la danse que vous souhaitez voir mise en avant lors de 
-nos prochains stages (avant ke 15 du mois en cours)</p>
+                <p className={styles.vote}>N’oubliez pas de vous connecter à votre  compte afin de pouvoir voter pour la danse que vous souhaitez voir mise en avant lors de 
+nos prochains stages (avant le 20 du mois en cours)</p>
             </div>
         </section>
     );

@@ -17,13 +17,13 @@ function Register() {
       .required("Le champ est obligatoire")
       .min(2, "Le champ doit contenir au minimum 2 caractères")
       .max(12),
-    email: yup
-      .string()
-      .required("Le champ est obligatoire")
-      .matches(
-        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-        "Votre email n'est pas valide"
-      ),
+    // email: yup
+    //   .string()
+    //   .required("Le champ est obligatoire")
+    //   .matches(
+    //     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+    //     "Votre email n'est pas valide"
+    //   ),
     password: yup
       .string()
       .required("Le champ est obligatoire")
@@ -45,7 +45,7 @@ function Register() {
     name: "",
     password: "",
     confirmPassword: "",
-    email: "",
+    // email: "",
     acceptedTerms: false,
   };
 
@@ -62,16 +62,19 @@ function Register() {
   });
 
   async function submit(values) {
-    // console.log(values);
+    console.log(values);
     try {
       clearErrors();
-      await createUser(values);
-    setFeedBackGood("Inscription réussie, vous allez être redirigé");
-    setTimeout(() => {
-      navigate("/login");
-    }, 3000);
+      const { name, password } = values;
+      const email = new URLSearchParams(window.location.search).get("email");
+      console.log("email", email);
+      await createUser({ email, userValues: { name, password } });
+      setFeedBackGood("Inscription réussie, vous allez être redirigé");
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } catch (error) {
-      setError("generic", {type:"generic", message : "Email déja existant" })
+      setError("generic", { type: "generic", message: "Email déja existant" });
     }
   }
 
@@ -90,7 +93,7 @@ function Register() {
               <p className={`${styles.feedback}`}>{errors.name.message}</p>
             )}
           </div>
-          <div className="df fc mb10">
+          {/* <div className="df fc mb10">
             <label htmlFor="email" className="mb10">
               Email
             </label>
@@ -98,7 +101,7 @@ function Register() {
             {errors?.email && (
               <p className={`${styles.feedback}`}>{errors.email.message}</p>
             )}
-          </div>
+          </div> */}
           <div className="df fc mb10">
             <label htmlFor="password" className="mb10">
               Password
@@ -127,7 +130,7 @@ function Register() {
             <div className={`df aic mt20 ${styles.checkbox}`}>
               <label className={styles.labelCheckbox} htmlFor="acceptedTerms">
                 Accepter les{" "}
-                <Link to="/Conditions">
+                <Link to="/Conditions" target="_blank">
                   <span className="fweight6">conditions générales</span>
                 </Link>
               </label>

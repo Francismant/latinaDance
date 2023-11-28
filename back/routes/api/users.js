@@ -14,6 +14,7 @@ const transporter = nodemailer.createTransport({
 const connection = require("../../database");
 
 router.post("/register", (req, res) => {
+  console.log("register", req.body);
   const { email, password, name } = req.body;
   const verifyMailSql = "SELECT * FROM users WHERE email = ?";
   connection.query(verifyMailSql, [email], async (err, result) => {
@@ -148,11 +149,40 @@ router.get("/resetPassword/:email", (req, res) => {
 });
 
 
+router.get("/createAccount/:email", (req, res) => {
+  const email = req.params.email;
+  console.log("mail", email);
+  const sqlSearchMail = "SELECT * FROM users WHERE email = ?";
+  connection.query(sqlSearchMail, [email], (err, result) => {
+    if (err) throw err;
+    if (result.length === 0) {
+      const confirmLink = `http://localhost:3000/register?email=${email}`;
+      const mailOptions = {
+        from: "mantfrancis@gmail.com",
+        to: email,
+        subject: "création de compte sur le site lillelatinadance",
+        text: `Cliquez sur ce lien pour pouvoir créer votre compte : ${confirmLink}`,
+      };
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          throw err;
+        } else {
+          res.end();
+        }
+      });
+    } else {
+      res.status(400).json();
+    }
+  });
+});
+
+
 router.patch("/changePassword", async (req, res) => {
+  console.log("changePassword", req.body);
   try {
     const { email, password } = req.body;
-    const userExistSql = "SELECT * FROM users WHERE email = ?";
-    connection.query(userExistSql, [email], async (err, result) => {
+    const sqlUserExist = "SELECT * FROM users WHERE email = ?";
+    connection.query(sqlUserExist, [email], async (err, result) => {
       if (err) throw err;
       if (result.length === 0) {
         return res.status(404).json({ error: "Utilisateur non trouvé." });

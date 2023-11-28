@@ -43,10 +43,12 @@ function ResetPassword() {
     });
 
     async function submit(values) {
+        console.log(values);
         try {
             clearErrors();
             const { password } = values;
             const email = new URLSearchParams(window.location.search).get("email");
+            console.log("email", email);
             await createNewPassword({ email, password });
             setFeedBackGood("Mot de passe modifié, vous allez être redirigé");
             setTimeout(() => {

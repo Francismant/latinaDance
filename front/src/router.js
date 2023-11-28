@@ -15,6 +15,7 @@ const ConditionsGénérales = lazy(() => import("./assets/components/ConditionsG
 const Mentions = lazy(() => import("./assets/components/Mentions/Mentions.js"));
 const ForgotPassword = lazy(() => import("./Pages/Security/ForgotPassword.js"));
 const ResetPassword = lazy(() => import("./Pages/Security/ResetPassword.js"));
+const CreateAccount = lazy(() => import("./Pages/Security/CreateAccount.js"));
 
 export const router = createBrowserRouter([
     {
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
             {
                 path: "resetPassword",
                 element: <ResetPassword />,
+            },
+            {
+                path: "createAccount",
+                element: <CreateAccount />,
             },
         ]
     }

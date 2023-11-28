@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../Register/Register.module.scss";
 import { useContext } from "react";
 import { AuthContext } from "../../../context";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -137,7 +137,7 @@ function Login() {
             <p className={`${styles.feedback}`}>{errors.generic.message}</p>
           )}
           <div className={`df fc mb10 ${styles.forgotPassword}`}>
-            <NavLink to="/forgotPassword">Mot de passe oublié ?</NavLink>
+            <Link to="/forgotPassword">Mot de passe oublié ?</Link>
           </div>
           <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`} disabled={isSubmitted}>
             Se connecter

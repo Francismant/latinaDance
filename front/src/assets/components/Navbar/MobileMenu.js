@@ -1,5 +1,5 @@
 import styles from "./MobileMenu.module.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../context";
 
@@ -22,37 +22,37 @@ export default function MobileMenu({ setShowMenu }) {
                     <ul className={`card p20 ${styles.menuContainer}`}>
                         <li>
                             <span onClick={handleMenuItemClick}>
-                                <Link to="/">Cours</Link>
+                                <NavLink to="/">Cours</NavLink>
                             </span>
                         </li>
                         <li>
                             <span onClick={handleMenuItemClick}>
-                                <Link to="/Infos">Infos</Link>
+                                <NavLink to="/infos">Infos</NavLink>
                             </span>
                         </li>
                         <li>
                             <span onClick={handleMenuItemClick}>
-                                <Link to="/Events">Evenements</Link>
+                                <NavLink to="/events">Evenements</NavLink>
                             </span>
                         </li>
                         <li>
                             <span onClick={handleMenuItemClick}>
-                                <Link to="/Contact">Contact</Link>
+                                <NavLink to="/contact">Contact</NavLink>
                             </span>
                         </li>
                         <li>
                             <span onClick={handleLogoutClick}>
-                                <Link to="/">Déconnexion</Link>
+                                <NavLink to="/">Déconnexion</NavLink>
                             </span>
                         </li>
                         <li>
                             <span onClick={handleMenuItemClick}>
-                                <Link to="/profile">Profil</Link>
+                                <NavLink to="/profile">Profil</NavLink>
                             </span>
                         </li>
                         <li>
                             <span onClick={handleMenuItemClick}>
-                                <Link to="/delete">Suppression</Link>
+                                <NavLink to="/delete">Suppression</NavLink>
                             </span>
                         </li>
                     </ul>
@@ -62,32 +62,32 @@ export default function MobileMenu({ setShowMenu }) {
                 <ul className={`card p20 ${styles.menuContainer}`}>
                     <li>
                         <span onClick={handleMenuItemClick}>
-                            <Link to="/">Cours</Link>
+                            <NavLink to="/">Cours</NavLink>
                         </span>
                     </li>
                     <li>
                         <span onClick={handleMenuItemClick}>
-                            <Link to="/Infos">Infos</Link>
+                            <NavLink to="/infos">Infos</NavLink>
                         </span>
                     </li>
                     <li>
                         <span onClick={handleMenuItemClick}>
-                            <Link to="/Events">Evenements</Link>
+                            <NavLink to="/events">Evenements</NavLink>
                         </span>
                     </li>
                     <li>
                         <span onClick={handleMenuItemClick}>
-                            <Link to="/Contact">Contact</Link>
+                            <NavLink to="/contact">Contact</NavLink>
                         </span>
                     </li>
                     <li>
                         <span onClick={handleMenuItemClick}>
-                            <Link to="/register">Inscription</Link>
+                            <NavLink to="/createAccount">Inscription</NavLink>
                         </span>
                     </li>
                     <li>
                         <span onClick={handleMenuItemClick}>
-                            <Link to="/Login">Connexion</Link>
+                            <NavLink to="/Login">Connexion</NavLink>
                         </span>
                     </li>
                 </ul>

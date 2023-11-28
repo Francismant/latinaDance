@@ -1,16 +1,22 @@
 const API_USERS = "/api/users";
 
+
 export async function createUser(newUser) {
+  console.log("CreateUser", newUser);
   try {
+    const { email, userValues } = newUser;
+    const { name, password } = userValues;
+
     const response = await fetch(`${API_USERS}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify({ email, name, password }),
     });
+
     const backResponse = await response.json();
-    console.log(backResponse);
+
     if (response.ok) {
       return backResponse;
     } else {
@@ -24,7 +30,9 @@ export async function createUser(newUser) {
 }
 
 
+
 export async function createNewPassword(newPassword) {
+  console.log("createNewPassword", newPassword);
   try {
     const { email, password } = newPassword;
     const response = await fetch(`${API_USERS}/changePassword`, {
@@ -35,7 +43,6 @@ export async function createNewPassword(newPassword) {
       body: JSON.stringify({ email, password }),
     });
     const backResponse = await response.json();
-
     if (response.ok) {
       return backResponse;
     } else {

@@ -2,6 +2,7 @@
 
 header {
     background-color: #db4b4b50;
+    padding: 0 1%;
     @include mixin.xs {
         position: fixed;
         top: 0;
@@ -16,8 +17,8 @@ header {
     display: flex;
     justify-content: center;
     gap: 19%;
-    @include mixin.lg {
-        justify-content: space-around;
+    @include mixin.xl {
+        justify-content: space-between;
         gap: 2%;
     }
 
