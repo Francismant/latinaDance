@@ -5,6 +5,8 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
 import AddNewEvent from "../Events/components/AddNewEvent";
+// import * as yup from "yup";
+// import { yupResolver } from "@hookform/resolvers/yup";
 
 function Profile() {
     const { user } = useContext(AuthContext);
@@ -13,8 +15,19 @@ function Profile() {
     const [feedback, setFeedBack] = useState("");
     const [feedbackGood, setFeedBackGood] = useState("");
     const [isSubmitted, setIsSubmitted] = useState(false);
+    // const [changeInfosCours, setChangeInfosCours] = useState("");
+    // const [changeFeedbackGood, setChangeFeedbackGood] = useState("");
+    // const [isSubmitting, setIsSumitting] = useState(false);
 
     const navigate = useNavigate();
+
+    // const resetValues = {
+    //     text: "",
+    // };
+
+    // const yupSchema = yup.object({
+    //     text: yup.string().required("Ce champ doit être renseigné"),
+    // });
 
     useEffect(() => {
         async function getDances() {
@@ -64,7 +77,9 @@ function Profile() {
         formState: { errors },
     } = useForm({
         defaultValues,
+        // resetValues,
         mode: "onChange",
+        // resolver: yupResolver(yupSchema),
     });
 
 
@@ -84,6 +99,9 @@ function Profile() {
             if (response.ok) {
                 const voteUser = await response.json();
                 setFeedBackGood(voteUser.messageGood);
+                // setIsSubmitted(true);  
+                // Désactivez le bouton après la soumission
+                // reset();  // Ne réinitialisez pas avec des valeurs par défaut non définies
                 reset(defaultValues);
                 setTimeout(() => {
                     navigate("/");
@@ -122,6 +140,27 @@ function Profile() {
         }
     }
 
+    // async function changeInfos(values) {
+    //     console.log("changeInfos", values);
+    //     try {
+    //         let dataChange = { values };
+    //         const response = await fetch("http://localhost:8000/api/infos/changeInfos", {
+    //             method: "PATCH",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(dataChange),
+    //         });
+    //         if (response.ok) {
+    //             await response.json();
+    //             setChangeInfosCours(changeInfosCours);
+    //             setChangeFeedbackGood("c'est tout bon");
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
     return (
         <main className={styles.top}>
             <div className={styles.backgroundTop}></div>
@@ -148,6 +187,20 @@ function Profile() {
                         <h2 className="mb20 mt3pc">Ajouter un évènement</h2>
                         <AddNewEvent />
                     </div>
+                    {/* <div>
+                        <h3 className="tac mt3pc">Si vous souhaitez modifier le texte concernant les cours, entrez votre texte ci-dessous et cliquez sur Soumettre</h3>
+                        <form className="mb3pc" onSubmit={handleSubmit(changeInfos)}>
+                            <div className="df fc mb20 jcc aic gap1">
+                                <label htmlFor="text">message à modifier</label>
+                                <input {...register("text")} type="text" id="text" />
+                                {errors.text && <p className="form-error">{errors.text.message}</p>}
+                            {changeFeedbackGood && <p className={`${styles.feedbackGood} mb20 tac`}>{changeFeedbackGood}</p>}
+                            <button disabled={isSubmitting} className="btn btn-primary">
+                                Sauvegarder
+                            </button>
+                            </div>
+                        </form>
+                    </div> */}
                 </>
             }
             {user && user.admin === 0 &&
@@ -187,7 +240,7 @@ function Profile() {
                     </div>
                     <h4 className="tac mb3pc">
                         Cliquez <span>
-                        <NavLink  className={styles.forgotPassword} to="/forgotPassword">ici</NavLink>
+                            <NavLink className={styles.forgotPassword} to="/forgotPassword">ici</NavLink>
                         </span> si vous souhaitez modifier votre mot de passe
                     </h4>
 
