@@ -13,10 +13,9 @@ router.get("/getInfos", (req, res) => {
 
 router.patch('/changeInfos', (req, res) => {
     console.log("changeInfos", req.body);
-    let infoChanged = req.body.values.text;
-    console.log("infoChanged", infoChanged);
-    const changeInfosCoursSql = "UPDATE infos SET text = ?";
-    connection.query(changeInfosCoursSql, [infoChanged], (err, result) => {
+    let {infos} = req.body;
+    const changeInfosCoursSql = "UPDATE infos SET text = ? WHERE idInfos = 0";
+    connection.query(changeInfosCoursSql, [infos], (err, result) => {
         console.log("changeInfos", result);
         if (err) {
             console.error(err);

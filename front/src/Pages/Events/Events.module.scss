@@ -55,6 +55,8 @@
 }
 
 p.vote {
+    text-align: center;
+    margin: 3% 0;
     @include mixin.menuBurger {
         font-size: 0.8rem;
         text-align: center;

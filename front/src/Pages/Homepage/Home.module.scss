@@ -43,3 +43,13 @@
         margin-left: 20%;
     }
 }
+
+.feedback {
+  margin-top: 3%;
+  color: red;
+  font-size: 18px;
+  font-weight: 600;
+  @include mixin.xs {
+    font-size: 10px;
+  }
+}

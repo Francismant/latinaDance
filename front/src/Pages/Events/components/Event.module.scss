@@ -1,63 +1,71 @@
 @use "../../../assets/styles/mixin" as mixin;
 
 .eventContainer {
-    position: relative;
-    border-radius: 20px;
-    height: 750px;
-    width: 80%;
-    border: solid red 2px;
-    >i {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 25px;
-        z-index: 1;
-        color: var(--error);
-        
-        &:hover {
-            color: black;
-        }
-        
-    }
-    @include mixin.xs {
-        height: 500px;
-        width: 90%;
-    }
-    
-    .imgContainer {
-        overflow: hidden;
-        padding: 1rem;
-        img {
-            margin: 0 auto;
-        }
-    }
+  position: relative;
+  border-radius: 20px;
+  height: 650px;
+  width: 75%;
+  border: solid red 2px;
+  > i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    z-index: 1;
+    color: var(--error);
 
-    .title {
-        font-size: 18px;
-        @include mixin.xs {
-            font-size: 12px;
-        }
+    &:hover {
+      color: black;
     }
+  }
+  @include mixin.xs {
+    height: 470px;
+    width: 90%;
+  }
 
+  .imgContainer {
+    overflow: hidden;
+    padding: 3rem 1rem 0 1rem;
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
     img {
-        border-radius: 20px;
+      margin: 0 auto;
+      width: 100%;
     }
+    @include mixin.menuBurger {
+      width: 250px;
+      height: 250px;
+    //   padding: 2rem 1rem 0 1rem;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    @include mixin.xs {
+      font-size: 12px;
+    }
+  }
+
+  img {
+    border-radius: 20px;
+  }
 }
 
 .form {
-    width: 100%;
-    max-width: 600px;
-  }
+  width: 100%;
+  max-width: 600px;
+}
 
-  .inputImg {
-    height: 70px;
+.inputImg {
+  height: 70px;
 }
 
 .feedbackGood {
-    color: green;
-    font-size: 18px;
-    font-weight: 600;
-    @include mixin.xs {
-      font-size: 10px;
-    }
+  color: green;
+  font-size: 18px;
+  font-weight: 600;
+  @include mixin.xs {
+    font-size: 10px;
   }
+}

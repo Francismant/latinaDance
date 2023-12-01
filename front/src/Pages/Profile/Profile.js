@@ -5,250 +5,216 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
 import AddNewEvent from "../Events/components/AddNewEvent";
-// import * as yup from "yup";
-// import { yupResolver } from "@hookform/resolvers/yup";
+import ChangeInfos from "./components/ChangeInfos";
 
 function Profile() {
-    const { user } = useContext(AuthContext);
-    const [allTheDances, setAllTheDances] = useState([]);
-    const [voteDance, setVoteDance] = useState([]);
-    const [feedback, setFeedBack] = useState("");
-    const [feedbackGood, setFeedBackGood] = useState("");
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    // const [changeInfosCours, setChangeInfosCours] = useState("");
-    // const [changeFeedbackGood, setChangeFeedbackGood] = useState("");
-    // const [isSubmitting, setIsSumitting] = useState(false);
+  const { user } = useContext(AuthContext);
+  const [allTheDances, setAllTheDances] = useState([]);
+  const [voteDance, setVoteDance] = useState([]);
+  const [feedback, setFeedBack] = useState("");
+  const [feedbackGood, setFeedBackGood] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const navigate = useNavigate();
+  console.log("user", user);
 
-    // const resetValues = {
-    //     text: "",
-    // };
+  const navigate = useNavigate();
 
-    // const yupSchema = yup.object({
-    //     text: yup.string().required("Ce champ doit être renseigné"),
-    // });
-
-    useEffect(() => {
-        async function getDances() {
-            try {
-                const response = await fetch(
-                    "http://localhost:8000/api/dances/getDances"
-                );
-                if (response.ok) {
-                    const dances = await response.json();
-                    setAllTheDances(dances);
-                    console.log("dances", dances);
-                }
-            } catch (error) {
-                console.error(error);
-            }
+  useEffect(() => {
+    async function getDances() {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/dances/getDances"
+        );
+        if (response.ok) {
+          const dances = await response.json();
+          setAllTheDances(dances);
+          console.log("dances", dances);
         }
-        getDances();
-    }, []);
-
-    useEffect(() => {
-        async function CountOfDances() {
-            try {
-                const response = await fetch(
-                    "http://localhost:8000/api/dances/totalVote"
-                );
-                if (response.ok) {
-                    const dancingVote = await response.json();
-                    setVoteDance(dancingVote);
-                    console.log("vote", dancingVote);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        CountOfDances();
-    }, []);
-
-    const defaultValues = {
-        dances: [],
-    };
-
-    const {
-        register,
-        handleSubmit,
-        reset,
-        control,
-        formState: { errors },
-    } = useForm({
-        defaultValues,
-        // resetValues,
-        mode: "onChange",
-        // resolver: yupResolver(yupSchema),
-    });
-
-
-    async function submit(values) {
-        console.log("premierevalue", values);
-        try {
-            setFeedBack("");
-            let data = { values, id: user.idUser };
-            console.log("values_vote", data);
-            const response = await fetch("http://localhost:8000/api/profile/vote", {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
-            if (response.ok) {
-                const voteUser = await response.json();
-                setFeedBackGood(voteUser.messageGood);
-                // setIsSubmitted(true);  
-                // Désactivez le bouton après la soumission
-                // reset();  // Ne réinitialisez pas avec des valeurs par défaut non définies
-                reset(defaultValues);
-                setTimeout(() => {
-                    navigate("/");
-                }, 3000);
-            }
-        } catch (error) {
-            console.error(error);
-        }
+      } catch (error) {
+        console.error(error);
+      }
     }
+    getDances();
+  }, []);
 
-    function getDanceName(idDance) {
-        switch (idDance) {
-            case 1:
-                return "Salsa";
-            case 2:
-                return "Bachata";
-            case 3:
-                return "Kizomba";
-            default:
-                return "Inconnu";
+  useEffect(() => {
+    async function CountOfDances() {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/dances/totalVote"
+        );
+        if (response.ok) {
+          const dancingVote = await response.json();
+          setVoteDance(dancingVote);
+          console.log("vote", dancingVote);
         }
+      } catch (error) {
+        console.error(error);
+      }
     }
+    CountOfDances();
+  }, []);
 
-    async function resetVotes() {
-        try {
-            const response = await fetch("http://localhost:8000/api/profile/resetVotes", {
-                method: "PATCH",
-            });
-            if (response.ok) {
-                const resetResponse = await response.json();
-                setVoteDance(null);
-                setFeedBackGood(resetResponse.message);
-            }
-        } catch (error) {
-            console.error(error);
+  const defaultValues = {
+    dances: [],
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues,
+    // resetValues,
+    mode: "onChange",
+    // resolver: yupResolver(yupSchema),
+  });
+
+  async function submit(values) {
+    console.log("premierevalue", values);
+    try {
+      setFeedBack("");
+      let data = { values, id: user.idUser };
+      console.log("values_vote", data);
+      const response = await fetch("http://localhost:8000/api/profile/vote", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        const voteUser = await response.json();
+        setFeedBackGood(voteUser.messageGood);
+        // setIsSubmitted(true);
+        // Désactivez le bouton après la soumission
+        // reset();  // Ne réinitialisez pas avec des valeurs par défaut non définies
+        reset(defaultValues);
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function getDanceName(idDance) {
+    switch (idDance) {
+      case 1:
+        return "Salsa";
+      case 2:
+        return "Bachata";
+      case 3:
+        return "Kizomba";
+      default:
+        return "Inconnu";
+    }
+  }
+
+  async function resetVotes() {
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/profile/resetVotes",
+        {
+          method: "PATCH",
         }
+      );
+      if (response.ok) {
+        const resetResponse = await response.json();
+        setVoteDance(null);
+        setFeedBackGood(resetResponse.message);
+      }
+    } catch (error) {
+      console.error(error);
     }
+  }
 
-    // async function changeInfos(values) {
-    //     console.log("changeInfos", values);
-    //     try {
-    //         let dataChange = { values };
-    //         const response = await fetch("http://localhost:8000/api/infos/changeInfos", {
-    //             method: "PATCH",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(dataChange),
-    //         });
-    //         if (response.ok) {
-    //             await response.json();
-    //             setChangeInfosCours(changeInfosCours);
-    //             setChangeFeedbackGood("c'est tout bon");
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
-    return (
-        <main className={styles.top}>
-            <div className={styles.backgroundTop}></div>
-            <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
-            {user && user.admin === 1 &&
-                <>
-                    <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
-                        <p>Résultats des votes pour le mois en cours</p>
-                        <ul>
-                            {voteDance && voteDance.map((dancingVote) => (
-                                <li key={dancingVote.idDance}>
-                                    Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes: {dancingVote.CountOfDances}
-                                </li>
-                            ))}
-                        </ul>
-                        {feedbackGood && (
-                            <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
-                        )}
-                        <button onClick={resetVotes} className="btn btn-primary">
-                            Réinitialiser les votes
-                        </button>
-                    </section>
-                    <div className="df  fc aic">
-                        <h2 className="mb20 mt3pc">Ajouter un évènement</h2>
-                        <AddNewEvent />
-                    </div>
-                    {/* <div>
-                        <h3 className="tac mt3pc">Si vous souhaitez modifier le texte concernant les cours, entrez votre texte ci-dessous et cliquez sur Soumettre</h3>
-                        <form className="mb3pc" onSubmit={handleSubmit(changeInfos)}>
-                            <div className="df fc mb20 jcc aic gap1">
-                                <label htmlFor="text">message à modifier</label>
-                                <input {...register("text")} type="text" id="text" />
-                                {errors.text && <p className="form-error">{errors.text.message}</p>}
-                            {changeFeedbackGood && <p className={`${styles.feedbackGood} mb20 tac`}>{changeFeedbackGood}</p>}
-                            <button disabled={isSubmitting} className="btn btn-primary">
-                                Sauvegarder
-                            </button>
-                            </div>
-                        </form>
-                    </div> */}
-                </>
-            }
-            {user && user.admin === 0 &&
-                <section>
-                    <h4 className="tac">
-                        Quelle danse souhaiteriez vous voir mise en avant lors de nos prochains
-                        stages ?
-                    </h4>
-                    <p className="tac fsize08">(Les votes ne sont plus comptabilisés après le 20 du mois en cours)</p>
-                    <div className="flex-fill df jcc aic mb3pc mt3pc">
-                        <form onSubmit={handleSubmit(submit)}>
-                            <div className="df fc mb10">
-                                <label className="mb10 df jcc aic gap1">
-                                    <span className="flex-fill">Dances</span>
-                                </label>
-                                <ul>
-                                    <li className="mb10">
-                                        <select className="mr10" {...register(`dances`)}>
-                                            <option value="" disabled>Faites votre choix</option>
-                                            {allTheDances.map((dance) => (
-                                                <option key={dance.idDance} value={dance.idDance}>
-                                                    {dance.nameDance}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </li>
-                                </ul>
-                            </div>
-                            {/* {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>} */}
-                            {feedbackGood && (
-                                <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
-                            )}
-                            <button className="btn btn-primary" disabled={isSubmitted}>
-                                Submit
-                            </button>
-                        </form>
-                    </div>
-                    <h4 className="tac mb3pc">
-                        Cliquez <span>
-                            <NavLink className={styles.forgotPassword} to="/forgotPassword">ici</NavLink>
-                        </span> si vous souhaitez modifier votre mot de passe
-                    </h4>
-
-                </section>
-            }
-
-        </main>
-    );
+  return (
+    <main className={styles.top}>
+      <div className={styles.backgroundTop}></div>
+      <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
+      {user && user.admin === 1 && (
+        <>
+          <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
+            <p>Résultats des votes pour le mois en cours</p>
+            <ul>
+              {voteDance &&
+                voteDance.map((dancingVote) => (
+                  <li key={dancingVote.idDance}>
+                    Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes:{" "}
+                    {dancingVote.CountOfDances}
+                  </li>
+                ))}
+            </ul>
+            {feedbackGood && (
+              <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+            )}
+            <button onClick={resetVotes} className="btn btn-primary">
+              Réinitialiser les votes
+            </button>
+          </section>
+          <div className="df  fc aic">
+            <h2 className="mb20 mt3pc">Ajouter un évènement</h2>
+            <AddNewEvent />
+          </div>
+          <ChangeInfos />
+        </>
+      )}
+      {user && user.admin === 0 && (
+        <section>
+          <h4 className="tac">
+            Quelle danse souhaiteriez vous voir mise en avant lors de nos
+            prochains stages ?
+          </h4>
+          <p className="tac fsize08">
+            (Les votes ne sont plus comptabilisés après le 20 du mois en cours)
+          </p>
+          <div className="flex-fill df jcc aic mb3pc mt3pc">
+            <form onSubmit={handleSubmit(submit)}>
+              <div className="df fc mb10">
+                <label className="mb10 df jcc aic gap1">
+                  <span className="flex-fill">Dances</span>
+                </label>
+                <ul>
+                  <li className="mb10">
+                    <select className="mr10" {...register(`dances`)}>
+                      <option value="" disabled>
+                        Faites votre choix
+                      </option>
+                      {allTheDances.map((dance) => (
+                        <option key={dance.idDance} value={dance.idDance}>
+                          {dance.nameDance}
+                        </option>
+                      ))}
+                    </select>
+                  </li>
+                </ul>
+              </div>
+              {/* {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>} */}
+              {feedbackGood && (
+                <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+              )}
+              <button className="btn btn-primary" disabled={isSubmitted}>
+                Submit
+              </button>
+            </form>
+          </div>
+          <h4 className="tac mb3pc">
+            Cliquez{" "}
+            <span>
+              <NavLink className={styles.forgotPassword} to="/forgotPassword">
+                ici
+              </NavLink>
+            </span>{" "}
+            si vous souhaitez modifier votre mot de passe
+          </h4>
+        </section>
+      )}
+    </main>
+  );
 }
 
 export default Profile;

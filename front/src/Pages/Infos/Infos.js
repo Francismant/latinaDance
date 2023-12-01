@@ -11,30 +11,10 @@ import Planning3 from "../../assets/components/Plannings/Planning3";
 import Planning4 from "../../assets/components/Plannings/Planning4";
 import CarteTarifCouple from "../../assets/components/Cards/CarteTarifCouple";
 import CarteTarifSolo from "../../assets/components/Cards/CarteTarifSolo";
-import { useEffect, useState } from "react";
+
 
 
 function Infos() {
-
-  const [infos, setInfos] = useState([]);
-
-  useEffect(() => {
-    async function getInfosCours() {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/api/infos/getInfos"
-        );
-        if (response.ok) {
-          const infos = await response.json();
-          console.log("infos", infos);
-          setInfos(infos);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getInfosCours();
-  }, []);
 
   return (
     <>
@@ -61,10 +41,6 @@ function Infos() {
         </section>
         <section className="mb3pc">
           <h2 id="planning">Les Plannings</h2>
-          <div>
-            {/* Afficher les informations dans votre JSX */}
-            {infos.length > 0 && <h3 className="tac mb3pc">{infos[0].text}</h3>}
-          </div>
           <div className="df fc gap5">
             <div className="df jcsa fw">
               <Planning />

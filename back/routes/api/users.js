@@ -22,16 +22,22 @@ router.post("/register", (req, res) => {
     try {
       if (result.length === 0) {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const insertSql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-        connection.query(insertSql, [name, email, hashedPassword], (err, result) => {
-          if (err) throw err;
-          let idUser = result.insertId;
-          const sqlSelect = "SELECT idUser, name, email FROM users WHERE idUser = ?";
-          connection.query(sqlSelect, [idUser], (err, result) => {
+        const insertSql =
+          "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        connection.query(
+          insertSql,
+          [name, email, hashedPassword],
+          (err, result) => {
             if (err) throw err;
-            res.json(result);
-          });
-        });
+            let idUser = result.insertId;
+            const sqlSelect =
+              "SELECT idUser, name, email FROM users WHERE idUser = ?";
+            connection.query(sqlSelect, [idUser], (err, result) => {
+              if (err) throw err;
+              res.json(result);
+            });
+          }
+        );
       } else {
         res.status(400).json();
       }
@@ -40,8 +46,6 @@ router.post("/register", (req, res) => {
     }
   });
 });
-
-
 
 router.post("/login", (req, res) => {
   console.log(req.body);
@@ -77,8 +81,6 @@ router.get("/logout", (req, res) => {
   res.end();
 });
 
-
-
 router.get("/userConnected", (req, res) => {
   const { token } = req.cookies;
   if (token) {
@@ -87,7 +89,7 @@ router.get("/userConnected", (req, res) => {
         algorithms: "RS256",
       });
       const sqlSelect =
-        "SELECT idUser, name, email FROM users WHERE idUser  =?";
+        "SELECT idUser, name, email,admin FROM users WHERE idUser  =?";
       connection.query(sqlSelect, [decodedToken.sub], (err, result) => {
         if (err) throw err;
         const connectedUser = result[0];
@@ -148,7 +150,6 @@ router.get("/resetPassword/:email", (req, res) => {
   });
 });
 
-
 router.get("/createAccount/:email", (req, res) => {
   const email = req.params.email;
   console.log("mail", email);
@@ -176,7 +177,6 @@ router.get("/createAccount/:email", (req, res) => {
   });
 });
 
-
 router.patch("/changePassword", async (req, res) => {
   console.log("changePassword", req.body);
   try {
@@ -189,16 +189,19 @@ router.patch("/changePassword", async (req, res) => {
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const updatePasswordSql = "UPDATE users SET password = ? WHERE email = ?";
-      connection.query(updatePasswordSql, [hashedPassword, email], (err, result) => {
-        if (err) throw err;
-        res.json({ success: "Mot de passe mis à jour avec succès." });
-      });
+      connection.query(
+        updatePasswordSql,
+        [hashedPassword, email],
+        (err, result) => {
+          if (err) throw err;
+          res.json({ success: "Mot de passe mis à jour avec succès." });
+        }
+      );
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erreur serveur interne." });
   }
 });
-
 
 module.exports = router;
