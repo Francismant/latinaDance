@@ -63,3 +63,17 @@ p.vote {
         margin-top: 3%;
     }
 }
+
+.warning {
+    background-color: #f0f0f0;
+
+    .feedbackWarning {
+        color: var(--colorDom);
+        font-size: 25px;
+        font-weight: 600;
+
+        @include mixin.xs {
+            font-size: 18px;
+        }
+    }
+}

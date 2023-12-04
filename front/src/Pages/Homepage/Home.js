@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import Carousel from "../../assets/components/Carousels/Carousel";
 import styles from "./Home.module.scss";
-import { useEffect, useState } from "react";
 import {
   tableauImageCarousel,
   tableauImageCarouselParticulier,
@@ -13,28 +13,23 @@ import CarouselParticulier from "../../assets/components/Carousels/CarouselParti
 // import ButtonList from "../assets/components/ButtonList";
 import { salsaData, bachataData, kizombaData } from "../../data/Data";
 import StylesDance from "../../assets/components/StylesDance";
+// import ScrollBanner from "./components/ScrollBanner";
 // import CookieConsent from "react-cookie-consent";
+// import { useContext } from "react";
+// import { AuthContext } from "../../context";
+import { getInfosCours } from "../../apis/infos";
 
 function Home() {
-
+  // const { infos } = useContext(AuthContext);
   const [infos, setInfos] = useState([]);
-
+  
   useEffect(() => {
-    async function getInfosCours() {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/api/infos/getInfos"
-        );
-        if (response.ok) {
-          const infos = await response.json();
-          console.log("infos", infos);
-          setInfos(infos);
-        }
-      } catch (error) {
-        console.error(error);
-      }
+    async function fetchData() {
+      const infosData = await getInfosCours();
+      setInfos(infosData);
     }
-    getInfosCours();
+
+    fetchData();
   }, []);
 
   return (
@@ -64,11 +59,16 @@ function Home() {
             </button> */}
         </div>
       </section>
-          {infos.length > 0 && <div> <h3 className={`${styles.feedback} tac mt3p mb3pc`}>{infos[0].text}</h3>
-        </div>
-          }
+      {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} tac mb3pc`}>{infos[0].text}</h3>
+      </div>
+      }
+
+      {/* {infos.length > 0 && <div>
+        <ScrollBanner message={infos[0].text} />
+      </div>
+      } */}
       <main className="center df fc gap5">
-        
+
         <section>
           <h2>Les Soirées SBK</h2>
           <div className={`df jcc aic fw gap2`}>

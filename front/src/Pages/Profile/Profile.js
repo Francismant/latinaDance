@@ -126,6 +126,7 @@ function Profile() {
         const resetResponse = await response.json();
         setVoteDance(null);
         setFeedBackGood(resetResponse.message);
+        setTimeout(() => { setFeedBackGood("") }, 3000)
       }
     } catch (error) {
       console.error(error);

@@ -54,7 +54,7 @@ function CreateAccount() {
         <section className={styles.top}>
             <div className={styles.backgroundTop}></div>
             <div className='flex-fill df fc jcc aic center'>
-                <h2 className='mt3pc'>Notez ci-dessous votre adresse mail afin de recevoir un lien pour créer votre compte</h2>
+                <h2 className='mt3pc'>Notez ci-dessous votre adresse mail afin de recevoir un lien pour pouvoir créer votre compte</h2>
                 <form onSubmit={handleSubmit(submit)}>
                     <div className="df fc mb20">
                         <label htmlFor="email" className="mb3pc">
@@ -72,7 +72,7 @@ function CreateAccount() {
                     {errors?.generic && (
                         <p className={`${styles.feedback}`}>{errors.generic.message}</p>
                     )}
-                    <button className="btn btn-primary">Submit</button>
+                    <button className="btn btn-primary">Envoyer</button>
                 </form>
             </div>
         </section>

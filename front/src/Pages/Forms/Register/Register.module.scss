@@ -7,7 +7,7 @@
   }
 }
 .feedback {
-  color: red;
+  color: var(--error);
   font-size: 18px;
   font-weight: 600;
   @include mixin.xs {
@@ -51,14 +51,14 @@ input {
   padding: 2% 5%;
   &:hover {
     color:var(--colorFooter);
-    background-color: white;
+    background-color: var(--colorBox);
   }
 }
 .buttonAdmin {
   padding: 0.5% 1%;
   &:hover {
     color:var(--colorFooter);
-    background-color: white;
+    background-color: var(--colorBox);
   }
 }
 .buttonChangePassword {

@@ -152,9 +152,9 @@
   }
 
   .ml100 {
-    margin-left: 70px;
+    margin-left: 180px;
     @include mixin.xs {
-      margin-left: 10px;
+      margin-left: 70px;
     }
   }
 

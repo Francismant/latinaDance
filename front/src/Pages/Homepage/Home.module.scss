@@ -5,6 +5,7 @@
   background-position: center;
   background-size: cover;
   height: 35vh;
+
   @include mixin.xs {
     height: 20vh;
   }
@@ -36,20 +37,25 @@
 }
 
 .headerTitle {
-    margin-left: 20px;
-    padding-top: 3%;
-    @include mixin.lg {
-        padding-top: 10%;
-        margin-left: 20%;
-    }
+  margin-left: 20px;
+  padding-top: 3%;
+
+  @include mixin.lg {
+    padding-top: 10%;
+    margin-left: 20%;
+  }
 }
 
-.feedback {
-  margin-top: 3%;
-  color: red;
-  font-size: 18px;
-  font-weight: 600;
-  @include mixin.xs {
-    font-size: 10px;
+.warning {
+  background-color: #f0f0f0;
+
+  .feedbackWarning {
+    color: var(--colorDom);
+    font-size: 25px;
+    font-weight: 600;
+
+    @include mixin.xs {
+      font-size: 18px;
+    }
   }
 }

@@ -5,6 +5,7 @@
     background-position: center;
     background-size: cover;
     height: 35vh;
+
     @include mixin.xs {
         height: 20vh;
     }
@@ -75,11 +76,27 @@
     padding: 2% 0;
     font-size: 0.8rem;
     margin-top: 1.5rem;
+
     @include mixin.xs {
         font-size: 0.5rem;
         text-align: center;
     }
 }
+
+.warning {
+    background-color: #f0f0f0;
+
+    .feedbackWarning {
+        color: var(--colorDom);
+        font-size: 25px;
+        font-weight: 600;
+
+        @include mixin.xs {
+            font-size: 18px;
+        }
+    }
+}
+
 
 // .profCards {
 //     @include mixin.xs {

@@ -5,14 +5,14 @@
   border-radius: 20px;
   height: 650px;
   width: 75%;
-  border: solid red 2px;
+  border: solid var(--colorDom) 2px;
   > i {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 25px;
     z-index: 1;
-    color: var(--error);
+    color: var(--colorFooter);
 
     &:hover {
       color: black;

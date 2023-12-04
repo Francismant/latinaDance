@@ -2,7 +2,7 @@
 
 .button2 {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--colorBox);
     font-weight: 600;
     font-size: 1rem;
     text-transform: uppercase;
@@ -37,7 +37,7 @@
     height: 50%;
     transform: scaleY(2);
     border: 3px solid;
-    border-image:  rgb(252, 70, 100);
+    border-image:  var(--colorButon);
     border-image-slice: 1;
     border-width: 2px 0 2px 0;
     opacity: 0;
@@ -62,7 +62,7 @@
     left: 14%;
     width: 72%;
     height: 70%;
-    background:  rgb(252, 70, 100);
+    background:  var(--colorButon);
     transform: scale(0);
     pointer-events: none;
     transition: all 0.7s cubic-bezier(0.23, 1, 0.320, 1);

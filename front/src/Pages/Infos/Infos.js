@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styles from "./Infos.module.scss";
 // import ButtonList from "../assets/components/ButtonList";
 import { buttonLabelsInfos, tarifsCouple, tarifsSolo } from "../../data/Data";
@@ -11,10 +12,22 @@ import Planning3 from "../../assets/components/Plannings/Planning3";
 import Planning4 from "../../assets/components/Plannings/Planning4";
 import CarteTarifCouple from "../../assets/components/Cards/CarteTarifCouple";
 import CarteTarifSolo from "../../assets/components/Cards/CarteTarifSolo";
-
+// import { useContext } from "react";
+// import { AuthContext } from "../../context";
+import { getInfosCours } from "../../apis/infos";
 
 
 function Infos() {
+  const [infos, setInfos] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const infosData = await getInfosCours();
+      setInfos(infosData);
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -24,6 +37,9 @@ function Infos() {
           {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
         </div>
       </section>
+      {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} tac mb3pc`}>{infos[0].text}</h3>
+      </div>
+      }
       <main className="center df fc gap2">
         <h2 className="pt3pc mb0">Les professeurs</h2>
         <section className="df gap1 fw">
@@ -41,12 +57,12 @@ function Infos() {
         </section>
         <section className="mb3pc">
           <h2 id="planning">Les Plannings</h2>
-          <div className="df fc gap5">
-            <div className="df jcsa fw">
+          <div className="df fc gap5 fw">
+            <div className="df jcsa fw gap1">
               <Planning />
               <Planning2 />
             </div>
-            <div className="df jcsa fw">
+            <div className="df jcsa fw gap1">
               <Planning3 />
               <Planning4 />
             </div>

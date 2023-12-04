@@ -1,7 +1,7 @@
 @use"../../assets/styles/mixin" as mixin;
 
 header {
-    background-color: #db4b4b50;
+    background-color: var(--colorHeader);
     padding: 0 1%;
     @include mixin.xs {
         position: fixed;
@@ -55,7 +55,7 @@ header {
     filter: blur(0.3px);
 
     p {
-        color: rgb(224, 43, 43);
+        color: var(--colorFooter);
 
         &:nth-child(3) {
             color: black;
@@ -123,7 +123,7 @@ header {
         right: 0px;
         width: 150px;
         z-index: 100;
-        border: solid 2px red;
+        border: solid 2px var(--colorDom);
         button {
             margin-bottom: 10px;
             cursor: pointer;
