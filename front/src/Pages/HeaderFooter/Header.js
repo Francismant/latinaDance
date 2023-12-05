@@ -35,15 +35,15 @@ function Header() {
           <ul>
             {user ? (
               <>
-                <button onClick={logout} className={`mr20 btn btn-primary`}>
-                  <NavLink to="/">Déconnexion</NavLink>
-                </button>
                 <button className={`btn btn-primary-reverse mr20`}>
                   <NavLink to="/Profile">Profil</NavLink>
                 </button>
-                <button className={`btn btn-primary-reverse`}>
-                  <NavLink to="/Delete">Suppression du compte</NavLink>
+                <button onClick={logout} className={`mr20 btn btn-primary`}>
+                  <NavLink to="/">Déconnexion</NavLink>
                 </button>
+                {/* <button className={`btn btn-primary-reverse`}>
+                  <NavLink to="/Delete">Suppression du compte</NavLink>
+                </button> */}
               </>
             ) : (
               <>

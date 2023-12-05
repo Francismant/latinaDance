@@ -27,7 +27,7 @@ function Contact() {
                     {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
                 </div>
             </section>
-            {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} tac mb3pc`}>{infos[0].text}</h3>
+            {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} center tac mb3pc`}>{infos[0].text}</h3>
             </div>
             }
             <main className='center'>

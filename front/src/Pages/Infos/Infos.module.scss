@@ -90,6 +90,7 @@
         color: var(--colorDom);
         font-size: 25px;
         font-weight: 600;
+        animation: warning-animate 4s infinite alternate;
 
         @include mixin.xs {
             font-size: 18px;
@@ -97,6 +98,19 @@
     }
 }
 
+@keyframes warning-animate {
+    0%, 100% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  .forgotPassword {
+    text-decoration: underline;
+  }
 
 // .profCards {
 //     @include mixin.xs {

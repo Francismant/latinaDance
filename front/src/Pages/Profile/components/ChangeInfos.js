@@ -29,7 +29,7 @@ function ChangeInfos() {
       );
       if (response.ok && choice === 1) {
         await response.json();
-        setChangeFeedbackGood("c'est tout bon");
+        setChangeFeedbackGood("le message d'alerte a bien été mis en place");
       } else if (response.ok && choice === 2) {
         await response.json();
         setChangeFeedbackGood("message supprimé avec succès");
@@ -42,9 +42,9 @@ function ChangeInfos() {
 
   return (
     <section>
-      <h3 className="tac mt3pc mb3pc">
+      <h3 className="tac mt3pc mb3pc center">
         Si vous souhaitez mettre un message d'information concernant les cours, entrez votre
-        texte ci-dessous et cliquez sur Sauvegarder
+        texte ci-dessous et cliquez sur Sauvegarder ou cliquez sur supprimer le message.
       </h3>
       <div className="df fc gap1 aic">
         <label htmlFor="text">message à modifier</label>

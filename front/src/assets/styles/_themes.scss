@@ -69,36 +69,38 @@
 
 .burger-menu {
   display: none;
+
   @include mixin.menuBurger {
-      display: block;
-      margin-right: 20px;
+    display: block;
+    margin-right: 20px;
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.4s;
+
+    .burger-bar {
       width: 30px;
-      height: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
+      height: 3px;
+      background-color: var(--colorFooter);
       transition: 0.4s;
-      
-      .burger-bar {
-        width: 30px;
-        height: 3px;
-        background-color: var(--colorFooter);
-        transition: 0.4s;
+    }
+
+    &.active {
+      .burger-bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-6px, 6px);
       }
-      
-      &.active {
-        .burger-bar:nth-child(1) {
-          transform: rotate(-45deg) translate(-6px, 6px);
-        }
-        
-        .burger-bar:nth-child(2) {
-          opacity: 0;
-        }
-        
-        .burger-bar:nth-child(3) {
-          transform: rotate(45deg) translate(-6px, -6px);
-        }
+
+      .burger-bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .burger-bar:nth-child(3) {
+        transform: rotate(45deg) translate(-6px, -6px);
       }
     }
   }
+}
+

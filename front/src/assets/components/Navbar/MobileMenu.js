@@ -41,20 +41,20 @@ export default function MobileMenu({ setShowMenu }) {
                             </span>
                         </li>
                         <li>
-                            <span onClick={handleLogoutClick}>
-                                <NavLink to="/">Déconnexion</NavLink>
-                            </span>
-                        </li>
-                        <li>
                             <span onClick={handleMenuItemClick}>
                                 <NavLink to="/profile">Profil</NavLink>
                             </span>
                         </li>
                         <li>
+                            <span onClick={handleLogoutClick}>
+                                <NavLink to="/">Déconnexion</NavLink>
+                            </span>
+                        </li>
+                        {/* <li>
                             <span onClick={handleMenuItemClick}>
                                 <NavLink to="/delete">Suppression</NavLink>
                             </span>
-                        </li>
+                        </li> */}
                     </ul>
                 </>
             ) : (

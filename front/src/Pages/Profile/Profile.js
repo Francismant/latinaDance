@@ -199,7 +199,7 @@ function Profile() {
                 <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
               )}
               <button className="btn btn-primary" disabled={isSubmitted}>
-                Submit
+                Envoyer
               </button>
             </form>
           </div>
@@ -211,6 +211,15 @@ function Profile() {
               </NavLink>
             </span>{" "}
             si vous souhaitez modifier votre mot de passe
+          </h4>
+          <h4 className="tac mb3pc">
+            Cliquez{" "}
+            <span>
+              <NavLink className={styles.forgotPassword} to="/Delete">
+                ici
+              </NavLink>
+            </span>{" "}
+            si vous souhaitez supprimer votre compte
           </h4>
         </section>
       )}

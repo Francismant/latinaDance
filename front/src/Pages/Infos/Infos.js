@@ -15,6 +15,7 @@ import CarteTarifSolo from "../../assets/components/Cards/CarteTarifSolo";
 // import { useContext } from "react";
 // import { AuthContext } from "../../context";
 import { getInfosCours } from "../../apis/infos";
+import { NavLink } from "react-router-dom";
 
 
 function Infos() {
@@ -37,11 +38,11 @@ function Infos() {
           {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
         </div>
       </section>
-      {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} tac mb3pc`}>{infos[0].text}</h3>
+      {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} center tac mb3pc`}>{infos[0].text}</h3>
       </div>
       }
+        <h2 className="mb3pc">Les professeurs</h2>
       <main className="center df fc gap2">
-        <h2 className="pt3pc mb0">Les professeurs</h2>
         <section className="df gap1 fw">
           <CarteSalsa />
           <CarteBachata />
@@ -87,7 +88,12 @@ function Infos() {
             <p>Aucun remboursement ne pourra être effectué excepté suite à décision gouvernementale en cas de force majeure.</p>
             <p>Le certificat médical est obligatoire pour l’inscription.</p>
           </div>
-          <h3 className="fsize1_5 tac fweight5">Concernant le tarif des cours particuliers, merci de nous contacter directement par téléphone ou via notre adresse mail dans l’onglet Contact du site.</h3>
+          <h3 className="fsize1_5 tac fweight5">Concernant le tarif des cours particuliers, merci de nous contacter directement par téléphone ou via notre adresse mail que vous retrouverez dans l’onglet Contact du site ou en cliquant{" "}
+            <span>
+              <NavLink className={styles.forgotPassword} to="/contact">
+                ici
+              </NavLink>
+            </span>{" "}.</h3>
         </section>
       </main>
     </>

@@ -59,7 +59,7 @@ function Home() {
             </button> */}
         </div>
       </section>
-      {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} tac mb3pc`}>{infos[0].text}</h3>
+      {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} center tac mb3pc`}>{infos[0].text}</h3>
       </div>
       }
 
@@ -70,7 +70,7 @@ function Home() {
       <main className="center df fc gap5">
 
         <section>
-          <h2>Les Soirées SBK</h2>
+          <h2 className="mb3pc">Les Soirées SBK</h2>
           <div className={`df jcc aic fw gap2`}>
             <Carousel data={tableauImageCarousel} />
             <p className="fsize1_25 size3">

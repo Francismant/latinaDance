@@ -42,8 +42,10 @@
 
   .title {
     font-size: 18px;
+    margin-top: 3%;
     @include mixin.xs {
       font-size: 12px;
+      margin-top: 10%;
     }
   }
 

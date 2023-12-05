@@ -40,11 +40,11 @@ function Events() {
                 <>
                 </>
             } */}
-            {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} tac mb3pc`}>{infos[0].text}</h3>
+            {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} center tac mb3pc`}>{infos[0].text}</h3>
             </div>
             }
             <div className="flex-fill df fc container p20">
-                <h2 className="my30">Retrouvez ici les évènements ponctuels proposés par notre école </h2>
+                <h2 className="mb3pc">Retrouvez ici les évènements ponctuels proposés par notre école </h2>
                 {isLoading ? (
                     <Loading />
                 ) : (
