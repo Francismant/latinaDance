@@ -57,6 +57,7 @@
 p.vote {
     text-align: center;
     margin: 3% 0;
+
     @include mixin.menuBurger {
         font-size: 0.8rem;
         text-align: center;
@@ -66,6 +67,8 @@ p.vote {
 
 .warning {
     background-color: #f0f0f0;
+    height: auto;
+    word-wrap: break-word;
 
     .feedbackWarning {
         color: var(--colorDom);
@@ -80,11 +83,13 @@ p.vote {
 }
 
 @keyframes warning-animate {
-    0%, 100% {
-      transform: scale(1);
+
+    0%,
+    100% {
+        transform: scale(1);
     }
-  
+
     50% {
-      transform: scale(1.1);
+        transform: scale(1.1);
     }
-  }
+}

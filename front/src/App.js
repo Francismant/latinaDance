@@ -8,13 +8,15 @@ function App() {
 
   return (
     <>
-    <AuthProvider>
-        <Header />
+      {/* <body> */}
+        <AuthProvider>
+          <Header />
           <Suspense>
             <Outlet />
           </Suspense>
-        <Footer />
-      </AuthProvider>
+          <Footer />
+        </AuthProvider>
+      {/* </body> */}
     </>
   );
 }

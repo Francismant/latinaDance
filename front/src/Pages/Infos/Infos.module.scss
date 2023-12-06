@@ -85,6 +85,8 @@
 
 .warning {
     background-color: #f0f0f0;
+    height: auto;
+    word-wrap: break-word;
 
     .feedbackWarning {
         color: var(--colorDom);
@@ -99,18 +101,20 @@
 }
 
 @keyframes warning-animate {
-    0%, 100% {
-      transform: scale(1);
-    }
-  
-    50% {
-      transform: scale(1.1);
-    }
-  }
 
-  .forgotPassword {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.forgotPassword {
     text-decoration: underline;
-  }
+}
 
 // .profCards {
 //     @include mixin.xs {

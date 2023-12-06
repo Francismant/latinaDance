@@ -53,6 +53,8 @@
 
 .warning {
     background-color: #f0f0f0;
+    height: auto;
+    word-wrap: break-word;
 
     .feedbackWarning {
         color: var(--colorDom);
@@ -67,14 +69,16 @@
 }
 
 @keyframes warning-animate {
-    0%, 100% {
-      transform: scale(1);
+
+    0%,
+    100% {
+        transform: scale(1);
     }
-  
+
     50% {
-      transform: scale(1.1);
+        transform: scale(1.1);
     }
-  }
+}
 
 // .faq {
 //     summary, p {

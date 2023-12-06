@@ -126,7 +126,7 @@ function Profile() {
         const resetResponse = await response.json();
         setVoteDance(null);
         setFeedBackGood(resetResponse.message);
-        setTimeout(() => { setFeedBackGood("") }, 3000)
+        setTimeout(() => { setFeedBackGood(""); }, 3000);
       }
     } catch (error) {
       console.error(error);
@@ -142,13 +142,16 @@ function Profile() {
           <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
             <p>Résultats des votes pour le mois en cours</p>
             <ul>
-              {voteDance &&
+              {voteDance && voteDance.length > 0 ? (
                 voteDance.map((dancingVote) => (
                   <li key={dancingVote.idDance}>
                     Danse: {getDanceName(dancingVote.idDance)}, Nombre de votes:{" "}
                     {dancingVote.CountOfDances}
                   </li>
-                ))}
+                ))
+              ) : (
+                <li>Aucun vote</li>
+              )}
             </ul>
             {feedbackGood && (
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
@@ -203,6 +206,13 @@ function Profile() {
               </button>
             </form>
           </div>
+          {/* <p className="tac">
+            {user.idDance !== null ? (
+              `Vous avez déjà voté pour la ${getDanceName(user.idDance)}`
+            ) : (
+              "Aucun vote n'est pris en compte"
+            )}
+          </p> */}
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
