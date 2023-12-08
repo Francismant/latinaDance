@@ -89,7 +89,7 @@ router.get("/userConnected", (req, res) => {
         algorithms: "RS256",
       });
       const sqlSelect =
-        "SELECT idUser, name, email,admin, idDance FROM users WHERE idUser  =?";
+        "SELECT idUser, name, email,admin FROM users WHERE idUser  =?";
       connection.query(sqlSelect, [decodedToken.sub], (err, result) => {
         if (err) throw err;
         const connectedUser = result[0];

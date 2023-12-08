@@ -9,7 +9,6 @@ function ChangeInfos() {
   const [text, setText] = useState("");
 
   async function changeInfos(choice) {
-    // console.log("changeInfos", values);
     let infos
     if (choice === 1) {
       infos = text;
