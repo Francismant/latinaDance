@@ -13,6 +13,7 @@ function Login() {
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [changeFeedback, setChangeFeedback] = useState("");
   const navigate = useNavigate();
 
   const validationSchema = yup.object({
@@ -32,7 +33,7 @@ function Login() {
     handleSubmit,
     register,
     formState: { errors },
-    setError,
+    // setError,
     clearErrors,
   } = useForm({
     initialValues,
@@ -98,10 +99,12 @@ function Login() {
         navigate("/profile");
       }, 3000);
     } catch (error) {
-      setError("generic", {
-        type: "generic",
-        message: "Email ou mot de passe incorrect",
-      });
+      // setError("generic", {
+      //   type: "generic",
+      //   message: "Email ou mot de passe incorrect",
+      // });
+      setChangeFeedback("Email ou mot de passe incorrect");
+      setTimeout(() => { setChangeFeedback(""); }, 3000);
     } finally {
       setIsSubmitted(false);
     }
@@ -140,8 +143,13 @@ function Login() {
             {feedbackGood && (
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
-            {errors?.generic && (
+            {/* {errors?.generic && (
               <p className={`${styles.feedback}`}>{errors.generic.message}</p>
+            )} */}
+            {changeFeedback && (
+              <p className={`${styles.feedback} mb20 tac`}>
+                {changeFeedback}
+              </p>
             )}
             <div className={`df fc mb10 ${styles.forgotPassword}`}>
               <Link to="/forgotPassword">Mot de passe oublié ?</Link>

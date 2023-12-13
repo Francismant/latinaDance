@@ -10,6 +10,8 @@ import { useState } from "react";
 function Register() {
   const navigate = useNavigate();
   const [feedBackGood, setFeedBackGood] = useState("");
+  const [changeFeedback, setChangeFeedback] = useState("");
+
 
   const yupSchema = yup.object({
     name: yup
@@ -53,7 +55,7 @@ function Register() {
     register,
     handleSubmit,
     clearErrors,
-    setError,
+    // setError,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues,
@@ -74,7 +76,9 @@ function Register() {
         navigate("/login");
       }, 3000);
     } catch (error) {
-      setError("generic", { type: "generic", message: "Email déja existant" });
+      // setError("generic", { type: "generic", message: "Email déja existant" });
+      setChangeFeedback("Email déjà Existant");
+      setTimeout(() => { setChangeFeedback(""); }, 4000);
     }
   }
 
@@ -153,8 +157,13 @@ function Register() {
             {feedBackGood && (
               <p className={`${styles.feedbackGood}`}>{feedBackGood}</p>
             )}
-            {errors?.generic && (
+            {/* {errors?.generic && (
               <p className={`${styles.feedback}`}>{errors.generic.message}</p>
+            )} */}
+            {changeFeedback && (
+              <p className={`${styles.feedback} mb20`}>
+                {changeFeedback}
+              </p>
             )}
             <button
               className={`btn btn-primary mt3pc mb3pc ${styles.button}`}

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 function ForgotPassword() {
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedbackGood] = useState("");
+  const [changeFeedback, setChangeFeedback] = useState("");
 
   const yupSchema = yup.object({
     email: yup
@@ -26,7 +27,7 @@ function ForgotPassword() {
     register,
     handleSubmit,
     clearErrors,
-    setError,
+    // setError,
     formState: { errors },
   } = useForm({
     defaultValues,
@@ -45,8 +46,11 @@ function ForgotPassword() {
         throw new Error("Email inexistant");
       }
       setFeedbackGood("email envoyé");
+      setTimeout(() => { setFeedbackGood(""); }, 4000);
     } catch (error) {
-      setError("generic", { type: "generic", message: "Email inexistant" });
+      // setError("generic", { type: "generic", message: "Email inexistant" });
+      setChangeFeedback("Email inexistant");
+      setTimeout(() => { setChangeFeedback(""); }, 4000);
     }
   }
 
@@ -75,8 +79,13 @@ function ForgotPassword() {
             {feedbackGood && (
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
-            {errors?.generic && (
+            {/* {errors?.generic && (
               <p className={`${styles.feedback}`}>{errors.generic.message}</p>
+            )} */}
+            {changeFeedback && (
+              <p className={`${styles.feedback} mb20`}>
+                {changeFeedback}
+              </p>
             )}
             <button className="btn btn-primary">Submit</button>
           </form>

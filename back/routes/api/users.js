@@ -136,7 +136,7 @@ router.get("/resetPassword/:email", (req, res) => {
       const mailOptions = {
         from: "mantfrancis@gmail.com",
         to: email,
-        subject: "Mot de passe oublié de lillelatinadance",
+        subject: "Modification du mot de passe sur le site de lillelatinadance",
         text: `Cliquez sur ce lien pour modifier votre mot de passe : ${confirmLink}`,
       };
       transporter.sendMail(mailOptions, (err, info) => {
