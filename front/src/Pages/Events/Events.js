@@ -5,7 +5,6 @@ import { useFetchData } from '../../hooks/useFetchData';
 import Event from './components/Event';
 import { useContext } from "react";
 import { AuthContext } from "../../context";
-// import AddNewEvent from "./components/AddNewEvent";
 import { getInfosCours } from "../../apis/infos";
 
 
@@ -36,10 +35,6 @@ function Events() {
             <div className={`df fc jcsb ${styles.backgroundTopEvents}`}>
                 <h1 className={styles.headerTitle}>EVENEMENTS</h1>
             </div>
-            {/* {user && user.admin &&
-                <>
-                </>
-            } */}
             {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} center tac mb3pc`}>{infos[0].text}</h3>
             </div>
             }

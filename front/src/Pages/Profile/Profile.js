@@ -88,9 +88,6 @@ function Profile() {
       if (response.ok) {
         const voteUser = await response.json();
         setFeedBackGood(voteUser.messageGood);
-        // setIsSubmitted(true);
-        // Désactivez le bouton après la soumission
-        // reset();  // Ne réinitialisez pas avec des valeurs par défaut non définies
         reset(defaultValues);
         setTimeout(() => {
           navigate("/");
@@ -165,6 +162,15 @@ function Profile() {
             <AddNewEvent />
           </div>
           <ChangeInfos />
+          <h4 className="tac mb3pc">
+            Cliquez{" "}
+            <span>
+              <NavLink className={styles.forgotPassword} to="/forgotPassword">
+                ici
+              </NavLink>
+            </span>{" "}
+            si vous souhaitez modifier votre mot de passe
+          </h4>
         </>
       )}
       {user && user.admin === 0 && (
@@ -197,7 +203,6 @@ function Profile() {
                   </li>
                 </ul>
               </div>
-              {/* {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>} */}
               {feedbackGood && (
                 <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
               )}
@@ -206,13 +211,6 @@ function Profile() {
               </button>
             </form>
           </div>
-          {/* <p className="tac">
-            {user.idDance !== null ? (
-              `Vous avez déjà voté pour la ${getDanceName(user.idDance)}`
-            ) : (
-              "Aucun vote n'est pris en compte"
-            )}
-          </p> */}
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
