@@ -35,7 +35,6 @@ function Home() {
       </div>
       }
       <main className="center df fc gap5">
-
         <section>
           <h2 className="mb3pc">Les Soirées SBK</h2>
           <div className={`df jcc aic fw gap2`}>

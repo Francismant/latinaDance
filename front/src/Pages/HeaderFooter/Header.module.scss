@@ -19,7 +19,7 @@ header {
     gap: 19%;
     @include mixin.xl {
         justify-content: space-between;
-        gap: 2%;
+        gap: 1%;
     }
 
     @include mixin.xs {

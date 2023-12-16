@@ -27,7 +27,7 @@ function ForgotPassword() {
     register,
     handleSubmit,
     clearErrors,
-    // setError,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues,
@@ -48,9 +48,9 @@ function ForgotPassword() {
       setFeedbackGood("email envoyé");
       setTimeout(() => { setFeedbackGood(""); }, 4000);
     } catch (error) {
-      // setError("generic", { type: "generic", message: "Email inexistant" });
-      setChangeFeedback("Email inexistant");
-      setTimeout(() => { setChangeFeedback(""); }, 4000);
+      setError("generic", { type: "generic", message: "Email inexistant" });
+      // setChangeFeedback("Email inexistant");
+      // setTimeout(() => { setChangeFeedback(""); }, 4000);
     }
   }
 
@@ -79,14 +79,14 @@ function ForgotPassword() {
             {feedbackGood && (
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
-            {/* {errors?.generic && (
-              <p className={`${styles.feedback}`}>{errors.generic.message}</p>
-            )} */}
-            {changeFeedback && (
+            {errors?.generic && (
+              <p className={`${styles.feedback} mb20`}>{errors.generic.message}</p>
+            )}
+            {/* {changeFeedback && (
               <p className={`${styles.feedback} mb20`}>
                 {changeFeedback}
               </p>
-            )}
+            )} */}
             <button className="btn btn-primary">Submit</button>
           </form>
         </div>

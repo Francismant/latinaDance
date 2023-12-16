@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 function CreateAccount() {
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedbackGood] = useState("");
-  const [changeFeedback, setChangeFeedback] = useState("");
+  // const [changeFeedback, setChangeFeedback] = useState("");
 
   const yupSchema = yup.object({
     email: yup
@@ -28,7 +28,7 @@ function CreateAccount() {
     handleSubmit,
     clearErrors,
     reset,
-    // setError,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues,
@@ -48,10 +48,10 @@ function CreateAccount() {
       }
       setFeedbackGood("email envoyé");
     } catch (error) {
-      // setError("generic", { type: "generic", message: "Email déjà Existant" });
-      setChangeFeedback("Email déjà Existant");
-      setTimeout(() => { setChangeFeedback(""); }, 4000);
-      reset(defaultValues);
+      setError("generic", { type: "generic", message: "Email déjà Existant" });
+      // setChangeFeedback("Email déjà Existant");
+      // setTimeout(() => { setChangeFeedback(""); }, 4000);
+      // reset(defaultValues);
     }
   }
 
@@ -80,14 +80,14 @@ function CreateAccount() {
             {feedbackGood && (
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
-            {/* {errors?.generic && (
-              <p className={`${styles.feedback}`}>{errors.generic.message}</p>
-            )} */}
-            {changeFeedback && (
+            {errors?.generic && (
+              <p className={`${styles.feedback} mb20`}>{errors.generic.message}</p>
+            )}
+            {/* {changeFeedback && (
               <p className={`${styles.feedback} mb20`}>
                 {changeFeedback}
               </p>
-            )}
+            )} */}
             <button className="btn btn-primary">Envoyer</button>
           </form>
         </div>
