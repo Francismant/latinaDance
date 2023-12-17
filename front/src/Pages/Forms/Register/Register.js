@@ -77,8 +77,8 @@ function Register() {
       }, 3000);
     } catch (error) {
       // setError("generic", { type: "generic", message: "Email déja existant" });
-      setChangeFeedback("Email déjà Existant");
-      setTimeout(() => { setChangeFeedback(""); }, 4000);
+      setChangeFeedback("Email déjà existant");
+      setTimeout(() => { navigate("/"); }, 4000);
     }
   }
 

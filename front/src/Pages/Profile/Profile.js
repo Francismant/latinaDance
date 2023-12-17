@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../Forms/Register/Register.module.scss";
 import { useForm } from "react-hook-form";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
 import AddNewEvent from "../Events/components/AddNewEvent";
@@ -11,7 +11,7 @@ function Profile() {
   const { user } = useContext(AuthContext);
   const [allTheDances, setAllTheDances] = useState([]);
   const [voteDance, setVoteDance] = useState([]);
-  const [feedback, setFeedBack] = useState("");
+  // const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -63,8 +63,8 @@ function Profile() {
     register,
     handleSubmit,
     reset,
-    control,
-    formState: { errors },
+    // control,
+    // formState: { errors },
   } = useForm({
     defaultValues,
     // resetValues,
@@ -75,7 +75,7 @@ function Profile() {
   async function submit(values) {
     console.log("premierevalue", values);
     try {
-      setFeedBack("");
+      // setFeedBack("");
       let data = { values, id: user.idUser };
       console.log("values_vote", data);
       const response = await fetch("http://localhost:8000/api/profile/vote", {
@@ -165,9 +165,9 @@ function Profile() {
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
-              <NavLink className={styles.forgotPassword} to="/forgotPassword">
+              <Link className={styles.forgotPassword} to="/forgotPassword">
                 ici
-              </NavLink>
+              </Link>
             </span>{" "}
             si vous souhaitez modifier votre mot de passe
           </h4>
@@ -185,7 +185,7 @@ function Profile() {
           <div className="flex-fill df jcc aic mb3pc mt3pc">
             <form onSubmit={handleSubmit(submit)}>
               <div className="df fc mb10">
-                <label className="mb10 df jcc aic gap1">
+                <label className="mb10 tac">
                   <span className="flex-fill">Dances</span>
                 </label>
                 <ul>
@@ -206,7 +206,7 @@ function Profile() {
               {feedbackGood && (
                 <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
               )}
-              <button className="btn btn-primary" disabled={isSubmitted}>
+              <button className="btn btn-primary m0auto" disabled={isSubmitted}>
                 Envoyer
               </button>
             </form>
@@ -214,18 +214,18 @@ function Profile() {
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
-              <NavLink className={styles.forgotPassword} to="/forgotPassword">
+              <Link className={styles.forgotPassword} to="/forgotPassword">
                 ici
-              </NavLink>
+              </Link>
             </span>{" "}
             si vous souhaitez modifier votre mot de passe
           </h4>
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
-              <NavLink className={styles.forgotPassword} to="/Delete">
+              <Link className={styles.forgotPassword} to="/Delete">
                 ici
-              </NavLink>
+              </Link>
             </span>{" "}
             si vous souhaitez supprimer votre compte
           </h4>
