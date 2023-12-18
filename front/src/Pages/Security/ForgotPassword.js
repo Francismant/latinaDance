@@ -46,7 +46,9 @@ function ForgotPassword() {
         throw new Error("Email inexistant");
       }
       setFeedbackGood("email envoyé");
-      setTimeout(() => { setFeedbackGood(""); }, 4000);
+      setTimeout(() => {
+        setFeedbackGood("");
+      }, 4000);
     } catch (error) {
       setError("generic", { type: "generic", message: "Email inexistant" });
       // setChangeFeedback("Email inexistant");
@@ -55,24 +57,21 @@ function ForgotPassword() {
   }
 
   return (
-    <main className="sizePage">
+    <main>
       <section className={styles.top}>
-        <div className={styles.backgroundTop}></div>
-        <div className="flex-fill df fc jcc aic center">
-          <h2 className="mt3pc">
-            Notez ci-dessous votre adresse mail afin de recevoir un lien pour
-            modifier votre mot de passe
-          </h2>
-          <form onSubmit={handleSubmit(submit)}>
-            <div className="df fc mb20">
-              <label htmlFor="email" className="mb3pc">
-                Email
-              </label>
-              <input type="email" id="email" {...register("email")} />
-              {errors?.email && (
-                <p className={`${styles.feedback}`}>{errors.email.message}</p>
-              )}
-            </div>
+        <h2 className="mt3pc">
+          Notez ci-dessous votre adresse mail afin de recevoir un lien pour
+          modifier votre mot de passe
+        </h2>
+        <form onSubmit={handleSubmit(submit)}>
+          <div className="df fc mb20 jcc aic gap2">
+            <label htmlFor="email">
+              Email
+            </label>
+            <input type="email" id="email" {...register("email")} />
+            {errors?.email && (
+              <p className={`${styles.feedback}`}>{errors.email.message}</p>
+            )}
             {feedback && (
               <p className={`${styles.feedback} mb20`}>{feedback}</p>
             )}
@@ -80,7 +79,9 @@ function ForgotPassword() {
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
             {errors?.generic && (
-              <p className={`${styles.feedback} mb20`}>{errors.generic.message}</p>
+              <p className={`${styles.feedback} mb20`}>
+                {errors.generic.message}
+              </p>
             )}
             {/* {changeFeedback && (
               <p className={`${styles.feedback} mb20`}>
@@ -88,8 +89,8 @@ function ForgotPassword() {
               </p>
             )} */}
             <button className="btn btn-primary">Submit</button>
-          </form>
-        </div>
+          </div>
+        </form>
       </section>
     </main>
   );

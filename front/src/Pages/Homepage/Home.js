@@ -13,7 +13,7 @@ import { getInfosCours } from "../../apis/infos";
 
 function Home() {
   const [infos, setInfos] = useState([]);
-  
+
   useEffect(() => {
     async function fetchData() {
       const infosData = await getInfosCours();
@@ -31,9 +31,12 @@ function Home() {
           <h1 className={styles.headerTitle}>COURS DE SALSA BACHATA KIZOMBA</h1>
         </div>
       </section>
-      {infos.length > 0 && <div className={styles.warning}> <h3 className={`${styles.feedbackWarning} center tac mb3pc`}>{infos[0].text}</h3>
-      </div>
-      }
+      {infos.length > 0 && (
+        <div className="warning">
+          {" "}
+          <h3 className="feedbackWarning center tac mb3pc">{infos[0].text}</h3>
+        </div>
+      )}
       <main className="center df fc gap5">
         <section>
           <h2 className="mb3pc">Les Soirées SBK</h2>

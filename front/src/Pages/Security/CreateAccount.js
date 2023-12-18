@@ -56,24 +56,21 @@ function CreateAccount() {
   }
 
   return (
-    <main className="sizePage">
+    <main>
       <section className={styles.top}>
-        <div className={styles.backgroundTop}></div>
-        <div className="flex-fill df fc jcc aic center">
-          <h2 className="mt3pc">
-            Notez ci-dessous votre adresse mail afin de recevoir un lien pour
-            pouvoir créer votre compte
-          </h2>
-          <form onSubmit={handleSubmit(submit)}>
-            <div className="df fc mb20">
-              <label htmlFor="email" className="mb3pc">
-                Email
-              </label>
-              <input type="email" id="email" {...register("email")} />
-              {errors?.email && (
-                <p className={`${styles.feedback}`}>{errors.email.message}</p>
-              )}
-            </div>
+        <h2 className="mt3pc">
+          Notez ci-dessous votre adresse mail afin de recevoir un lien pour
+          pouvoir créer votre compte
+        </h2>
+        <form onSubmit={handleSubmit(submit)}>
+          <div className="df fc jcc aic mb20 gap2">
+            <label htmlFor="email">
+              Email
+            </label>
+            <input type="email" id="email" {...register("email")} />
+            {errors?.email && (
+              <p className={`${styles.feedback}`}>{errors.email.message}</p>
+            )}
             {feedback && (
               <p className={`${styles.feedback} mb20`}>{feedback}</p>
             )}
@@ -81,7 +78,9 @@ function CreateAccount() {
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
             )}
             {errors?.generic && (
-              <p className={`${styles.feedback} mb20`}>{errors.generic.message}</p>
+              <p className={`${styles.feedback} mb20`}>
+                {errors.generic.message}
+              </p>
             )}
             {/* {changeFeedback && (
               <p className={`${styles.feedback} mb20`}>
@@ -89,8 +88,8 @@ function CreateAccount() {
               </p>
             )} */}
             <button className="btn btn-primary">Envoyer</button>
-          </form>
-        </div>
+          </div>
+        </form>
       </section>
     </main>
   );

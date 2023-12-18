@@ -132,7 +132,6 @@ function Profile() {
 
   return (
     <main className={styles.top}>
-      <div className={styles.backgroundTop}></div>
       <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
       {user && user.admin === 1 && (
         <>
