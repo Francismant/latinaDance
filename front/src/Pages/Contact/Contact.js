@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import React from "react";
 import styles from "./Contact.module.scss";
 import contact from "../../assets/images/Contact.png";
-// import { useContext } from "react";
-// import { AuthContext } from "../../context";
 import { getInfosCours } from "../../apis/infos";
 
 function Contact() {
@@ -23,7 +21,6 @@ function Contact() {
       <section className={styles.topContact}>
         <div className={`df fc jcsb ${styles.backgroundTopContact}`}>
           <h1 className="pt3pc ml20">CONTACT & FAQ</h1>
-          {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
         </div>
       </section>
       {infos.length > 0 && (

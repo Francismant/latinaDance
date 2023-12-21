@@ -3,12 +3,9 @@ import styles from "./Events.module.scss";
 import Loading from "../../assets/components/Loading/Loading";
 import { useFetchData } from "../../hooks/useFetchData";
 import Event from "./components/Event";
-import { useContext } from "react";
-import { AuthContext } from "../../context";
 import { getInfosCours } from "../../apis/infos";
 
 function Events() {
-  const { user } = useContext(AuthContext);
   const [infos, setInfos] = useState([]);
 
   useEffect(() => {
@@ -53,7 +50,6 @@ function Events() {
                 key={event.idEvent}
                 deleteEvent={deleteEvent}
                 event={event}
-                user={user}
               />
             ))}
           </div>

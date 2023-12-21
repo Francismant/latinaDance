@@ -8,7 +8,7 @@ import {
 import CarouselParticulier from "../../assets/components/Carousels/CarouselParticulier";
 import { salsaData, bachataData, kizombaData } from "../../data/Data";
 import StylesDance from "../../assets/components/StylesDance";
-// import CookieConsent from "react-cookie-consent";
+import CookieConsent from "react-cookie-consent";
 import { getInfosCours } from "../../apis/infos";
 
 function Home() {
@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <>
-      {/* <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent> */}
+      <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
       <section className={styles.topHome}>
         <div className={`df fc jcsb ${styles.backgroundTop}`}>
           <h1 className={styles.headerTitle}>COURS DE SALSA BACHATA KIZOMBA</h1>

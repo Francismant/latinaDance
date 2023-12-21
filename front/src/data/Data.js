@@ -23,13 +23,6 @@ export const kizombaData = {
 
 
 // ---------------------------------------
-export const buttonLabelsHome = ["Cours collectifs", "Cours particuliers"];
-export const buttonLabelsInfos = ["Salles-Lieu", "Planning", "Tarifs"];
-
-
-
-
-// ------------------------------------------
 
 
 export const tableauImageCarousel = [

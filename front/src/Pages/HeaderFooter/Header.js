@@ -1,23 +1,13 @@
 import Navbar from "../../assets/components/Navbar/Navbar";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
-// import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
 
 
 function Header() {
-  // const [showButton, setShowButton] = useState(false);
   const { user, logout } = useContext(AuthContext);
  
-
-// const viewMenu = () => {
-//   if (showMenu) {
-//     setShowMenu(false)
-//   }
-//   setShowButton(!showButton)
-// }
-
   return (
     <header>
       <div className={`df aic ${styles.headerResponsive}`}>

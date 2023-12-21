@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "../../Forms/Register/Register.module.scss";
-// import * as yup from "yup";
-// import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 
 function ChangeInfos() {

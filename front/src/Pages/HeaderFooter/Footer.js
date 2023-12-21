@@ -24,14 +24,6 @@ function Footer() {
         <span>
           <Link to="/mentions">Mentions légales</Link>
         </span>
-        {/* <div className={styles.icons}>
-          <a href="https://www.facebook.com/">
-            <img className="ml20" src={fb} alt="logo de facebook" />
-          </a>
-          <a href="https://www.instagram.com/">
-            <img src={insta} alt="logo de instagram" />
-          </a>
-        </div> */}
       </div>
     </footer>
   );

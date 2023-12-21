@@ -88,3 +88,16 @@ export async function getConnectedUser() {
   console.log(userC);
   return userC;
 }
+
+
+// export async function createAccount(email) {
+//   try {
+//     const response = await fetch(`${API_USERS}/createAccount/${email}`);
+//     if (!response.ok) {
+//       throw new Error("Email inexistant");
+//     }
+//     return await response.json();
+//   } catch (error) {
+//     throw new Error("Email déjà Existant");
+//   }
+// }

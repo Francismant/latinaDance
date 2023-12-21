@@ -31,10 +31,6 @@
     height: 2rem;
     color: white;
     filter: drop-shadow(0 0 5px #555);
-    // @include mixin.xs {
-    //     height: 1.5rem;
-    //     width: 1.5rem;
-    // }
 }
 
 .arrow:hover {
@@ -65,10 +61,6 @@
     box-shadow: 0 0 5px #555;
     margin: 0 0.2rem;
     cursor: pointer;
-    // @include mixin.xs {
-    //     height: 0.3rem;
-    //     width: 0.3rem;
-    // }
 }
 
 .indicatorInactive {

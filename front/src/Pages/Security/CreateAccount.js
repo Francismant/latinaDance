@@ -3,6 +3,7 @@ import styles from "../Forms/Register/Register.module.scss";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+// import { createAccount } from "../../apis/users";
 
 function CreateAccount() {
   const [feedbackGood, setFeedbackGood] = useState("");
@@ -50,6 +51,18 @@ function CreateAccount() {
       setError("generic", { type: "generic", message: "Email déjà Existant" });
     }
   }
+
+  // async function submit(values) {
+  //   console.log(values);
+  //   try {
+  //     clearErrors();
+  //     const response = await createAccount(values.email);
+  //     setFeedbackGood("email envoyé");
+  //     reset();
+  //   } catch (error) {
+  //     setError("generic", { type: "generic", message: error.message });
+  //   }
+  // }
 
   return (
     <main>

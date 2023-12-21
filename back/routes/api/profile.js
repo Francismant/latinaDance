@@ -5,9 +5,6 @@ const connection = require("../../database/index");
 
 router.patch("/vote", (req, res) => {
   console.log("vote", req.body);
-  //   console.log(req.body.id);
-  //   console.log("vote", req.body.value);
-  //   console.log(req.body.values.dances);
   let idUser = req.body.id;
   let dance_choice = req.body.values.dances;
   let sqlDance = `UPDATE users SET idDance = ? WHERE idUser = ?`;
@@ -21,7 +18,7 @@ router.patch("/vote", (req, res) => {
   res.send(asVoted);
 });
 
-// Route Express avec PATCH pour réinitialiser les votes
+
 router.patch('/resetVotes', (req, res) => {
   const resetVotesSql = "UPDATE users SET idDance = NULL";
   connection.query(resetVotesSql, (err, result) => {

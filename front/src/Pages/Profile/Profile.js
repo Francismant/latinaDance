@@ -11,9 +11,7 @@ function Profile() {
   const { user } = useContext(AuthContext);
   const [allTheDances, setAllTheDances] = useState([]);
   const [voteDance, setVoteDance] = useState([]);
-  // const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   console.log("user", user);
 
@@ -63,19 +61,14 @@ function Profile() {
     register,
     handleSubmit,
     reset,
-    // control,
-    // formState: { errors },
   } = useForm({
     defaultValues,
-    // resetValues,
     mode: "onChange",
-    // resolver: yupResolver(yupSchema),
   });
 
   async function submit(values) {
     console.log("premierevalue", values);
     try {
-      // setFeedBack("");
       let data = { values, id: user.idUser };
       console.log("values_vote", data);
       const response = await fetch("http://localhost:8000/api/profile/vote", {
@@ -132,7 +125,7 @@ function Profile() {
 
   return (
     <main className={styles.top}>
-      <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil</h3>
+      <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil {user.name}</h3>
       {user && user.admin === 1 && (
         <>
           <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
@@ -205,7 +198,7 @@ function Profile() {
               {feedbackGood && (
                 <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
               )}
-              <button className="btn btn-primary m0auto" disabled={isSubmitted}>
+              <button className="btn btn-primary m0auto">
                 Envoyer
               </button>
             </form>
