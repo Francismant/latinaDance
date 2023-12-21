@@ -10,7 +10,6 @@ import { useState } from "react";
 function Register() {
   const navigate = useNavigate();
   const [feedBackGood, setFeedBackGood] = useState("");
-  // const [changeFeedback, setChangeFeedback] = useState("");
 
   const yupSchema = yup.object({
     name: yup
@@ -18,13 +17,6 @@ function Register() {
       .required("Le champ est obligatoire")
       .min(2, "Le champ doit contenir au minimum 2 caractères")
       .max(12),
-    // email: yup
-    //   .string()
-    //   .required("Le champ est obligatoire")
-    //   .matches(
-    //     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-    //     "Votre email n'est pas valide"
-    //   ),
     password: yup
       .string()
       .required("Le champ est obligatoire")
@@ -46,7 +38,6 @@ function Register() {
     name: "",
     password: "",
     confirmPassword: "",
-    // email: "",
     acceptedTerms: false,
   };
 
@@ -54,8 +45,9 @@ function Register() {
     register,
     handleSubmit,
     clearErrors,
+    reset,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     defaultValues,
     resolver: yupResolver(yupSchema),
@@ -71,13 +63,12 @@ function Register() {
       console.log("email", email);
       await createUser({ email, userValues: { name, password } });
       setFeedBackGood("Inscription réussie, vous allez être redirigé");
+      reset();
       setTimeout(() => {
         navigate("/login");
       }, 3000);
     } catch (error) {
       setError("generic", { type: "generic", message: "Email déja existant" });
-      // setChangeFeedback("Email déjà existant");
-      // setTimeout(() => { navigate("/"); }, 4000);
     }
   }
 
@@ -95,15 +86,6 @@ function Register() {
               <p className={`${styles.feedback}`}>{errors.name.message}</p>
             )}
           </div>
-          {/* <div className="df fc mb10">
-            <label htmlFor="email" className="mb10">
-            Email
-            </label>
-            <input type="email" id="email" {...register("email")} />
-            {errors?.email && (
-              <p className={`${styles.feedback}`}>{errors.email.message}</p>
-              )}
-            </div> */}
           <div className="df fc mb10">
             <label htmlFor="password" className="mb10">
               Password
@@ -155,15 +137,7 @@ function Register() {
           {errors?.generic && (
             <p className={`${styles.feedback}`}>{errors.generic.message}</p>
           )}
-          {/* {changeFeedback && (
-              <p className={`${styles.feedback} mb20`}>
-                {changeFeedback}
-              </p>
-            )} */}
-          <button
-            className={`btn btn-primary mt3pc mb3pc ${styles.button}`}
-            disabled={isSubmitting}
-          >
+          <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`}>
             S'inscrire
           </button>
         </form>

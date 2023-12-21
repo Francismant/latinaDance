@@ -5,9 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 function CreateAccount() {
-  const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedbackGood] = useState("");
-  // const [changeFeedback, setChangeFeedback] = useState("");
 
   const yupSchema = yup.object({
     email: yup
@@ -47,11 +45,9 @@ function CreateAccount() {
         throw new Error("Email inexistant");
       }
       setFeedbackGood("email envoyé");
+      reset();
     } catch (error) {
       setError("generic", { type: "generic", message: "Email déjà Existant" });
-      // setChangeFeedback("Email déjà Existant");
-      // setTimeout(() => { setChangeFeedback(""); }, 4000);
-      // reset(defaultValues);
     }
   }
 
@@ -64,15 +60,10 @@ function CreateAccount() {
         </h2>
         <form onSubmit={handleSubmit(submit)}>
           <div className="df fc jcc aic mb20 gap2">
-            <label htmlFor="email">
-              Email
-            </label>
+            <label htmlFor="email">Email</label>
             <input type="email" id="email" {...register("email")} />
             {errors?.email && (
               <p className={`${styles.feedback}`}>{errors.email.message}</p>
-            )}
-            {feedback && (
-              <p className={`${styles.feedback} mb20`}>{feedback}</p>
             )}
             {feedbackGood && (
               <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
@@ -82,11 +73,6 @@ function CreateAccount() {
                 {errors.generic.message}
               </p>
             )}
-            {/* {changeFeedback && (
-              <p className={`${styles.feedback} mb20`}>
-                {changeFeedback}
-              </p>
-            )} */}
             <button className="btn btn-primary">Envoyer</button>
           </div>
         </form>

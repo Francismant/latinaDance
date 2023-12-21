@@ -22,13 +22,6 @@ header {
         justify-content: space-between;
         align-items: center;
     }
-
-    // @include mixin.xs {
-    //     height: 4rem;
-    //     display: flex;
-    //     justify-content: space-between;
-    //     align-items: center;
-    // }
 }
 
 .sizeHeaderLeft {
@@ -45,7 +38,6 @@ header {
     line-height: 92%;
     padding: 8% 0;
 
-    // color: var(--colorDom);
     @include mixin.xl {
         font-size: 1rem;
         padding: 8% 0 8% 50%;

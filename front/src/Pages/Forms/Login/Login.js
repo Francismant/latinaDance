@@ -10,17 +10,17 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useContext(AuthContext);
-  const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  // const [changeFeedback, setChangeFeedback] = useState("");
   const navigate = useNavigate();
 
   const validationSchema = yup.object({
     email: yup
       .string()
       .required("Le champ est obligatoire")
-      .email("Vous devez saisir un email valide"),
+      .matches(
+        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+        "Votre email n'est pas valide"
+      ),
     password: yup.string().required("Le champ est obligatoire"),
   });
 
@@ -34,6 +34,7 @@ function Login() {
     register,
     formState: { errors },
     setError,
+    reset,
     clearErrors,
   } = useForm({
     initialValues,
@@ -41,60 +42,12 @@ function Login() {
     mode: "onChange",
   });
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   reset,
-  //   formState: { errors },
-  // } = useForm({
-  //   defaultValues,
-  //   mode: "onChange",
-  //   resolver: yupResolver(yupSchema),
-  // });
-
-  // async function submit(values) {
-  //   try {
-  //     setFeedBack("");
-  //     console.log("values", values);
-  //     const response = await fetch("http://localhost:8000/api/users/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(values),
-  //     });
-  //     if (response.ok) {
-  //       const newUser = await response.json();
-  //       if (newUser.message) {
-  //         setIsSubmitted(false);
-  //         setFeedBack(newUser.message);
-  //       } else {
-  //         setFeedBackGood("Connexion réussie, vous allez être redirigé");
-  //         reset(defaultValues);
-  //         console.log("User récupéré", newUser);
-  //         let user = {};
-  //         user.name = newUser[0].name;
-  //         user.email = newUser[0].email;
-  //         user.idUser = newUser[0].idUser;
-  //         setIsSubmitted(true);
-  //         setTimeout(() => {
-  //           navigate("/");
-  //           getUser(user);
-  //         }, 3000);
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //     setIsSubmitted(false);
-  //   }
-  // }
-
   async function submit(values) {
     try {
       clearErrors();
       await login(values);
       setFeedBackGood("Connexion réussie, vous allez être redirigé");
+      reset();
       setTimeout(() => {
         navigate("/profile");
       }, 3000);
@@ -103,10 +56,6 @@ function Login() {
         type: "generic",
         message: "Email ou mot de passe incorrect",
       });
-      // setChangeFeedback("Email ou mot de passe incorrect");
-      // setTimeout(() => { setChangeFeedback(""); }, 3000);
-    } finally {
-      setIsSubmitted(false);
     }
   }
 
@@ -133,7 +82,6 @@ function Login() {
               <p className={`${styles.feedback}`}>{errors.password.message}</p>
             )}
           </div>
-          {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
           {feedbackGood && (
             <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
           )}
@@ -142,18 +90,10 @@ function Login() {
               {errors.generic.message}
             </p>
           )}
-          {/* {changeFeedback && (
-              <p className={`${styles.feedback} mb20 tac`}>
-                {changeFeedback}
-              </p>
-            )} */}
           <div className={`df fc mb10 ${styles.forgotPassword}`}>
             <Link to="/forgotPassword">Mot de passe oublié ?</Link>
           </div>
-          <button
-            className={`btn btn-primary mt3pc mb3pc ${styles.button}`}
-            disabled={isSubmitted}
-          >
+          <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`}>
             Se connecter
           </button>
         </form>

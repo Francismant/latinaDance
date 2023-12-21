@@ -50,11 +50,6 @@ export default function MobileMenu({ setShowMenu }) {
                                 <NavLink to="/">Déconnexion</NavLink>
                             </span>
                         </li>
-                        {/* <li>
-                            <span onClick={handleMenuItemClick}>
-                                <NavLink to="/delete">Suppression</NavLink>
-                            </span>
-                        </li> */}
                     </ul>
                 </>
             ) : (

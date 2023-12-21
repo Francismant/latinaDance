@@ -3,13 +3,12 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../context";
 import { signin } from "../../../apis/users";
 import { signout } from "../../../apis/users";
-// import { getInfosCours } from "../../../apis/infos" 
+
 
 export default function AuthProvider({ children }) {
   const userConnect = useLoaderData();
   const [user, setUser] = useState(userConnect);
   console.log(user);
-  // const [infos, setInfos] = useState([]);
 
   async function login(values) {
     const newUser = await signin(values);
@@ -21,12 +20,6 @@ export default function AuthProvider({ children }) {
     setUser(newUser);
   }
 
-  // async function getInfos(values) {
-  //   const newInfos = await getInfosCours(values)
-  //   setInfos(newInfos)
-  // }
-
-
 
   return (
     <AuthContext.Provider
@@ -34,8 +27,6 @@ export default function AuthProvider({ children }) {
         user,
         login,
         logout,
-        // getInfos,
-        // infos
       }}>
       {children}
     </AuthContext.Provider>

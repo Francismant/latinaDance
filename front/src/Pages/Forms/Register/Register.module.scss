@@ -12,19 +12,19 @@
 }
 .feedback {
   color: var(--error);
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 600;
   @include mixin.xs {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 
 .feedbackGood {
   color: green;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 600;
   @include mixin.xs {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 

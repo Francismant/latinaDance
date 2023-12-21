@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Infos.module.scss";
-// import ButtonList from "../assets/components/ButtonList";
-import { buttonLabelsInfos, tarifsCouple, tarifsSolo } from "../../data/Data";
+import { tarifsCouple, tarifsSolo } from "../../data/Data";
 import CarteSalsa from "../../assets/components/Cards/CarteSalsa";
 import CarteBachata from "../../assets/components/Cards/CarteBachata";
 import CarteKizomba from "../../assets/components/Cards/CarteKizomba";
@@ -12,8 +11,6 @@ import Planning3 from "../../assets/components/Plannings/Planning3";
 import Planning4 from "../../assets/components/Plannings/Planning4";
 import CarteTarifCouple from "../../assets/components/Cards/CarteTarifCouple";
 import CarteTarifSolo from "../../assets/components/Cards/CarteTarifSolo";
-// import { useContext } from "react";
-// import { AuthContext } from "../../context";
 import { getInfosCours } from "../../apis/infos";
 import { NavLink } from "react-router-dom";
 
@@ -34,7 +31,6 @@ function Infos() {
       <section className={styles.topInfos}>
         <div className={`df fc jcsb ${styles.backgroundTopInfos}`}>
           <h1 className="pt3pc ml20">INFOS SUR L'ECOLE DE DANSE</h1>
-          {/* <ButtonList buttonLabels={buttonLabelsInfos} /> */}
         </div>
       </section>
       {infos.length > 0 && (

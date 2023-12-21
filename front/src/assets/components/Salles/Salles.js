@@ -15,7 +15,7 @@ function Salles() {
           <img className={styles.boxSalle} src={salle2} alt="salle de danse avec parquet et mirroir" />
         </div>
       </div>
-      <div className="df jcsa fw">
+      <div className="df jcsa fw gap2">
         <div className={styles.containerSalle}>
           <img className={styles.boxSalle} src={salle3} alt="salle de danse avec parquet et mirroir" />
         </div>

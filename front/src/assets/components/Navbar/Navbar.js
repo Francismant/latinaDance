@@ -5,27 +5,11 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
-  // const menuRef = useRef(null);
 
   const viewMenu = () => {
     console.log("showMenu", showMenu);
     setShowMenu(!showMenu);
   };
-
-  // const handleClickOutside = (event) => {
-  //   if (menuRef.current && !menuRef.current.contains(event.target)) {
-  //     setShowMenu(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", handleClickOutside);
-
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
-
 
   return (
     <nav className="df jcsb">
@@ -51,7 +35,6 @@ function Navbar() {
           </span>
         </li>
       </ul>
-      {/* <i onClick={viewMenu} className={`fas fa-bars mr10 ${styles.mobileNavbar}`}></i> */}
       <div onClick={viewMenu} className={`burger-menu ${showMenu ? 'active' : ''}`}>
         <div className="burger-bar"></div>
         <div className="burger-bar"></div>
@@ -61,7 +44,6 @@ function Navbar() {
         showMenu && (
           <>
             <div>
-              {/* <div ref={menuRef}> */}
               <MobileMenu setShowMenu={setShowMenu} />
             </div>
           </>

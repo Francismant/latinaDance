@@ -34,8 +34,9 @@ function ResetPassword() {
     register,
     handleSubmit,
     clearErrors,
+    reset,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     defaultValues,
     resolver: yupResolver(yupSchema),
@@ -51,6 +52,7 @@ function ResetPassword() {
       console.log("email", email);
       await createNewPassword({ email, password });
       setFeedBackGood("Mot de passe modifié, vous allez être redirigé");
+      reset();
       setTimeout(() => {
         navigate("/login");
       }, 3000);
@@ -87,9 +89,7 @@ function ResetPassword() {
             {errors?.generic && (
               <p className={`${styles.feedback}`}>{errors.generic.message}</p>
             )}
-            <button className="btn btn-primary" disabled={isSubmitting}>
-              Enregistrer
-            </button>
+            <button className="btn btn-primary">Enregistrer</button>
           </div>
         </form>
       </section>
