@@ -52,20 +52,9 @@ function CreateAccount() {
     }
   }
 
-  // async function submit(values) {
-  //   console.log(values);
-  //   try {
-  //     clearErrors();
-  //     const response = await createAccount(values.email);
-  //     setFeedbackGood("email envoyé");
-  //     reset();
-  //   } catch (error) {
-  //     setError("generic", { type: "generic", message: error.message });
-  //   }
-  // }
 
   return (
-    <main>
+    <main className="center">
       <section className={styles.top}>
         <h2 className="mt3pc">
           Notez ci-dessous votre adresse mail afin de recevoir un lien pour

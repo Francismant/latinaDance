@@ -55,7 +55,7 @@ function ForgotPassword() {
   }
 
   return (
-    <main>
+    <main className="center">
       <section className={styles.top}>
         <h2 className="mt3pc">
           Notez ci-dessous votre adresse mail afin de recevoir un lien pour

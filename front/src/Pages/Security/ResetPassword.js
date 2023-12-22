@@ -62,7 +62,7 @@ function ResetPassword() {
   }
 
   return (
-    <main>
+    <main className="center">
       <section className={styles.top}>
         <h2 className="mt3pc">Réinitialisation du mot de passe</h2>
         <form className="df fc jcc aic" onSubmit={handleSubmit(submit)}>
