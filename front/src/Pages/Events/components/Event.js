@@ -4,7 +4,6 @@ import React, { useContext } from 'react';
 
 function Event({ event, deleteEvent }) {
   const { user } = useContext(AuthContext);
-  console.log("userEvent", user);
   const { idEvent, date_hour, title, duration, price, image } = event;
 
 
@@ -15,7 +14,6 @@ function Event({ event, deleteEvent }) {
         method: "DELETE",
       });
       if (response.ok) {
-        console.log("reponseDelete", response);
         deleteEvent(idEvent);
       }
     } catch (error) {

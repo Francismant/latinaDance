@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="colorFooter">
-      <div className={styles.icons}>
+      <section className={styles.icons}>
         <a href="https://www.facebook.com/">
           <img className="ml20" src={fb} alt="logo de facebook" />
         </a>
@@ -18,13 +18,13 @@ function Footer() {
         <a href="https://www.instagram.com/">
           <img src={insta} alt="logo de instagram" />
         </a>
-      </div>
-      <div className={`df jcc fsize08 ${styles.footerend}`}>
+      </section>
+      <section className={`df jcc fsize08 ${styles.footerend}`}>
         <p>Copyright©2023 |Tous droits réservés -</p>
         <span>
           <Link to="/mentions">Mentions légales</Link>
         </span>
-      </div>
+      </section>
     </footer>
   );
 }

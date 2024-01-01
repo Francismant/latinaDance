@@ -12,8 +12,6 @@ function Profile() {
   const [voteDance, setVoteDance] = useState([]);
   const [feedbackGood, setFeedBackGood] = useState("");
 
-  console.log("user", user);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +23,6 @@ function Profile() {
         if (response.ok) {
           const dances = await response.json();
           setAllTheDances(dances);
-          console.log("dances", dances);
         }
       } catch (error) {
         console.error(error);
@@ -43,7 +40,6 @@ function Profile() {
         if (response.ok) {
           const dancingVote = await response.json();
           setVoteDance(dancingVote);
-          console.log("vote", dancingVote);
         }
       } catch (error) {
         console.error(error);
@@ -66,10 +62,8 @@ function Profile() {
   });
 
   async function submit(values) {
-    console.log("premierevalue", values);
     try {
       let data = { values, id: user.idUser };
-      console.log("values_vote", data);
       const response = await fetch("http://localhost:8000/api/dances/vote", {
         method: "PATCH",
         headers: {

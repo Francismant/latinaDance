@@ -10,7 +10,7 @@ function Header() {
  
   return (
     <header>
-      <div className={`df aic ${styles.headerResponsive}`}>
+      <section className={`df aic ${styles.headerResponsive}`}>
         <div className={styles.sizeHeaderLeft}>
           <div className={`df fc jcc aic ${styles.latina}`}>
             <Link end to="/">
@@ -45,7 +45,7 @@ function Header() {
             )}
           </ul>
         </div>
-      </div>
+      </section>
     </header>
   );
 }

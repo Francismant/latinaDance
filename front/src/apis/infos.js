@@ -5,7 +5,6 @@ export async function getInfosCours() {
       const response = await fetch(`${API_INFOS}/getInfos`);
       if (response.ok) {
         const infos = await response.json();
-        console.log("infos", infos);
         return infos;
       }
     } catch (error) {

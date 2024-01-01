@@ -7,7 +7,6 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
 
   const viewMenu = () => {
-    console.log("showMenu", showMenu);
     setShowMenu(!showMenu);
   };
 

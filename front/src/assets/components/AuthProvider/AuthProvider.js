@@ -8,7 +8,6 @@ import { signout } from "../../../apis/users";
 export default function AuthProvider({ children }) {
   const userConnect = useLoaderData();
   const [user, setUser] = useState(userConnect);
-  console.log(user);
 
   async function login(values) {
     const newUser = await signin(values);

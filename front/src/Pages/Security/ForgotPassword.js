@@ -34,29 +34,8 @@ function ForgotPassword() {
     resolver: yupResolver(yupSchema),
   });
 
-  // async function submit(values) {
-  //   console.log(values);
-  //   try {
-  //     clearErrors();
-  //     const response = await fetch(
-  //       `http://localhost:8000/api/users/resetPassword/${values.email}`
-  //     );
-  //     if (!response.ok) {
-  //       throw new Error("Email inexistant");
-  //     }
-  //     setFeedbackGood("email envoyé");
-  //     reset();
-  //     setTimeout(() => {
-  //       setFeedbackGood("");
-  //     }, 4000);
-  //   } catch (error) {
-  //     setError("generic", { type: "generic", message: "Email inexistant" });
-  //   }
-  // }
-
   async function submit(values) {
     const { email } = values;
-    console.log(email);
 
     try {
       clearErrors();

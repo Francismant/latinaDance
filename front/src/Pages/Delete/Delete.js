@@ -12,8 +12,6 @@ function Delete() {
 
     async function handleDelete() {
         try {
-            let data = { id: user.idUser };
-            console.log("data", data);
             await fetch(`http://localhost:8000/api/users/deleteUser/${user.idUser}`, {
                 method: "DELETE",
             });

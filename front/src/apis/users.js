@@ -2,7 +2,6 @@ const API_USERS = "/api/users";
 
 
 export async function createUser(newUser) {
-  console.log("CreateUser", newUser);
   try {
     const { email, userValues } = newUser;
     const { name, password } = userValues;
@@ -31,7 +30,6 @@ export async function createUser(newUser) {
 
 
 export async function createNewPassword(newPassword) {
-  console.log("createNewPassword", newPassword);
   try {
     const { email, password } = newPassword;
     const response = await fetch(`${API_USERS}/changePassword`, {
@@ -83,7 +81,6 @@ export async function signout() {
 export async function getConnectedUser() {
   const response = await fetch(`${API_USERS}/userConnected`);
   const userC = await response.json();
-  console.log(userC);
   return userC;
 }
 

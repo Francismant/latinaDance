@@ -55,12 +55,10 @@ function Register() {
   });
 
   async function submit(values) {
-    console.log(values);
     try {
       clearErrors();
       const { name, password } = values;
       const email = new URLSearchParams(window.location.search).get("email");
-      console.log("email", email);
       await createUser({ email, userValues: { name, password } });
       setFeedBackGood("Inscription réussie, vous allez être redirigé");
       reset();

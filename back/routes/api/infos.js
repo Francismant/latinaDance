@@ -6,18 +6,15 @@ router.get("/getInfos", (req, res) => {
     const sql = "SELECT * FROM infos";
     connection.query(sql, (err, result) => {
         if (err) throw err;
-        console.log("text récupéré");
         res.send(JSON.stringify(result));
     });
 });
 
 router.patch('/changeInfos', (req, res) => {
-    console.log("changeInfos", req.body);
     let {infos} = req.body;
     const value=0
     const changeInfosCoursSql = "UPDATE infos SET text = ? WHERE idInfos = ?";
     connection.query(changeInfosCoursSql, [infos, value], (err, result) => {
-        console.log("changeInfos", result);
         if (err) {
             console.error(err);
             return res.status(500).json({ message: "Erreur lors du changement du message" });

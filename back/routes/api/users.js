@@ -16,7 +16,6 @@ const transporter = nodemailer.createTransport({
 const connection = require("../../database");
 
 router.post("/register", (req, res) => {
-  console.log("register", req.body);
   const { email, password, name } = req.body;
   const verifyMailSql = "SELECT * FROM users WHERE email = ?";
   connection.query(verifyMailSql, [email], async (err, result) => {
@@ -50,7 +49,6 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  console.log(req.body);
   const { email, password } = req.body;
   const sqlVerify = "SELECT * FROM users WHERE email= ?";
   connection.query(sqlVerify, [email], (err, result) => {
@@ -78,7 +76,6 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  console.log("Déconnexion en cours");
   res.clearCookie("token");
   res.end();
 });
@@ -97,7 +94,6 @@ router.get("/userConnected", (req, res) => {
         const connectedUser = result[0];
         connectedUser.password = "";
         if (connectedUser) {
-          console.log(connectedUser);
           res.json(connectedUser);
         } else {
           res.json(null);
@@ -126,7 +122,6 @@ router.delete("/deleteUser/:idUser", (req, res) => {
 });
 
 router.get("/resetPassword/:email", (req, res) => {
-  console.log("mail", req.params);
   const email = req.params.email;
   const sqlSearchMail = "SELECT * FROM users WHERE email = ?";
   connection.query(sqlSearchMail, [email], (err, result) => {
@@ -154,7 +149,6 @@ router.get("/resetPassword/:email", (req, res) => {
 
 router.get("/createAccount/:email", (req, res) => {
   const email = req.params.email;
-  console.log("mail", email);
   const sqlSearchMail = "SELECT * FROM users WHERE email = ?";
   connection.query(sqlSearchMail, [email], (err, result) => {
     if (err) throw err;
@@ -180,7 +174,6 @@ router.get("/createAccount/:email", (req, res) => {
 });
 
 router.patch("/changePassword", async (req, res) => {
-  console.log("changePassword", req.body);
   try {
     const { email, password } = req.body;
     const sqlUserExist = "SELECT * FROM users WHERE email = ?";

@@ -72,7 +72,6 @@ export default function AddNewEvent() {
   };
 
   function submit(values) {
-    console.log(values);
     try {
       let newPoster = values.poster[0];
       let fileReader = new FileReader();
@@ -82,7 +81,6 @@ export default function AddNewEvent() {
         const blob = new Blob([buffer], { type: newPoster.type });
         const base64 = await convertBlobTobase64(blob);
         values.poster = base64;
-        console.log("valuesbase", values);
         clearErrors();
         const response = await fetch(`http://localhost:8000/api/events/addEvent`, {
           method: "POST",
@@ -92,8 +90,6 @@ export default function AddNewEvent() {
           body: JSON.stringify(values),
         });
         if (response.ok) {
-          const newEvent = await response.json();
-          console.log(newEvent);
           setfeedBackGood("L'événement a été créé avec succès!");
           setTimeout(() => {
             navigate("/events")
