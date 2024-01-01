@@ -70,7 +70,7 @@ function Profile() {
     try {
       let data = { values, id: user.idUser };
       console.log("values_vote", data);
-      const response = await fetch("http://localhost:8000/api/profile/vote", {
+      const response = await fetch("http://localhost:8000/api/dances/vote", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +106,7 @@ function Profile() {
   async function resetVotes() {
     try {
       const response = await fetch(
-        "http://localhost:8000/api/profile/resetVotes",
+        "http://localhost:8000/api/dances/resetVotes",
         {
           method: "PATCH",
         }
