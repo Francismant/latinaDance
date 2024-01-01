@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from "../Forms/Register/Register.module.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
@@ -124,8 +123,8 @@ function Profile() {
   }
 
   return (
-    <main className={styles.top}>
-      <h3 className="tac pt3pc mb3pc">Bienvenue sur votre profil {user.name}</h3>
+    <main className="top center">
+      <h3 className="tac mb3pc">Bienvenue sur votre profil {user.name}</h3>
       {user && user.admin === 1 && (
         <>
           <section className="flex-fill df fc jcc aic mb3pc mt3pc gap1">
@@ -143,7 +142,7 @@ function Profile() {
               )}
             </ul>
             {feedbackGood && (
-              <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+              <p className="feedbackGood mb20">{feedbackGood}</p>
             )}
             <button onClick={resetVotes} className="btn btn-primary">
               Réinitialiser les votes
@@ -157,7 +156,7 @@ function Profile() {
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
-              <Link className={styles.forgotPassword} to="/forgotPassword">
+              <Link className="underline" to="/forgotPassword">
                 ici
               </Link>
             </span>{" "}
@@ -196,7 +195,7 @@ function Profile() {
                 </ul>
               </div>
               {feedbackGood && (
-                <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+                <p className="feedbackGood mb20">{feedbackGood}</p>
               )}
               <button className="btn btn-primary m0auto">
                 Envoyer
@@ -206,7 +205,7 @@ function Profile() {
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
-              <Link className={styles.forgotPassword} to="/forgotPassword">
+              <Link className="underline" to="/forgotPassword">
                 ici
               </Link>
             </span>{" "}
@@ -215,7 +214,7 @@ function Profile() {
           <h4 className="tac mb3pc">
             Cliquez{" "}
             <span>
-              <Link className={styles.forgotPassword} to="/Delete">
+              <Link className="underline" to="/Delete">
                 ici
               </Link>
             </span>{" "}

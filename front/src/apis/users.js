@@ -30,7 +30,6 @@ export async function createUser(newUser) {
 }
 
 
-
 export async function createNewPassword(newPassword) {
   console.log("createNewPassword", newPassword);
   try {
@@ -54,7 +53,6 @@ export async function createNewPassword(newPassword) {
     throw error;
   }
 }
-
 
 
 export async function signin(values) {
@@ -90,14 +88,27 @@ export async function getConnectedUser() {
 }
 
 
-// export async function createAccount(email) {
-//   try {
-//     const response = await fetch(`${API_USERS}/createAccount/${email}`);
-//     if (!response.ok) {
-//       throw new Error("Email inexistant");
-//     }
-//     return await response.json();
-//   } catch (error) {
-//     throw new Error("Email déjà Existant");
-//   }
-// }
+
+export async function createAccount(email) {
+  try {
+    const response = await fetch(`${API_USERS}/createAccount/${email}`);
+    if (!response.ok) {
+      throw new Error("Email inexistant");
+    }
+    return true;
+  } catch (error) {
+    throw new Error("Email déjà existant");
+  }
+}
+
+export async function resetPassword(email) {
+  try {
+    const response = await fetch(`${API_USERS}/resetPassword/${email}`);
+    if (!response.ok) {
+      throw new Error("Email inexistant");
+    }
+    return true;
+  } catch (error) {
+    throw new Error("Email inexistant");
+  }
+}

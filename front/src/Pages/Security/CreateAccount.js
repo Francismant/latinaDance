@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import styles from "../Forms/Register/Register.module.scss";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-// import { createAccount } from "../../apis/users";
+import { createAccount } from "../../apis/users";
 
 function CreateAccount() {
   const [feedbackGood, setFeedbackGood] = useState("");
@@ -35,27 +34,49 @@ function CreateAccount() {
     resolver: yupResolver(yupSchema),
   });
 
+  // async function submit(values) {
+  //   console.log(values);
+  //   try {
+  //     clearErrors();
+  //     const response = await fetch(
+  //       `http://localhost:8000/api/users/createAccount/${values.email}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Email inexistant");
+  //     }
+  //     setFeedbackGood("email envoyé");
+  //     reset();
+  //   } catch (error) {
+  //     setError("generic", { type: "generic", message: "Email déjà Existant" });
+  //   }
+  // }
+
   async function submit(values) {
-    console.log(values);
+    const { email } = values;
+    console.log(email);
+
     try {
       clearErrors();
-      const response = await fetch(
-        `http://localhost:8000/api/users/createAccount/${values.email}`
-      );
-      if (!response.ok) {
-        throw new Error("Email inexistant");
+
+      const accountCreated = await createAccount(email);
+
+      if (accountCreated) {
+        setFeedbackGood("email envoyé");
+        reset();
+        setTimeout(() => {
+          setFeedbackGood(null);
+        }, 4000);
       }
-      setFeedbackGood("email envoyé");
-      reset();
     } catch (error) {
-      setError("generic", { type: "generic", message: "Email déjà Existant" });
+      const genericError = { type: "generic", message: "Email déjà existant" };
+      setError("generic", genericError);
     }
   }
 
 
   return (
     <main className="center">
-      <section className={styles.top}>
+      <section className="top">
         <h2 className="mt3pc">
           Notez ci-dessous votre adresse mail afin de recevoir un lien pour
           pouvoir créer votre compte
@@ -65,13 +86,13 @@ function CreateAccount() {
             <label htmlFor="email">Email</label>
             <input type="email" id="email" {...register("email")} />
             {errors?.email && (
-              <p className={`${styles.feedback}`}>{errors.email.message}</p>
+              <p className="feedback">{errors.email.message}</p>
             )}
             {feedbackGood && (
-              <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+              <p className="feedbackGood mb20">{feedbackGood}</p>
             )}
             {errors?.generic && (
-              <p className={`${styles.feedback} mb20`}>
+              <p className="feedback b20">
                 {errors.generic.message}
               </p>
             )}

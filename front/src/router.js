@@ -7,6 +7,7 @@ import {
   ProtectedPasswordRoute,
 } from "./assets/components/ProtectedRoute/ProtectedRoute";
 import { lazy } from "react";
+import ScrollToTop from "./assets/components/ScrollToTop/ScrollToTop.js";
 const Home = lazy(() => import("./Pages/Homepage/Home.js"));
 const Infos = lazy(() => import("./Pages/Infos/Infos.js"));
 const Register = lazy(() => import("./Pages/Forms/Register/Register"));
@@ -26,7 +27,12 @@ const CreateAccount = lazy(() => import("./Pages/Security/CreateAccount.js"));
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <>
+        <ScrollToTop />
+        <App />
+      </>
+    ),
     loader: userLoader,
     children: [
       {

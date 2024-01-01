@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "../Forms/Register/Register.module.scss";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { resetPassword } from "../../apis/users";
 
 function ForgotPassword() {
   const [feedbackGood, setFeedbackGood] = useState("");
@@ -34,29 +34,50 @@ function ForgotPassword() {
     resolver: yupResolver(yupSchema),
   });
 
+  // async function submit(values) {
+  //   console.log(values);
+  //   try {
+  //     clearErrors();
+  //     const response = await fetch(
+  //       `http://localhost:8000/api/users/resetPassword/${values.email}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Email inexistant");
+  //     }
+  //     setFeedbackGood("email envoyé");
+  //     reset();
+  //     setTimeout(() => {
+  //       setFeedbackGood("");
+  //     }, 4000);
+  //   } catch (error) {
+  //     setError("generic", { type: "generic", message: "Email inexistant" });
+  //   }
+  // }
+
   async function submit(values) {
-    console.log(values);
+    const { email } = values;
+    console.log(email);
+
     try {
       clearErrors();
-      const response = await fetch(
-        `http://localhost:8000/api/users/resetPassword/${values.email}`
-      );
-      if (!response.ok) {
-        throw new Error("Email inexistant");
+
+      const passwordReset = await resetPassword(email);
+
+      if (passwordReset) {
+        setFeedbackGood("email envoyé");
+        reset();
+        setTimeout(() => {
+          setFeedbackGood(null);
+        }, 4000);
       }
-      setFeedbackGood("email envoyé");
-      reset();
-      setTimeout(() => {
-        setFeedbackGood("");
-      }, 4000);
     } catch (error) {
-      setError("generic", { type: "generic", message: "Email inexistant" });
+      setError("generic", { type: "generic", message: "Email inexistant" })
     }
   }
 
   return (
     <main className="center">
-      <section className={styles.top}>
+      <section className="top">
         <h2 className="mt3pc">
           Notez ci-dessous votre adresse mail afin de recevoir un lien pour
           modifier votre mot de passe
@@ -66,13 +87,13 @@ function ForgotPassword() {
             <label htmlFor="email">Email</label>
             <input type="email" id="email" {...register("email")} />
             {errors?.email && (
-              <p className={`${styles.feedback}`}>{errors.email.message}</p>
+              <p className="feedback">{errors.email.message}</p>
             )}
             {feedbackGood && (
-              <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+              <p className="feedbackGood mb20">{feedbackGood}</p>
             )}
             {errors?.generic && (
-              <p className={`${styles.feedback} mb20`}>
+              <p className="feedback mb20">
                 {errors.generic.message}
               </p>
             )}

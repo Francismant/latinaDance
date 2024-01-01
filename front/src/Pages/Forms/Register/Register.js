@@ -74,7 +74,7 @@ function Register() {
 
   return (
     <main>
-      <section className={styles.top}>
+      <section className="top">
         <h2 className="mt3pc ">Inscription</h2>
         <form className="df fc jcc aic" onSubmit={handleSubmit(submit)}>
           <div className="df fc mb10">
@@ -83,7 +83,7 @@ function Register() {
             </label>
             <input type="text" id="name" {...register("name")} />
             {errors?.name && (
-              <p className={`${styles.feedback}`}>{errors.name.message}</p>
+              <p className="feedback">{errors.name.message}</p>
             )}
           </div>
           <div className="df fc mb10">
@@ -92,7 +92,7 @@ function Register() {
             </label>
             <input type="password" id="password" {...register("password")} />
             {errors?.password && (
-              <p className={`${styles.feedback}`}>{errors.password.message}</p>
+              <p className="feedback">{errors.password.message}</p>
             )}
           </div>
           <div className="df fc mb10">
@@ -105,7 +105,7 @@ function Register() {
               {...register("confirmPassword")}
             />
             {errors?.confirmPassword && (
-              <p className={`${styles.feedback}`}>
+              <p className="feedback">
                 {errors.confirmPassword.message}
               </p>
             )}
@@ -126,18 +126,18 @@ function Register() {
               />
             </div>
             {errors?.acceptedTerms && (
-              <p className={`${styles.feedback}`}>
+              <p className="feedback">
                 Vous devez accepter les conditions générales
               </p>
             )}
           </div>
           {feedBackGood && (
-            <p className={`${styles.feedbackGood}`}>{feedBackGood}</p>
+            <p className="feedbackGood">{feedBackGood}</p>
           )}
           {errors?.generic && (
-            <p className={`${styles.feedback}`}>{errors.generic.message}</p>
+            <p className="feedback">{errors.generic.message}</p>
           )}
-          <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`}>
+          <button className="btn btn-primary mt3pc mb3pc">
             S'inscrire
           </button>
         </form>

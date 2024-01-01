@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import styles from "../Register/Register.module.scss";
 import { useContext } from "react";
 import { AuthContext } from "../../../context";
 import { Link, useNavigate } from "react-router-dom";
@@ -61,7 +60,7 @@ function Login() {
 
   return (
     <main>
-      <section className={styles.top}>
+      <section className="top">
         <h2 className="mt3pc">Connexion</h2>
         <form className="df fc jcc aic" onSubmit={handleSubmit(submit)}>
           <div className="df fc mb10">
@@ -70,7 +69,7 @@ function Login() {
             </label>
             <input type="email" id="email" {...register("email")} />
             {errors?.email && (
-              <p className={`${styles.feedback}`}>{errors.email.message}</p>
+              <p className="feedback">{errors.email.message}</p>
             )}
           </div>
           <div className="df fc mb10">
@@ -79,21 +78,21 @@ function Login() {
             </label>
             <input type="password" id="password" {...register("password")} />
             {errors?.password && (
-              <p className={`${styles.feedback}`}>{errors.password.message}</p>
+              <p className="feedback">{errors.password.message}</p>
             )}
           </div>
           {feedbackGood && (
-            <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+            <p className="feedbackGood mb20">{feedbackGood}</p>
           )}
           {errors?.generic && (
-            <p className={`${styles.feedback} mb20`}>
+            <p className="feedback mb20">
               {errors.generic.message}
             </p>
           )}
-          <div className={`df fc mb10 ${styles.forgotPassword}`}>
+          <div className="df fc mb10 underline">
             <Link to="/forgotPassword">Mot de passe oublié ?</Link>
           </div>
-          <button className={`btn btn-primary mt3pc mb3pc ${styles.button}`}>
+          <button className="btn btn-primary mt3pc mb3pc">
             Se connecter
           </button>
         </form>

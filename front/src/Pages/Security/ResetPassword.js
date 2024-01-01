@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "../Forms/Register/Register.module.scss";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -63,14 +62,14 @@ function ResetPassword() {
 
   return (
     <main className="center">
-      <section className={styles.top}>
+      <section className="top">
         <h2 className="mt3pc">Réinitialisation du mot de passe</h2>
         <form className="df fc jcc aic" onSubmit={handleSubmit(submit)}>
           <div className="df fc jcc aic gap2">
             <label htmlFor="password">Password</label>
             <input type="password" id="password" {...register("password")} />
             {errors?.password && (
-              <p className={`${styles.feedback}`}>{errors.password.message}</p>
+              <p className="feedback">{errors.password.message}</p>
             )}
             <label htmlFor="confirmPassword">Confirmation Password</label>
             <input
@@ -79,15 +78,15 @@ function ResetPassword() {
               {...register("confirmPassword")}
             />
             {errors?.confirmPassword && (
-              <p className={`${styles.feedback}`}>
+              <p className="feedback">
                 {errors.confirmPassword.message}
               </p>
             )}
             {feedBackGood && (
-              <p className={`${styles.feedbackGood}`}>{feedBackGood}</p>
+              <p className="feedbackGood">{feedBackGood}</p>
             )}
             {errors?.generic && (
-              <p className={`${styles.feedback}`}>{errors.generic.message}</p>
+              <p className="feedback">{errors.generic.message}</p>
             )}
             <button className="btn btn-primary">Enregistrer</button>
           </div>

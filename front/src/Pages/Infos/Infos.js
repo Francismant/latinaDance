@@ -63,7 +63,7 @@ function Infos() {
         </section>
         <section className="mb3pc">
           <h2 id="planning">Les Plannings</h2>
-          <div className="df fc gap2 fw">
+          <article className="df fc gap2 fw">
             <div className="df jcsa fw gap1">
               <Planning />
               <Planning2 />
@@ -72,17 +72,17 @@ function Infos() {
               <Planning3 />
               <Planning4 />
             </div>
-          </div>
+          </article>
           <h3 className="fsize1_5 tac fweight4 mt3pc">
             Vendredi et Samedi soirée SBK de 22h30 à 02h00*
           </h3>
         </section>
         <section className="mb3pc">
           <h2 id="tarifs">Les tarifs**</h2>
-          <div className="df fc gap2">
+          <article className="df fc gap2">
             <CarteTarifCouple tarifsCouple={tarifsCouple} />
             <CarteTarifSolo tarifsSolo={tarifsSolo} />
-          </div>
+          </article>
           <div className={styles.noteCards}>
             <p>
               *Soirées SBK au tarif de 10€ en CB ou espèce(initiation gratuite
@@ -107,7 +107,7 @@ function Infos() {
             directement par téléphone ou via notre adresse mail que vous
             retrouverez dans l’onglet Contact du site ou en cliquant{" "}
             <span>
-              <NavLink className={styles.forgotPassword} to="/contact">
+              <NavLink className="underline" to="/contact">
                 ici
               </NavLink>
             </span>{" "}

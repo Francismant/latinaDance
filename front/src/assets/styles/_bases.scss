@@ -58,3 +58,15 @@ img {
   }
 }
 
+input {
+  font-size: 1.1rem;
+  width: 500px;
+  height: 1.8rem;
+  border-radius: 10px;
+  padding: 1%;
+  border: solid var(--colorFooter) 2px;
+  @include mixin.xs {
+    width: 200px;
+    font-size: 1rem;
+  }
+}

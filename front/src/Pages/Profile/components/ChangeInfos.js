@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../../Forms/Register/Register.module.scss";
 import { useState } from "react";
 
 function ChangeInfos() {
@@ -51,7 +50,7 @@ function ChangeInfos() {
           id="text"
         />
         {changeFeedbackGood && (
-          <p className={`${styles.feedbackGood} mb20 tac`}>
+          <p className="feedbackGood mb20 tac">
             {changeFeedbackGood}
           </p>
         )}

@@ -1,6 +1,6 @@
 import Navbar from "../../assets/components/Navbar/Navbar";
 import styles from "./Header.module.scss";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context";
 
@@ -13,11 +13,11 @@ function Header() {
       <div className={`df aic ${styles.headerResponsive}`}>
         <div className={styles.sizeHeaderLeft}>
           <div className={`df fc jcc aic ${styles.latina}`}>
-            <NavLink end to="/">
+            <Link end to="/">
               <p className="fweight4">LILLE</p>
               <p className="fweight4">LATINA</p>
               <p className="ffamily2">Dance</p>
-            </NavLink>
+            </Link>
           </div>
         </div>
         <Navbar />
@@ -26,20 +26,20 @@ function Header() {
             {user ? (
               <>
                 <button className={`btn btn-primary-reverse mr20`}>
-                  <NavLink to="/Profile">Profil</NavLink>
+                  <Link to="/Profile">Profil</Link>
                 </button>
                 <button onClick={logout} className={`mr20 btn btn-primary`}>
-                  <NavLink to="/">Déconnexion</NavLink>
+                  <Link to="/">Déconnexion</Link>
                 </button>
               </>
             ) : (
               <>
                 <button className={`mr20 btn btn-primary`}>
-                  <NavLink to="/createAccount">Inscription</NavLink>
+                  <Link to="/createAccount">Inscription</Link>
                 </button>
                 <button className={`btn btn-primary-reverse`}>
                   <i className="fas fa-right-to-bracket mr5"></i>
-                  <NavLink to="/Login">Connexion</NavLink>
+                  <Link to="/Login">Connexion</Link>
                 </button>
               </>
             )}

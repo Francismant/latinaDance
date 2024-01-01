@@ -31,7 +31,7 @@ function Contact() {
       )}
       <main className="center">
         <section className={styles.contactContainer}>
-          <div className={styles.contactData}>
+          <article className={styles.contactData}>
             <h3>Comment nous contacter</h3>
             <div className="df fc gap2">
               <div className="df gap1 aic fsize1_25">
@@ -43,7 +43,7 @@ function Contact() {
                 <p>lillelatinadance@org.com</p>
               </div>
             </div>
-          </div>
+          </article>
           <div>
             <img src={contact} alt="" />
           </div>

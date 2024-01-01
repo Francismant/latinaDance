@@ -37,7 +37,7 @@ function Events() {
           <h3 className="feedbackWarning center tac mb3pc">{infos[0].text}</h3>
         </div>
       )}
-      <div className="flex-fill df fc container p20">
+      <main className="center df fc gap1">
         <h2 className="mb3pc">
           Retrouvez ici les évènements ponctuels proposés par notre école{" "}
         </h2>
@@ -59,7 +59,7 @@ function Events() {
           pour la danse que vous souhaitez voir mise en avant lors de nos
           prochains stages (avant le 20 du mois en cours)
         </p>
-      </div>
+      </main>
     </section>
   );
 }
