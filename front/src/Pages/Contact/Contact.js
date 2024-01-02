@@ -19,7 +19,7 @@ function Contact() {
   return (
     <>
       <section className={styles.topContact}>
-        <div className={`df fc jcsb ${styles.backgroundTopContact}`}>
+        <div className={`df fc jcsb ${styles.backgroundTopContact}`} aria-label="photo axée sur les chaussures des danseurs et danseuses lors d'une soirée">
           <h1 className="pt3pc ml20">CONTACT & FAQ</h1>
         </div>
       </section>

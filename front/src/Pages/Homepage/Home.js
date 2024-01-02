@@ -27,7 +27,7 @@ function Home() {
     <>
       {/* <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent> */}
       <section className={styles.topHome}>
-        <div className={`df fc jcsb ${styles.backgroundTop}`}>
+        <div className={`df fc jcsb ${styles.backgroundTop}`} aria-label="photo centrée sur les mains d'un danseur et une danseuse lors d'une soirée">
           <h1 className={styles.headerTitle}>COURS DE SALSA BACHATA KIZOMBA</h1>
         </div>
       </section>

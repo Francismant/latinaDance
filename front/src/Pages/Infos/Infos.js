@@ -29,7 +29,7 @@ function Infos() {
   return (
     <>
       <section className={styles.topInfos}>
-        <div className={`df fc jcsb ${styles.backgroundTopInfos}`}>
+        <div className={`df fc jcsb ${styles.backgroundTopInfos}`} aria-label="photo centrée sur les épaules d'un danseur et une danseuse lors d'une soirée">
           <h1 className="pt3pc ml20">INFOS SUR L'ECOLE DE DANSE</h1>
         </div>
       </section>

@@ -28,7 +28,7 @@ function Events() {
 
   return (
     <section className={styles.topEvents}>
-      <div className={`df fc jcsb ${styles.backgroundTopEvents}`}>
+      <div className={`df fc jcsb ${styles.backgroundTopEvents}`} aria-label="photo centrée sur les chaussures d'un danseur et une danseuse lors d'une soirée">
         <h1 className={styles.headerTitle}>EVENEMENTS</h1>
       </div>
       {infos.length > 0 && (
