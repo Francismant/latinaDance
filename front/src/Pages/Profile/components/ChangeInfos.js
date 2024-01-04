@@ -4,14 +4,49 @@ import { useState } from "react";
 function ChangeInfos() {
   const [changeFeedbackGood, setChangeFeedbackGood] = useState("");
   const [text, setText] = useState("");
+  const [errorFeedback, setErrorFeedback] = useState("");
+
+  // async function changeInfos(choice) {
+  //   let infos
+  //   if (choice === 1) {
+  //     infos = text;
+  //   } else {
+  //     infos = "";
+  //   }
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:8000/api/infos/changeInfos",
+  //       {
+  //         method: "PATCH",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ infos }),
+  //       }
+  //     );
+  //     if (response.ok && choice === 1) {
+  //       await response.json();
+  //       setChangeFeedbackGood("le message d'alerte a bien été mis en place");
+  //     } else if (response.ok && choice === 2) {
+  //       await response.json();
+  //       setChangeFeedbackGood("message supprimé avec succès");
+  //     }
+  //     setTimeout(() => { setChangeFeedbackGood("") }, 3000)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   async function changeInfos(choice) {
-    let infos
-    if (choice === 1) {
-      infos = text;
-    } else {
-      infos = "";
+    // Vérifier si le champ d'entrée est vide pour le choix 1
+    if (choice === 1 && !text.trim()) {
+      setErrorFeedback("Veuillez entrer un texte avant de sauvegarder.");
+      setTimeout(() => {
+        setErrorFeedback("");
+      }, 3000);
+      return;
     }
+
     try {
       const response = await fetch(
         "http://localhost:8000/api/infos/changeInfos",
@@ -20,21 +55,29 @@ function ChangeInfos() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ infos }),
+          body: JSON.stringify({ infos: text }),
         }
       );
+
       if (response.ok && choice === 1) {
         await response.json();
-        setChangeFeedbackGood("le message d'alerte a bien été mis en place");
+        setChangeFeedbackGood("Le message d'alerte a bien été mis en place");
+        setErrorFeedback("");
       } else if (response.ok && choice === 2) {
         await response.json();
-        setChangeFeedbackGood("message supprimé avec succès");
+        setChangeFeedbackGood("Message supprimé avec succès");
       }
-      setTimeout(() => { setChangeFeedbackGood("") }, 3000)
+
+      // Réinitialiser le texte et le message de feedback
+      setText("");
+      setTimeout(() => {
+        setChangeFeedbackGood("");
+      }, 3000);
     } catch (error) {
       console.error(error);
     }
   }
+
 
   return (
     <section>
@@ -53,6 +96,9 @@ function ChangeInfos() {
           <p className="feedbackGood mb20 tac">
             {changeFeedbackGood}
           </p>
+        )}
+        {errorFeedback && (
+          <p className="feedback mb20 tac">{errorFeedback}</p>
         )}
         <button
           onClick={() => {

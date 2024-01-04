@@ -11,6 +11,8 @@ function Profile() {
   const [allTheDances, setAllTheDances] = useState([]);
   const [voteDance, setVoteDance] = useState([]);
   const [feedbackGood, setFeedBackGood] = useState("");
+  const [errorFeedback, setErrorFeedback] = useState("");
+  const [noVoteFeedback, setNoVoteFeedback] = useState(""); // Nouvel état
 
   const navigate = useNavigate();
 
@@ -62,7 +64,12 @@ function Profile() {
   });
 
   async function submit(values) {
+    console.log("values", values);
     try {
+      if (!values.dances || values.dances.length === 0) {
+        setErrorFeedback("Veuillez sélectionner une danse avant de soumettre.");
+        return;
+      }
       let data = { values, id: user.idUser };
       const response = await fetch("http://localhost:8000/api/dances/vote", {
         method: "PATCH",
@@ -75,6 +82,7 @@ function Profile() {
         const voteUser = await response.json();
         setFeedBackGood(voteUser.messageGood);
         reset(defaultValues);
+        setErrorFeedback("");
         setTimeout(() => {
           navigate("/");
         }, 3000);
@@ -97,24 +105,69 @@ function Profile() {
     }
   }
 
+  // async function resetVotes() {
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:8000/api/dances/resetVotes",
+  //       {
+  //         method: "PATCH",
+  //       }
+  //     );
+  //     if (response.ok) {
+  //       const resetResponse = await response.json();
+  //       setVoteDance(null);
+  //       setFeedBackGood(resetResponse.message);
+  //       setTimeout(() => { setFeedBackGood(""); }, 3000);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
   async function resetVotes() {
     try {
+      // Mettre à jour les votes avant la réinitialisation
+      const updatedVotesResponse = await fetch(
+        "http://localhost:8000/api/dances/totalVote"
+      );
+  
+      if (updatedVotesResponse.ok) {
+        const updatedDancingVote = await updatedVotesResponse.json();
+        setVoteDance(updatedDancingVote);
+  
+        // Afficher le message approprié en fonction de la présence ou de l'absence de votes
+        if (updatedDancingVote.length === 0) {
+          setNoVoteFeedback("Aucun vote en cours.");
+          setTimeout(() => {
+            setNoVoteFeedback("");
+          }, 3000);
+          return;
+        }
+      }
+  
+      // Réinitialisation des votes
       const response = await fetch(
         "http://localhost:8000/api/dances/resetVotes",
         {
           method: "PATCH",
         }
       );
+  
       if (response.ok) {
         const resetResponse = await response.json();
-        setVoteDance(null);
+        setVoteDance(null)
         setFeedBackGood(resetResponse.message);
-        setTimeout(() => { setFeedBackGood(""); }, 3000);
+  
+        setTimeout(() => {
+          setFeedBackGood("");
+          setNoVoteFeedback("");
+        }, 3000);
       }
     } catch (error) {
       console.error(error);
     }
   }
+  
 
   return (
     <main className="top center">
@@ -137,6 +190,9 @@ function Profile() {
             </ul>
             {feedbackGood && (
               <p className="feedbackGood mb20">{feedbackGood}</p>
+            )}
+            {noVoteFeedback && (
+              <p className="feedback mb20">{noVoteFeedback}</p>
             )}
             <button onClick={resetVotes} className="btn btn-primary">
               Réinitialiser les votes
@@ -167,15 +223,15 @@ function Profile() {
           <p className="tac fsize08">
             (Les votes ne sont plus comptabilisés après le 20 du mois en cours)
           </p>
-          <div className="flex-fill df jcc aic mb3pc mt3pc">
-            <form onSubmit={handleSubmit(submit)}>
-              <div className="df fc mb10">
+          <div className="mb3pc mt3pc">
+            <form className="df fc aic jcc mb10" onSubmit={handleSubmit(submit)}>
+            
                 <label className="mb10 tac">
-                  <span className="flex-fill">Dances</span>
+                  <span>Dances</span>
                 </label>
                 <ul>
                   <li className="mb10">
-                    <select className="mr10" {...register(`dances`)}>
+                    <select {...register(`dances`)}>
                       <option value="" disabled>
                         Faites votre choix
                       </option>
@@ -187,13 +243,15 @@ function Profile() {
                     </select>
                   </li>
                 </ul>
-              </div>
-              {feedbackGood && (
-                <p className="feedbackGood mb20">{feedbackGood}</p>
-              )}
-              <button className="btn btn-primary m0auto">
-                Envoyer
-              </button>
+                {feedbackGood && (
+                  <p className="feedbackGood mb20 tac">{feedbackGood}</p>
+                )}
+                {errorFeedback && (
+                  <p className="feedback mb20 tac">{errorFeedback}</p>
+                )}
+                <button className="btn btn-primary">
+                  Envoyer
+                </button>
             </form>
           </div>
           <h4 className="tac mb3pc">
